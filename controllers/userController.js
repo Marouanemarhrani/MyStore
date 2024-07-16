@@ -1,107 +1,97 @@
 import userModel from "../models/userModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
-import  JWT  from "jsonwebtoken";
+import JWT from "jsonwebtoken";
 
+// Register a new user
 export const registerController = async (req, res) => {
     try {
-        const {firstname, lastname, email, password, phone, address} = req.body;
-        //validation
-        if(!firstname){
-            return res.send({message: 'Firstname is required for authentication !'});
-        }
-        if(!lastname){
-            return res.send({message: 'Lastname is required for authentication !'});
-        }
-        if(!email){
-            return res.send({message: 'Email is required for authentication !'});
-        }
-        if(!password){
-            return res.send({message: 'Password is required for authentication !'});
-        }
-        if(!phone){
-            return res.send({message: 'Phone number is required for authentication !'});
-        }
-        if(!address){
-            return res.send({message: 'Address is required for authentication !'});
+        const { firstname, lastname, email, password, phone, address } = req.body;
+        
+        // Validation
+        const requiredFields = { firstname, lastname, email, password, phone, address };
+        for (const [field, value] of Object.entries(requiredFields)) {
+            if (!value) {
+                return res.status(400).send({ message: `${field.charAt(0).toUpperCase() + field.slice(1)} is required for authentication!` });
+            }
         }
 
-        //check if user exist
-        const existingUser = await userModel.findOne({email});
-        if(existingUser){
+        // Check if user exists
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
             return res.status(200).send({
-                success:false,
-                message:" An account is already registered with this email. Login or try another email",
+                success: false,
+                message: "An account is already registered with this email. Login or try another email",
             });
         }
-        //register user
+
+        // Register user
         const hashedPassword = await hashPassword(password);
-        //save user
-        const user = await new userModel({
+        const user = new userModel({
             firstname,
             lastname,
             email,
             phone,
-            address, 
+            address,
             password: hashedPassword,
-        }).save();
-        res.status(200).send({
-            success:true,
-            message:" Account added successfuly ",
+        });
+        await user.save();
+
+        res.status(201).send({
+            success: true,
+            message: "Account added successfully",
             user,
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send({
             success: false,
-            message:" An unexpected error happened.. Try again",
+            message: "An unexpected error occurred. Please try again.",
             error,
         });
     }
 };
 
-//POST LOGIN
-
+// Login user
 export const loginController = async (req, res) => {
     try {
-        const {email, password} = req.body;
-        if(!email){
-            return res.status(404).send({
-                success:false,
-                message:'Please enter you email',
-            });
-        }
-        if(!password){
-            return res.status(404).send({
-                success:false,
-                message:"Please enter you password",
-            });
-        }
-        //check user existance
-        const user = await userModel.findOne({email});
-        if(!user){
-            return res.status(404).send({
-                success:false,
-                message:"User doesn't exist, Try another one or register",
+        const { email, password } = req.body;
+        
+        // Validation
+        if (!email || !password) {
+            return res.status(400).send({
+                success: false,
+                message: 'Email and password are required',
             });
         }
 
-        const match = await comparePassword(password, user.password);
-        if(!match){
-            return res.status(400).send({
-                success:false,
-                message:"Wrong password!",
+        // Check user existence
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "User doesn't exist. Please register or try another email.",
             });
         }
-        //add token 
-        const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
-            expiresIn: "7d",
-        });
+
+        // Password comparison
+        const isMatch = await comparePassword(password, user.password);
+        if (!isMatch) {
+            return res.status(400).send({
+                success: false,
+                message: "Incorrect password. Please try again.",
+            });
+        }
+
+        // Generate token
+        const token = JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+
         res.status(200).send({
-            success:true,
-            message:"login successfully",
-            user:{
+            success: true,
+            message: "Login successful",
+            user: {
                 _id: user._id,
-                fullname: user.fullname,
+                firstname: user.firstname,
+                lastname: user.lastname,
                 email: user.email,
                 phone: user.phone,
                 address: user.address,
@@ -110,46 +100,50 @@ export const loginController = async (req, res) => {
             token,
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send({
             success: false,
-            message:" An unexpected error happened in login.. Try again",
+            message: "An unexpected error occurred during login. Please try again.",
             error,
         });
     }
 };
 
-
-//update profile
-
+// Update user profile
 export const updateProfileController = async (req, res) => {
     try {
-        const {firstname, lastname, email, password, address, phone} = req.body;
-        const user = await userModel.findById(req.user._id)
-        //password
-        if(password && password.length < 6){
-            return res.json({error:'Password is required and with 6 character long'});
+        const { firstname, lastname, email, password, address, phone } = req.body;
+        const user = await userModel.findById(req.user._id);
+
+        // Password validation
+        if (password && password.length < 6) {
+            return res.status(400).send({ error: 'Password must be at least 6 characters long' });
         }
-        const hashedPassword = password ? await hashPassword(password) : undefined;
+
+        // Hash new password if provided
+        const hashedPassword = password ? await hashPassword(password) : user.password;
+
+        // Update user details
         const updatedUser = await userModel.findByIdAndUpdate(req.user._id, {
             firstname: firstname || user.firstname,
             lastname: lastname || user.lastname,
-            password: hashedPassword || user.password,
+            email: email || user.email,
+            password: hashedPassword,
             phone: phone || user.phone,
-            address: address ||user.address,
-        }, {new:true})
+            address: address || user.address,
+        }, { new: true });
+
         res.status(200).send({
-            success:true,
-            message:'Profile updated successfully',
-            updatedUser,
-        })
+            success: true,
+            message: 'Profile updated successfully',
+            user: updatedUser,
+        });
     } catch (error) {
-        console.log(error);
-        res.status(400).send({
-            success:false,
-            message:"There was an error in updating the profile",
+        console.error(error);
+        res.status(500).send({
+            success: false,
+            message: "An unexpected error occurred while updating the profile. Please try again.",
             error,
         });
     }
 };
-

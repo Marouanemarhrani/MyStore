@@ -1,23 +1,17 @@
-import  express  from "express";
-import {registerController, 
-        loginController,  
-        updateProfileController} from "../controllers/userController.js";
-import { requireSignIn, 
-         isAdmin } from "../middlewares/authMiddleware.js";
+import express from "express";
+import { registerController, loginController, updateProfileController } from "../controllers/userController.js";
+import { requireSignIn } from "../middlewares/authMiddleware.js";
 
-
-//router object 
 const router = express.Router();
 
-//routing
-//REGISTER || METHOD POST
+// Routing
+// Register a new user
 router.post('/register', registerController);
 
-//LOGIN || POST 
+// User login
 router.post('/login', loginController);
 
-//update profile
+// Update user profile
 router.put('/profile', requireSignIn, updateProfileController);
-
 
 export default router;
