@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const connectDB = async () => {
     const mongoUrl = process.env.MONGO_URL;
@@ -8,9 +8,9 @@ const connectDB = async () => {
     }
 
     try {
+        // Connect to MongoDB
         const connection = await mongoose.connect(mongoUrl, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+            // Removed deprecated options
         });
         console.log(`Database connected successfully: ${connection.connection.host}`);
     } catch (error) {

@@ -1,5 +1,6 @@
 import JWT from "jsonwebtoken";
 import userModel from "../models/userModel.js";
+import technicianModel from "../models/technicianModel.js";
 
 // Protected Routes token-based
 export const requireSignIn = async (req, res, next) => {
@@ -35,6 +36,27 @@ export const isAdmin = async (req, res, next) => {
         return res.status(500).json({
             success: false,
             message: "Error in admin middleware",
+            error,
+        });
+    }
+};
+
+// technician access
+export const isTechnician = async (req, res, next) => {
+    try {
+        const technician = await technicianModel.findById(req.user._id);
+        if (!technician) {
+            return res.status(403).json({
+                success: false,
+                message: "Access denied. technicians only.",
+            });
+        }
+        next();
+    } catch (error) {
+        console.error('Technician Middleware Error:', error);
+        return res.status(500).json({
+            success: false,
+            message: "Error in technicians middleware",
             error,
         });
     }

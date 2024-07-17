@@ -6,6 +6,8 @@ import connectDB from './config/db.js';
 
 // Import routes
 import userRoute from './routes/userRoute.js';
+import technicianRoute from './routes/technicianRoute.js';
+import categoryRoute from './routes/categoryRoute.js';
 
 // Configure environment variables
 dotenv.config();
@@ -23,6 +25,8 @@ app.use(morgan('dev'));
 
 // Route handling
 app.use('/api/users', userRoute);
+app.use('/api/technicians', technicianRoute);
+app.use('/api/categories', categoryRoute);
 
 // Define port
 const PORT = process.env.PORT || 8080;
