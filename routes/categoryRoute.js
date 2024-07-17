@@ -1,5 +1,6 @@
 import express from 'express';
-import { requireSignIn, isAdmin } from "../middlewares/authMiddleware.js";
+import formidable from 'express-formidable';
+import { requireSignIn, isAdmin } from '../middlewares/authMiddleware.js';
 import {
     createCategoryController,
     updateCategoryController,
@@ -7,23 +8,22 @@ import {
     getCategoryController,
     searchCategoryIDController,
 } from '../controllers/categoryController.js';
-import formidable from "express-formidable";
 
 const router = express.Router();
 
 // Create category
-router.post('/create-category', requireSignIn, isAdmin, formidable(), createCategoryController);
+router.post('/category', requireSignIn, isAdmin, formidable(), createCategoryController);
 
 // Update category
-router.put('/update-category/:id', requireSignIn, isAdmin, formidable(), updateCategoryController);
+router.put('/category/:id', requireSignIn, isAdmin, formidable(), updateCategoryController);
 
 // Get all categories
 router.get('/categories', getCategoriesController);
 
 // Get category by slug
-router.get('/category/:slug', getCategoryController);
+router.get('/category/slug/:slug', getCategoryController);
 
 // Search category by ID
-router.get('/category/:id', requireSignIn, isAdmin, searchCategoryIDController);
+router.get('/category/id/:id', requireSignIn, isAdmin, searchCategoryIDController);
 
 export default router;
