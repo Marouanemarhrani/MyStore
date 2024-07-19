@@ -1,0 +1,98 @@
+/* Footer Container */
+.footer {
+  background-color: #343a40; /* Dark background color */
+  color: #f8f9fa; /* Light text color */
+  padding: 2rem; /* Add some padding */
+}
+
+/* Container for grid layout */
+.container {
+  max-width: 1200px; /* Max width of the footer content */
+  margin: 0 auto; /* Center align */
+}
+
+/* Grid layout for footer sections */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Styling for individual sections */
+.contact-info, .navigation, .social-media {
+  margin-bottom: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem; /* Larger text size */
+}
+
+.font-semibold {
+  font-weight: 600; /* Semi-bold font weight */
+}
+
+/* Contact Information styling */
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.contact-info .inline-block {
+  vertical-align: middle;
+}
+
+.contact-info .mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* Navigation links styling */
+.navigation a {
+  color: #f8f9fa; /* Light text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.navigation a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Social Media icons styling */
+.social-media .social-icon {
+  color: #f8f9fa; /* Light text color for icons */
+  font-size: 1.5rem; /* Increase icon size */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-media .social-icon:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Map Section styling */
+.map-section {
+  margin-top: 1.5rem;
+}
+
+.map-container iframe {
+  border-radius: 0.375rem; /* Rounded corners */
+}
+
+/* Footer bottom section */
+.footer-bottom {
+  margin-top: 1.5rem;
+}
+
+.footer-bottom p {
+  margin: 0.5rem 0;
+}
+
+.footer-bottom a {
+  color: #f8f9fa; /* Light text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
