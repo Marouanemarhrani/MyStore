@@ -2,65 +2,75 @@
 
 /* Navbar base styles */
 .navbar {
-    background-color: #343a40; /* Dark background color */
-    padding: 0.5rem 1rem;
-  }
-  
-  .navbar-brand {
-    font-size: 1.25rem;
-    color: #ffffff; /* White text color */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .navbar-brand:hover {
-    color: #adb5bd; /* Light grey on hover */
-  }
-  
-  .navbar-toggler {
-    border: none;
-  }
-  
-  .navbar-toggler-icon {
-    background-image: url('data:image/svg+xml,...'); /* Use a suitable icon or an image */
-  }
-  
+  background-color: #343a40; /* Dark background color */
+  padding: 1.5rem 2rem; /* Increased padding for a larger navbar */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 2px rgba(105, 104, 104, 0.703);
+}
+
+.navbar-brand {
+  font-size: 1.25rem; /* Keep the same font size */
+  color: #ffffff; /* White text color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  color: #adb5bd; /* Light grey on hover */
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml,...'); /* Use a suitable icon or an image */
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  color: #ffffff; /* White text color */
+  font-size: 1rem; /* Keep the same font size */
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #adb5bd; /* Light grey on hover */
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #e9ecef; /* Light grey for active link */
+}
+
+/* Add padding to the top of the page to avoid content being hidden behind the fixed navbar */
+body {
+  padding-top: 96px; /* Adjust this value based on the new height of your navbar */
+}
+
+/* Responsive Styles */
+@media (max-width: 767.98px) {
   .navbar-nav {
-    margin-left: auto;
+    margin-top: 0.5rem;
   }
-  
+
   .nav-link {
-    color: #ffffff; /* White text color */
-    font-size: 1rem;
-    margin-left: 1rem;
-    text-decoration: none;
+    display: block;
+    margin: 0.5rem 0;
+    text-align: center;
   }
-  
-  .nav-link:hover {
-    color: #adb5bd; /* Light grey on hover */
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    justify-content: flex-end;
   }
-  
-  .nav-link.active {
-    font-weight: bold;
-    color: #e9ecef; /* Light grey for active link */
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 767.98px) {
-    .navbar-nav {
-      margin-top: 0.5rem;
-    }
-  
-    .nav-link {
-      display: block;
-      margin: 0.5rem 0;
-      text-align: center;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .navbar-collapse {
-      justify-content: flex-end;
-    }
-  }
-  
+}
