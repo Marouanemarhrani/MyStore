@@ -1,76 +1,99 @@
 /* Header.css */
 
-/* Navbar base styles */
+/* General styles for the navigation bar */
 .navbar {
-  background-color: #343a40; /* Dark background color */
-  padding: 1.5rem 2rem; /* Increased padding for a larger navbar */
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 2px rgba(105, 104, 104, 0.703);
+  background-color: #343a40;
+  padding: 1rem 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.navbar:hover {
+  background-color: #23272b;
 }
 
 .navbar-brand {
-  font-size: 1.25rem; /* Keep the same font size */
-  color: #ffffff; /* White text color */
-  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
   font-weight: bold;
+  text-transform: uppercase;
+  transition: color 0.3s;
 }
 
 .navbar-brand:hover {
-  color: #adb5bd; /* Light grey on hover */
+  color: #ffdd57;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #adb5bd;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active {
+  color: #fff;
 }
 
 .navbar-toggler {
   border: none;
+  transition: transform 0.3s;
+}
+
+.navbar-toggler:hover {
+  transform: rotate(90deg);
 }
 
 .navbar-toggler-icon {
-  background-image: url('data:image/svg+xml,...'); /* Use a suitable icon or an image */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2870, 74, 77, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-.navbar-nav {
-  margin-left: auto;
+/* Dropdown styles */
+.nav-item .dropdown-menu {
+  background-color: #343a40;
+  border: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.nav-link {
-  color: #ffffff; /* White text color */
-  font-size: 1rem; /* Keep the same font size */
-  margin-left: 1rem;
-  text-decoration: none;
+.nav-item .dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.nav-link:hover {
-  color: #adb5bd; /* Light grey on hover */
+.dropdown-menu .dropdown-item {
+  color: #adb5bd;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-.nav-link.active {
-  font-weight: bold;
-  color: #e9ecef; /* Light grey for active link */
+.dropdown-menu .dropdown-item:hover {
+  color: #fff;
+  background-color: #495057;
 }
 
-/* Add padding to the top of the page to avoid content being hidden behind the fixed navbar */
-body {
-  padding-top: 96px; /* Adjust this value based on the new height of your navbar */
+/* Cart icon */
+.nav-item .nav-link svg {
+  margin-right: 0.5rem;
+  transition: transform 0.3s;
 }
 
-/* Responsive Styles */
-@media (max-width: 767.98px) {
+.nav-item .nav-link:hover svg {
+  transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
   .navbar-nav {
-    margin-top: 0.5rem;
-  }
-
-  .nav-link {
-    display: block;
-    margin: 0.5rem 0;
     text-align: center;
   }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
 }
 
-@media (min-width: 768px) {
-  .navbar-collapse {
-    justify-content: flex-end;
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.2rem;
   }
 }

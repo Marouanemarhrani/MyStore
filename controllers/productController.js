@@ -223,3 +223,102 @@ export const searchProductIDController = async (req, res) => {
         });
     }
 };
+
+export const getPhotourlController = async(req, res) => {
+    try {
+        const photoURL = await productModel.findById(req.params.id).select("photo");
+        if(photoURL.photo.data) {
+            res.set("Content-type", photoURL.photo.contentType);
+            return res.status(200).send(photoURL.photo.data);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:"There was an error in getting the photo url ",
+            error,
+        })
+    }
+};
+
+export const deleteProductController = async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const result = await productModel.findByIdAndDelete(productId);
+
+        if (!result) {
+            return res.status(404).json({ success: false, message: 'Product not found' });
+        }
+
+        res.json({ success: true, message: 'Product deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
+
+//filters
+export const productFiltersController = async (req, res) => {
+    try {
+        const {checked, radio} = req.body;
+        let args = {};
+        if(checked.length > 0) args.category = checked;
+        if(radio.length) args.price = {$gte: radio[0], $lte:radio[1]};
+        const products = await productModel.find(args);
+        res.status(200).send({
+            success:true,
+            products,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({
+            success:false,
+            message:"Error in filtering products",
+            error,
+        });
+    }
+};
+
+//product count
+
+export const productCountController = async (req, res) =>{
+    try {
+        const total = await productModel.find({}).estimatedDocumentCount();
+        res.status(200).send({
+            success:true,
+            total,
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:"There was an error in product counting",
+            error,
+        });
+    }
+};
+
+//product per page
+export const productListController = async (req, res) => {
+    try {
+        const perPage = 4;
+        const page = req.params.page ? req.params.page : 1;
+        const products = await productModel
+            .find({})
+            .select("-photo")
+            .skip((page - 1) * perPage)
+            .limit(perPage)
+            .sort({ createdAt: -1 });
+        res.status(200).send({
+            success: true,
+            products,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:"There was an error in product per page",
+            error,
+        });
+    }
+};

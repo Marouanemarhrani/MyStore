@@ -4,7 +4,7 @@ import './Termsofservice.css';
 
 const Termsofservice = () => {
   return (
-    <Layout>
+    <Layout title={'terms of service'}>
       <div className="terms-container">
         <h1 className='terms-title'>Terms of Service</h1>
         <section className="terms-section">

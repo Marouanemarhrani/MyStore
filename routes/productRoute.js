@@ -10,6 +10,11 @@ import {
     relatedProductController,
     productCategoryController,
     searchProductIDController,
+    getPhotourlController,
+    deleteProductController,
+    productFiltersController,
+    productCountController,
+    productListController,
 } from '../controllers/productController.js';
 
 const router = express.Router();
@@ -37,5 +42,20 @@ router.get('/product/related/:pid/:cid', relatedProductController);
 
 // Get products by category
 router.get('/product/category/:slug', productCategoryController);
+
+//Get URL of photo by id
+router.get('/photoURL/:id', getPhotourlController);
+
+//delete product
+router.delete("/delete-product/:id", deleteProductController);
+
+//filter product
+router.post('/product-filters', productFiltersController);
+
+//product count
+router.get('/product-count', productCountController);
+
+//product per page
+router.get('/product-list/:page', productListController);
 
 export default router;

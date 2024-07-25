@@ -1,29 +1,44 @@
-import express from 'express';
-import formidable from 'express-formidable';
-import { requireSignIn, isAdmin } from '../middlewares/authMiddleware.js';
+import express from "express";
+import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
 import {
-    createCategoryController,
-    updateCategoryController,
-    getCategoriesController,
-    getCategoryController,
-    searchCategoryIDController,
-} from '../controllers/categoryController.js';
+  categoryControlller,
+  createCategoryController,
+  deleteCategoryCOntroller,
+  singleCategoryController,
+  updateCategoryController,
+} from "./../controllers/categoryController.js";
 
 const router = express.Router();
 
-// Create category
-router.post('/category', requireSignIn, isAdmin, formidable(), createCategoryController);
+//routes
+// create category
+router.post(
+  "/create-category",
+  requireSignIn,
+  isAdmin,
+  createCategoryController
+);
 
-// Update category
-router.put('/category/:id', requireSignIn, isAdmin, formidable(), updateCategoryController);
+//update category
+router.put(
+  "/update-category/:id",
+  requireSignIn,
+  isAdmin,
+  updateCategoryController
+);
 
-// Get all categories
-router.get('/categories', getCategoriesController);
+//getALl category
+router.get("/get-category", categoryControlller);
 
-// Get category by slug
-router.get('/category/slug/:slug', getCategoryController);
+//single category
+router.get("/single-category/:slug", singleCategoryController);
 
-// Search category by ID
-router.get('/category/id/:id', requireSignIn, isAdmin, searchCategoryIDController);
+//delete category
+router.delete(
+  "/delete-category/:id",
+  requireSignIn,
+  isAdmin,
+  deleteCategoryCOntroller
+);
 
 export default router;

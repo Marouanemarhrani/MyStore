@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { Helmet } from "react-helmet";
+import  { Toaster } from "react-hot-toast";
 
 const Layout = ({children,title,description,keywords,author}) => {
   return (
@@ -15,11 +16,19 @@ const Layout = ({children,title,description,keywords,author}) => {
       </Helmet>
         <Header />
             <main style={{ minHeight: "80vh"}}>
+              <Toaster />
                 {children}
             </main>
         <Footer />
     </div>
   );
+};
+
+Layout.defaultProps = {
+  title: "Ecommerce App",
+  description: "Repair shop",
+  keywords: "mern,react, express, mongodb",
+  author: "Marouane Marhrani",
 };
 
 export default Layout;

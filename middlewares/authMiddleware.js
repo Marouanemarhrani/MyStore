@@ -1,63 +1,60 @@
 import JWT from "jsonwebtoken";
 import userModel from "../models/userModel.js";
-import technicianModel from "../models/technicianModel.js";
 
-// Protected Routes token-based
-export const requireSignIn = async (req, res, next) => {
+//Protected Routes token base
+export const requireSignIn = async(req, res, next) => {
     try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ message: 'Authorization header is missing or malformed' });
-        }
-
-        const token = authHeader.split(' ')[1];
-        const decoded = JWT.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        const decode = JWT.verify(
+            req.headers.authorization, 
+            process.env.JWT_SECRET
+            );
+        req.user = decode;   
         next();
     } catch (error) {
-        console.error('JWT Verification Error:', error);
-        return res.status(403).json({ message: 'Invalid token' });
+        console.log(error);
     }
 };
 
-// Admin access
+//admin access
+
 export const isAdmin = async (req, res, next) => {
     try {
         const user = await userModel.findById(req.user._id);
-        if (user.role !== 1) {
-            return res.status(403).json({
+        if(user.role !== 1){
+            return res.status(401).send({
                 success: false,
-                message: "Access denied. Admins only.",
+                message: "You can't access to this page!",
             });
+        } else {
+            next();
         }
-        next();
     } catch (error) {
-        console.error('Admin Middleware Error:', error);
-        return res.status(500).json({
-            success: false,
-            message: "Error in admin middleware",
+        console.log(error);
+        res.status(401).send({
+            succes: false,
             error,
+            message: "Error in admin middleware",
         });
     }
 };
 
-// technician access
 export const isTechnician = async (req, res, next) => {
     try {
-        const technician = await technicianModel.findById(req.user._id);
-        if (!technician) {
-            return res.status(403).json({
+        const user = await userModel.findById(req.user._id);
+        if(user.role !== 2){
+            return res.status(401).send({
                 success: false,
-                message: "Access denied. technicians only.",
+                message: "You can't access to this page!",
             });
+        } else {
+            next();
         }
-        next();
     } catch (error) {
-        console.error('Technician Middleware Error:', error);
-        return res.status(500).json({
-            success: false,
-            message: "Error in technicians middleware",
+        console.log(error);
+        res.status(401).send({
+            succes: false,
             error,
+            message: "Error in tec middleware",
         });
     }
 };
