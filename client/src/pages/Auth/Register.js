@@ -41,8 +41,8 @@ const Register = () => {
   return (
     <Layout title = "Register">
       <div className='register'>
-        <h1>Register Page</h1>
         <form onSubmit={handleSubmit}>
+            <h1 className='title'>Register Page</h1>
             <div className="mb-3">
                 <label htmlFor="exampleInputName1" className="form-label">
                     FirstName
