@@ -1,4 +1,5 @@
 import serviceModel from '../models/serviceModel.js';
+import slugify from 'slugify';
 
 // Create service
 export const createServiceController = async (req, res) => {
@@ -10,7 +11,7 @@ export const createServiceController = async (req, res) => {
             return res.status(400).send({ error: "All fields are required" });
         }
         
-        const service = new serviceModel({ name, description, price, duration });
+        const service = new serviceModel({ name, description, price, duration, slug: slugify(name) });
         await service.save();
         
         res.status(201).send({
@@ -36,7 +37,7 @@ export const updateServiceController = async (req, res) => {
         
         const service = await serviceModel.findByIdAndUpdate(
             id,
-            { name, description, price, duration, status },
+            { name, description, price, duration, status, slug: slugify(name) },
             { new: true }
         );
         
@@ -65,11 +66,11 @@ export const updateServiceController = async (req, res) => {
 // Get all services
 export const getServicesController = async (req, res) => {
     try {
-        const services = await serviceModel.find({});
+        const service = await serviceModel.find({});
         res.status(200).send({
             success: true,
             message: 'Services retrieved successfully',
-            services,
+            service,
         });
     } catch (error) {
         console.log(error);
@@ -81,33 +82,25 @@ export const getServicesController = async (req, res) => {
     }
 };
 
-// Get service by ID
-export const getServiceController = async (req, res) => {
+
+// single service
+export const singleServiceController = async (req, res) => {
     try {
-        const { id } = req.params;
-        const service = await serviceModel.findById(id);
-        
-        if (!service) {
-            return res.status(404).send({
-                success: false,
-                message: 'Service not found',
-            });
-        }
-        
-        res.status(200).send({
-            success: true,
-            message: 'Service retrieved successfully',
-            service,
-        });
+      const service = await serviceModel.findOne({ slug: req.params.slug });
+      res.status(200).send({
+        success: true,
+        message: "Get Single service SUccessfully",
+        service,
+      });
     } catch (error) {
-        console.log(error);
-        res.status(500).send({
-            success: false,
-            message: 'Error retrieving service',
-            error,
-        });
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        error,
+        message: "Error While getting Single service",
+      });
     }
-};
+  };
 
 // Delete service
 export const deleteServiceController = async (req, res) => {

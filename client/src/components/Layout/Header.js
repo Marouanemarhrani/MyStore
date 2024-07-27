@@ -4,6 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useAuth } from '../../context/auth';
 import toast from "react-hot-toast";
 import useCategory from '../../hooks/useCategory';
+import useService from '../../hooks/useService';
 import SearchInput from '../Form/SearchInput';
 import { useCart } from '../../context/cart';
 import { Avatar, Badge } from 'antd';
@@ -13,6 +14,7 @@ const Header = () => {
   const [auth, setAuth] = useAuth();
   const [cart] = useCart();
   const categories = useCategory();
+  const services = useService();
   const handleLogout = () => {
     setAuth({
       ...auth, 
@@ -52,6 +54,35 @@ const Header = () => {
                     Home
                 </NavLink>
               </li>
+              <li className="nav-item dropdown">
+                  <Link 
+                    className="nav-link dropdown-toggle" 
+                    to={"/services"}
+                    data-bs-toggle="dropdown" 
+                  >
+                    Services
+                  </Link>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link 
+                        className="dropdown-item" 
+                        to={"/services"}
+                      >
+                        All services
+                      </Link>
+                    </li>
+                    {services?.map((c) => (
+                      <li>
+                        <Link 
+                          className="dropdown-item" 
+                          to={`/service/${c.slug}`}
+                        >
+                          {c.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
                 <li className="nav-item dropdown">
                   <Link 
                     className="nav-link dropdown-toggle" 

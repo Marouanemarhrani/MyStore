@@ -32,6 +32,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    skills: {
+        type: [String], 
+    },
+    availability: {
+        type: Map,
+        of: Boolean,
+        default: {} // A map to track availability (e.g., { Monday: true, Tuesday: false, ... })
+    },
+    isActive: {
+        type: Boolean,
+        default: true, // Indicates if the technician is currently active
+    },
     role: {
         type: Number,
         default: 0,

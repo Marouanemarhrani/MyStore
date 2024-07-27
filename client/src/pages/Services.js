@@ -1,17 +1,17 @@
-import React from 'react';
-import useCategory from '../hooks/useCategory';
+import React, {useState, useEffect} from 'react';
+import useService from '../hooks/useService';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
 
-const Categories = () => {
-    const categories = useCategory();
+const Services = () => {
+    const services = useService();
   return (
-    <Layout title={"All categories"}>
+    <Layout title={"All services"}>
       <div className='container'>
         <div className='row'>
-            {categories.map((c) => (
+            {services.map((c) => (
                 <div className='col-md-6 mt-5 mb-3 gx-3 gy-3' key={c._id}>
-                  <Link to={`/category/${c.slug}`} className='btn btn-primary'>
+                  <Link to={`/service/${c.slug}`} className='btn btn-primary'>
                     {c.name}
                   </Link>
                 </div>
@@ -22,4 +22,4 @@ const Categories = () => {
   )
 };
 
-export default Categories;
+export default Services;
