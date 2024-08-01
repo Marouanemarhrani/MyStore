@@ -6,6 +6,7 @@ import {
     getAppointmentsController,
     getAppointmentController,
     deleteAppointmentController,
+    singleAppointmentController,
 } from '../controllers/appointmentController.js';
 
 const router = express.Router();
@@ -17,12 +18,15 @@ router.post('/create-appointment', requireSignIn, isTechnician, createAppointmen
 router.put('/update-appointment/:id', requireSignIn, isTechnician, updateAppointmentController);
 
 // Get all appointments 
-router.get('/appointments', requireSignIn, isAdmin, getAppointmentsController);
+router.get('/appointments', requireSignIn, isTechnician, getAppointmentsController);
 
 // Get appointment by ID
 router.get('/appointment/:id', requireSignIn, isAdmin, getAppointmentController);
 
 // Delete appointment
-router.delete('/appointment/:id', requireSignIn, isAdmin, deleteAppointmentController);
+router.delete('/appointment/:id', requireSignIn, isTechnician, deleteAppointmentController);
+
+//single appointments
+router.get("/single-appointment/:slug", requireSignIn, isTechnician, singleAppointmentController);
 
 export default router;

@@ -43,7 +43,7 @@ const Header = () => {
             <Link 
               to="/" 
               className="navbar-brand">
-                Ecommerce App
+                SmartFix
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
@@ -132,35 +132,39 @@ const Header = () => {
                 </>
                 ) : (
                 <>
-                <li className="nav-item dropdown">
-                  <NavLink 
-                    className="nav-link dropdown-toggle" 
-                    href="#" 
-                    role="button" 
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false">
-                    Welcome back {auth?.user?.firstname}
-                  </NavLink>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <NavLink 
-                        to={`/dashboard/${
-                          auth?.user.role === 1 ? "admin" : "user"
-                        }`}
-                        className="dropdown-item">
+                  <li className="nav-item dropdown">
+                    <NavLink 
+                      className="nav-link dropdown-toggle" 
+                      href="#" 
+                      role="button" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false">
+                      Welcome back {auth?.user?.firstname}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink 
+                          to={`/dashboard/${
+                            auth?.user.role === 1 
+                              ? "admin" 
+                              : auth?.user.role === 2 
+                              ? "technician" 
+                              : "user"
+                          }`}
+                          className="dropdown-item">
                           Dashboard
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        onClick={handleLogout}
-                        to="/login" 
-                        className="dropdown-item" 
-                      >
-                        Logout
-                      </NavLink>
+                        </NavLink>
                       </li>
-                  </ul>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login" 
+                          className="dropdown-item" 
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
                   </li>
                 </>
                 )}

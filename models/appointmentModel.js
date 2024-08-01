@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
 
 const appointmentSchema = new mongoose.Schema({
-    technician: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Technician',
-        required: true,
-    },
     client: {
         type:String,
         required: true,
+    },
+    slug: {
+        type: String,
+        lowercase: true,
     },
     date: {
         type: Date,

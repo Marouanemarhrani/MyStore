@@ -6,6 +6,7 @@ import { Checkbox, Radio } from 'antd';
 import { Prices } from '../components/Prices';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cart';
+import "./HomePage.css"
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);

@@ -26,6 +26,11 @@ import CartPage from "./pages/CartPage";
 import AdminOrders from "./pages/admin/AdminOrders";
 import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServiceDetails";
+import TechnicianDashboard from "./pages/technician/TechnicianDashboard";
+import TechnicianRoute from "./components/Routes/TechnicianRoute";
+import CreateAppointment from "./pages/technician/CreateAppointment";
+import Appointments from "./pages/technician/Appointments";
+import UpdateAppointment from "./pages/technician/UpdateAppoitment";
 
 function App() {
   return (
@@ -53,6 +58,14 @@ function App() {
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
+
+        <Route path="/dashboard" element={<TechnicianRoute />}>
+          <Route path="technician" element={<TechnicianDashboard />} />
+          <Route path="technician/create-appointment" element={<CreateAppointment />} />
+          <Route path="technician/appointment/:slug" element={<UpdateAppointment />} />
+          <Route path="technician/appointments" element={<Appointments />} />
+        </Route>
+
         <Route path="/register" element={<Register />} />
         <Route path ="forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />

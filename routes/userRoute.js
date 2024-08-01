@@ -1,6 +1,6 @@
 import express from "express";
 import { registerController, loginController, updateProfileController, getAllOrdersController, orderStatusController, getOrdersController } from "../controllers/userController.js";
-import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+import { isAdmin, isTechnician, requireSignIn } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
@@ -21,6 +21,11 @@ router.get("/user-auth", requireSignIn, (req,res) => {
 
 //protected admin route auth
 router.get("/admin-auth", requireSignIn, isAdmin, (req,res) => {
+    res.status(200).send({ ok: true });
+});
+
+//protected technician route auth
+router.get("/technician-auth", requireSignIn, isTechnician, (req,res) => {
     res.status(200).send({ ok: true });
 });
 
