@@ -8,7 +8,7 @@ import useService from '../../hooks/useService';
 import SearchInput from '../Form/SearchInput';
 import { useCart } from '../../context/cart';
 import { Avatar, Badge } from 'antd';
-import { LiaUserCircle } from "react-icons/lia";
+import { AiOutlineUser } from "react-icons/ai";
 import './Header.css'; 
 
 const Header = () => {
@@ -144,7 +144,7 @@ const Header = () => {
                       role="button" 
                       data-bs-toggle="dropdown" 
                       aria-expanded="false">
-                      <LiaUserCircle />
+                      <AiOutlineUser />
                     </NavLink>
                     <ul className="header26 dropdown-menu">
                       <li>

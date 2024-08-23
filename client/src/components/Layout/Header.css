@@ -83,8 +83,23 @@
     font-size: 1.5rem; /* Larger icon for user profile */
     position: relative; /* Ensure the dropdown aligns correctly */
     color: #606060 !important;
+    display: flex;
   }
+
   .header24 .header25 :hover{
+    color: #484747 !important;
+  }
+
+  .header21,
+  .header23{
+    font-size: 1.5rem; /* Larger icon for user profile */
+    position: relative; /* Ensure the dropdown aligns correctly */
+    color: #606060 !important;
+    display: flex;
+  }
+
+  .header21:hover,
+  .header23:hover{
     color: #484747 !important;
   }
   
@@ -155,4 +170,3 @@
       font-size: 1rem; /* Reduce cart icon size */
     }
   }
-  
