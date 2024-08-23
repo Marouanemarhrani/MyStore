@@ -47,6 +47,8 @@ const Header = () => {
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
+            </ul>
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink 
                   to="/" 
@@ -139,7 +141,7 @@ const Header = () => {
                       role="button" 
                       data-bs-toggle="dropdown" 
                       aria-expanded="false">
-                      Welcome back {auth?.user?.firstname}
+                      Welcome {auth?.user?.firstname}
                     </NavLink>
                     <ul className="dropdown-menu">
                       <li>
