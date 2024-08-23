@@ -1,6 +1,6 @@
 /* Container for the search bar */
 .srch {
-    width: 250%;
+    width: 350%;
     max-width: 700px; /* Increased width for larger screens */
     margin: 0 auto;
     display: flex;
@@ -44,7 +44,7 @@
 }
 
 /* Small screen adjustments */
-@media (max-width: 1352px) {
+@media (max-width: 1280px) {
     .srch {
         max-width: 90%; /* Makes the input smaller on tablets */
     }

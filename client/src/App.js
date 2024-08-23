@@ -31,6 +31,7 @@ import TechnicianRoute from "./components/Routes/TechnicianRoute";
 import CreateAppointment from "./pages/technician/CreateAppointment";
 import Appointments from "./pages/technician/Appointments";
 import UpdateAppointment from "./pages/technician/UpdateAppoitment";
+import Help from "./pages/Help";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
         <Route path ="forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
+        <Route path="/help" element={<Help />} />
         <Route path="/privacy-policy" element={<Policy />} />
         <Route path="/terms-of-service" element={<Termsofservice />} />
         <Route path="/*" element={<Pagenotfound />} />

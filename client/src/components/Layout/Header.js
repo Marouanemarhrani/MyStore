@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
+import { IoBagOutline } from "react-icons/io5";
 import { useAuth } from '../../context/auth';
 import toast from "react-hot-toast";
 import useCategory from '../../hooks/useCategory';
@@ -8,6 +8,7 @@ import useService from '../../hooks/useService';
 import SearchInput from '../Form/SearchInput';
 import { useCart } from '../../context/cart';
 import { Avatar, Badge } from 'antd';
+import { LiaUserCircle } from "react-icons/lia";
 import './Header.css'; 
 
 const Header = () => {
@@ -26,10 +27,10 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg ">
-        <div className="container-fluid">
+      <nav className="header1 navbar navbar-expand-lg ">
+        <div className="header2 container-fluid">
           <button 
-            className="navbar-toggler" 
+            className="header3 navbar-toggler" 
             type="button" 
             data-bs-toggle="collapse" 
             data-bs-target="#navbarTogglerDemo01" 
@@ -37,37 +38,27 @@ const Header = () => {
             aria-expanded="false" 
             aria-label="Toggle navigation"
             >
-            <span className="navbar-toggler-icon" />
+            <span className="header4 navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div className="header5 collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link 
               to="/" 
-              className="navbar-brand">
+              className="header6 navbar-brand">
                 SmartFix
             </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput />
-            </ul>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink 
-                  to="/" 
-                  className="nav-link">
-                    Home
-                </NavLink>
-              </li>
-              <li className="nav-item dropdown">
+            <ul className="header7 navbar-nav mb-2 mb-lg-0">
+              <li className="header8 nav-item dropdown">
                   <Link 
-                    className="nav-link dropdown-toggle" 
+                    className="header9 nav-link dropdown-toggle" 
                     to={"/services"}
                     data-bs-toggle="dropdown" 
                   >
                     Services
                   </Link>
-                  <ul className="dropdown-menu">
+                  <ul className="header10 dropdown-menu">
                     <li>
                       <Link 
-                        className="dropdown-item" 
+                        className="header11 dropdown-item" 
                         to={"/services"}
                       >
                         All services
@@ -76,7 +67,7 @@ const Header = () => {
                     {services?.map((c) => (
                       <li>
                         <Link 
-                          className="dropdown-item" 
+                          className="header12 dropdown-item" 
                           to={`/service/${c.slug}`}
                         >
                           {c.name}
@@ -85,18 +76,18 @@ const Header = () => {
                     ))}
                   </ul>
                 </li>
-                <li className="nav-item dropdown">
+                <li className="header13 nav-item dropdown">
                   <Link 
-                    className="nav-link dropdown-toggle" 
+                    className="header14 nav-link dropdown-toggle" 
                     to={"/categories"}
                     data-bs-toggle="dropdown" 
                   >
                     Categories
                   </Link>
-                  <ul className="dropdown-menu">
+                  <ul className="header15 dropdown-menu">
                     <li>
                       <Link 
-                        className="dropdown-item" 
+                        className="header16 dropdown-item" 
                         to={"/categories"}
                       >
                         All Categories
@@ -105,7 +96,7 @@ const Header = () => {
                     {categories?.map((c) => (
                       <li>
                         <Link 
-                          className="dropdown-item" 
+                          className="header17 dropdown-item" 
                           to={`/category/${c.slug}`}
                         >
                           {c.name}
@@ -114,36 +105,48 @@ const Header = () => {
                     ))}
                   </ul>
                 </li>
+                <li className="header31 nav-item">
+                    <NavLink 
+                      to="/help" 
+                      className="header32 nav-link" >
+                        Help 
+                    </NavLink>
+                  </li>
+                </ul>
+            <ul className="header18 navbar-nav mb-2 mb-lg-0">
+              <SearchInput />
+            </ul>
+              <ul className="header19 navbar-nav ms-auto mb-2 mb-lg-0">
               {
                 !auth.user ? (
                 <>
-                  <li className="nav-item">
+                  <li className="header20 nav-item">
                     <NavLink 
                       to="/register" 
-                      className="nav-link" >
+                      className="header21 nav-link" >
                         Register 
                     </NavLink>
                   </li>
-                  <li className="nav-item">
+                  <li className="header22 nav-item">
                     <NavLink 
                       to="/login" 
-                      className="nav-link" >
+                      className="header23 nav-link" >
                         Login
                     </NavLink>
                   </li>
                 </>
                 ) : (
                 <>
-                  <li className="nav-item dropdown">
+                  <li className="header24 nav-item dropdown">
                     <NavLink 
-                      className="nav-link dropdown-toggle" 
+                      className="header25 nav-link dropdown" 
                       href="#" 
                       role="button" 
                       data-bs-toggle="dropdown" 
                       aria-expanded="false">
-                      Welcome {auth?.user?.firstname}
+                      <LiaUserCircle />
                     </NavLink>
-                    <ul className="dropdown-menu">
+                    <ul className="header26 dropdown-menu">
                       <li>
                         <NavLink 
                           to={`/dashboard/${
@@ -153,7 +156,7 @@ const Header = () => {
                               ? "technician" 
                               : "user"
                           }`}
-                          className="dropdown-item">
+                          className="header27 dropdown-item">
                           Dashboard
                         </NavLink>
                       </li>
@@ -161,7 +164,7 @@ const Header = () => {
                         <NavLink
                           onClick={handleLogout}
                           to="/login" 
-                          className="dropdown-item" 
+                          className="header28 dropdown-item" 
                         >
                           Logout
                         </NavLink>
@@ -170,12 +173,12 @@ const Header = () => {
                   </li>
                 </>
                 )}
-              <li className="nav-item">
+              <li className="header29 nav-item">
                 <Badge count={cart?.length} showZero>
                   <NavLink 
                     to="/cart" 
-                    className="nav-link">
-                      <FaShoppingCart />
+                    className="header30 nav-link">
+                      <IoBagOutline />
                   </NavLink>
                 </Badge>
               </li>
