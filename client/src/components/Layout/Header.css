@@ -2,7 +2,6 @@
 .header1 {
     background-color: #f8f9fa; /* Keeping the background color light */
     padding: 10px 15px; /* Adding padding for better spacing */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding slight shadow for elevation */
   }
   
   .header2 {

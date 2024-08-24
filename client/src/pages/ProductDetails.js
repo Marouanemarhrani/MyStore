@@ -2,10 +2,13 @@ import React, {useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useCart } from '../context/cart';
 
 const ProductDetails = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
+  const [cart, setCart] = useCart();
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   //initalp details
@@ -52,7 +55,15 @@ const ProductDetails = () => {
           <h6>Description : {product.description}</h6>
           <h6>Price : {product.price}</h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button className='btn btn-secondary ms-1'>ADD TO CART</button>
+          <button
+            className='home21 btn btn-secondary ms-1'
+            onClick={() => {
+              setCart([...cart, product]);
+            toast.success('Item added to cart');
+            }}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
       <hr />
@@ -73,7 +84,15 @@ const ProductDetails = () => {
                   <h5 className='card-title'>{p.name}</h5>
                   <p className='card-text'>{p.description.substring(0, 30)}...</p>
                   <p className='card-text'>€ {p.price}</p>
-                  <button className='btn btn-secondary ms-1'>ADD TO CART</button>
+                  <button
+                    className='home21 btn btn-secondary ms-1'
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      toast.success('Item added to cart');
+                    }}
+                  >
+                    ADD TO CART
+                  </button>
                 </div>
               </div>
             ))}

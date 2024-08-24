@@ -1,0 +1,419 @@
+.home.banner {
+  background-color: #b0c4de; /* Light blue background similar to the image */
+  color: black; /* Black text color */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center;
+  padding: 10px 20px; /* Adjust padding for spacing */
+  font-family: Arial, sans-serif; /* Font similar to the one in the image */
+  position: relative;
+}
+
+.home1.banner-text {
+  font-size: 16px; /* Adjust font size for readability */
+  font-weight: 500; /* Medium font weight */
+  text-align: center; /* Center the text */
+}
+
+.banner-link {
+  color: black; /* Black link color */
+  text-decoration: underline; /* Underline the link */
+  margin-left: 5px; /* Slight spacing between text and link */
+}
+
+.banner-link:hover {
+  text-decoration: underline; /* Keep underline on hover */
+}
+
+.home2.banner-close {
+  font-size: 20px; /* Larger close button */
+  cursor: pointer; /* Pointer cursor on hover */
+  position: absolute; /* Position the close button */
+  right: 10px; /* Align it to the right */
+  top: 50%; /* Center it vertically */
+  transform: translateY(-50%); /* Adjust for vertical alignment */
+}
+
+.home2.banner-close:hover {
+  color: #888; /* Change color on hover for effect */
+}
+
+/* Carousel container styling */
+.home24.carousel-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  min-height: 400px; /* Adjust this to fit the height of your banner */
+}
+
+/* Carousel images */
+.home24 .carousel .slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Custom navigation buttons */
+.home24 .carousel .control-arrow {
+  background-color: #1a1a1a; /* Black background */
+  border-radius: 50%; /* Circular shape */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9; /* Slight transparency */
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust position to be truly centered */
+  z-index: 5;
+}
+
+.home24 .carousel .control-arrow:hover {
+  background-color: #000000; /* Darker black on hover */
+  opacity: 1; /* Fully opaque on hover */
+}
+
+.home24 .carousel .control-arrow::before {
+  color: white; /* White arrow color */
+  font-size: 20px; /* Increase arrow size */
+}
+
+/* Position the previous button on the left */
+.home24 .carousel .control-prev.control-arrow {
+  left: 10px; /* Position on the left */
+}
+
+/* Position the next button on the right */
+.home24 .carousel .control-next.control-arrow {
+  right: 10px; /* Position on the right */
+}
+
+/* Adjust button size for smaller screens */
+@media (max-width: 768px) {
+  .home24 .carousel .control-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+}
+
+/* Legend content positioning */
+.home25, .home27, .home29, .home31 {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  z-index: 2;
+}
+
+/* Button styling */
+.home26.banner-button, .home28.banner-button, .home30.banner-button, .home32.banner-button {
+  background-color: #e3f97e; /* Light yellow-green button */
+  color: #1a1a1a; /* Dark text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.home26.banner-button:hover, .home28.banner-button:hover, .home30.banner-button:hover, .home32.banner-button:hover {
+  background-color: #d4e96c; /* Slightly darker on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home25, .home27, .home29, .home31 {
+    bottom: 15%;
+    left: 5%;
+  }
+
+  .home26.banner-button, .home28.banner-button, .home30.banner-button, .home32.banner-button {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+}
+
+/* Centering the Filter Section */
+.home4 {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Changed to column for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 80%; /* Set a width so it doesn’t stretch too wide */
+  margin: 0 auto; /* Center the entire filter section on the page */
+  box-sizing: border-box;
+}
+
+.home6, .home8 {
+  width: 100%; /* Make the filter sections take up the full width */
+}
+
+/* Filter Headings */
+.home5, .home7 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #343a40;
+  padding-bottom: 5px;
+  text-align: center;
+  width: auto;
+}
+
+/* Filter and Reset Button */
+.home9 {
+  text-align: center;
+  margin-top: 0;
+  width: auto;
+}
+
+.home10 {
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: auto;
+}
+
+.home10:hover {
+  background-color: #c82333;
+  transform: translateY(-3px);
+}
+
+.home10:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+}
+
+/* Centering the Product Section */
+.home11 {
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  width: 80%; /* Adjust width for centering */
+}
+
+/* Product Heading and Subheading */
+.home12 h5 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #212529;
+  margin-bottom: 5px;
+}
+
+.home12 h10 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #6c757d;
+  margin-top: 0;
+}
+
+/* Products Layout */
+.home13 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center; /* Center the grid items horizontally */
+  justify-items: center; /* Ensure individual grid items are centered */
+}
+
+/* Individual Product Card */
+.home14 {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home14:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.home15 {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.home16 {
+  padding: 15px;
+}
+
+.home17 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #4c4a4a;
+}
+
+.home18 {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.home19 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.home20,
+.home21 {
+  width: 48%;
+  padding: 10px 0;
+  border-radius: 5px;
+  font-weight: 600;
+  text-align: center;
+  display: inline-block;
+  margin: 0;
+}
+
+.home20 {
+  background-color: #007bff;
+  color: white;
+  margin-right: 4%;
+}
+
+.home20:hover {
+  background-color: #0056b3;
+}
+
+.home21 {
+  background-color: #6c757d;
+  color: white;
+}
+
+.home21:hover {
+  background-color: #5a6268;
+}
+
+.home26-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.home22 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.home23 {
+  background-color: #f1f3f5;
+  color: #333;
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+  width: auto;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.home23:hover {
+  background-color: #e2e6ea;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Container for heading */
+.home36 {
+  text-align: left; /* Align text to the left */
+  margin-bottom: 20px; /* Add space between the heading and the banners */
+  margin-left: 10%; /* Align heading with the first banner */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Centering the Banners */
+.home27-banner-section {
+  display: flex;
+  justify-content: flex-start; /* Align banners to the left */
+  gap: 15px;
+  flex-wrap: nowrap; /* Ensure all banners stay in one row */
+  margin: 0 auto;
+  width: 80%; /* Adjust width for centering */
+  padding-right: 0;
+}
+
+.home28-banner, .home30-banner, .home32-banner, .home34-banner {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  height: 250px;
+  width: 200px;
+  flex: 0 1 auto;
+}
+
+.home28-banner img, .home30-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home28-banner:hover, .home30-banner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for video banners */
+.home32-banner, .home34-banner {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  height: 250px;
+  width: 200px;
+  flex: 0 1 auto;
+}
+
+.home33-banner-video, .home35-banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home32-banner:hover, .home34-banner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .home27-banner-section {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center banners if wrapped */
+  }
+
+  .home28-banner, .home30-banner, .home32-banner, .home34-banner {
+    height: 200px; /* Adjust height for smaller screens */
+    width: 150px; /* Adjust width for smaller screens */
+  }
+}
