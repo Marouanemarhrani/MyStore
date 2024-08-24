@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import UserMenu from '../../components/Layout/UserMenu';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
@@ -26,7 +26,7 @@ const Orders = () => {
         if(auth?.token) getOrders();
     }, [auth?.token]);
   return (
-    <Layout title={"Orders"}>
+    <LayoutNF title={"Orders"}>
         <div className='container-fluid p-3 m-3'>
             <div className='row'>
                 <div className='col-md-3'>
@@ -89,7 +89,7 @@ const Orders = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

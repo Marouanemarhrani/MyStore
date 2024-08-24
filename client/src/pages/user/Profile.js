@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import UserMenu from '../../components/Layout/UserMenu';
 import { useAuth } from '../../context/auth';
 import  toast from 'react-hot-toast';
@@ -54,7 +54,7 @@ const Profile = () => {
         }
     };
   return (
-    <Layout title={"Profile"}>
+    <LayoutNF title={"Profile"}>
         <div className='container-fluid m-3 p-3'>
             <div className='row'>
                 <div className='col-md-3'>
@@ -135,7 +135,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

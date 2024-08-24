@@ -34,6 +34,14 @@
     text-decoration: none; /* Remove underline from the link */
   }
   
+  /* Ensure navbar collapse is visible when toggled */
+  .navbar-collapse {
+    flex-grow: 1 !important;
+    display: flex !important;
+    justify-content: space-between;
+    visibility: visible !important;
+  }
+  
   /* Media queries for responsiveness */
   @media (max-width: 1200px) {
     .headerLogin1 {
@@ -47,10 +55,15 @@
   
   @media (max-width: 992px) {
     .headerLogin1 {
-      padding: 6px 8px; /* Further reduce padding for screens < 992px */
-      display: flex; /* Ensure the header remains a flexbox */
-      visibility: visible; /* Ensure visibility is not compromised */
+      padding: 10px 15px; /* Further reduce padding for screens < 992px */
+      display: flex !important; /* Ensure the header remains a flexbox */
+      visibility: visible !important; /* Ensure visibility is not compromised */
       z-index: 1000; /* Ensure the header stays above other content */
+      text-align: center;
+    }
+  
+    .navbar-collapse {
+      display: block !important; /* Ensure navbar collapse is visible */
     }
   
     .headerLogin6 {
@@ -60,8 +73,8 @@
   
   @media (max-width: 768px) {
     .headerLogin1 {
-      padding: 5px 7px; /* Further adjust padding for screens < 768px */
-      display: flex; /* Flexbox layout for smaller screens */
+      padding: 10px 15px; /* Further adjust padding for screens < 768px */
+      display: flex !important; /* Flexbox layout for smaller screens */
     }
   
     .headerLogin6 {
