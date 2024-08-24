@@ -1,0 +1,71 @@
+/* General navbar settings for responsiveness */
+.headerLogin1 {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 10px 15px; /* Padding for spacing */
+    width: 100%; /* Ensure the navbar spans the full width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    border-bottom: 1px solid #ddd; /* Optional: Add a subtle border at the bottom for separation */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between logo and other elements */
+    align-items: center; /* Vertical alignment */
+    position: relative; /* Ensure the header stays positioned correctly */
+    z-index: 10; /* Ensure the header stays above other content */
+  }
+  
+  .headerLogin2 {
+    display: flex;
+    justify-content: space-between; /* Space between logo and other elements */
+    align-items: center; /* Vertical alignment */
+    width: 100%; /* Ensure the container spans the full width */
+  }
+  
+  .headerLogin5 {
+    flex-grow: 1; /* Allow the collapse to grow and take up available space */
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between elements */
+    align-items: center;
+  }
+  
+  .headerLogin6 {
+    font-size: 1.5rem; /* Font size for branding */
+    font-weight: bold; /* Bold text for branding */
+    text-transform: uppercase; /* Uppercase text for branding */
+    color: #000; /* Ensure text color is visible */
+    text-decoration: none; /* Remove underline from the link */
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 1200px) {
+    .headerLogin1 {
+      padding: 8px 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .headerLogin6 {
+      font-size: 1.3rem; /* Slightly smaller font size for screens < 1200px */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .headerLogin1 {
+      padding: 6px 8px; /* Further reduce padding for screens < 992px */
+      display: flex; /* Ensure the header remains a flexbox */
+      visibility: visible; /* Ensure visibility is not compromised */
+      z-index: 1000; /* Ensure the header stays above other content */
+    }
+  
+    .headerLogin6 {
+      font-size: 1.2rem; /* Adjust font size for mobile devices */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .headerLogin1 {
+      padding: 5px 7px; /* Further adjust padding for screens < 768px */
+      display: flex; /* Flexbox layout for smaller screens */
+    }
+  
+    .headerLogin6 {
+      font-size: 1.1rem; /* Further adjust font size for mobile devices */
+    }
+  }
+  

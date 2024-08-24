@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import Layout from "./../../components/Layout/Layout";
+import LayoutLogin from "./../../components/Layout/LayoutLogin";
 import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom';
 import  toast from "react-hot-toast";
 import { useAuth } from '../../context/auth';
+import { Link } from 'react-router-dom';
 import "./Login.css";
 
 const Login = () => {
@@ -41,54 +42,55 @@ const Login = () => {
         }
     };
   return (
-    <Layout title = "Login">
-      <div className='register'>
-        <h1>Login Page</h1>
-        <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-                <label htmlFor="exampleInputEmail" className="form-label">
-                    Email
-                </label>
-                <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputEmail1" 
-                    placeholder='Enter your email'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                </label>
-                <input 
-                    type="password"
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputPassword1" 
-                    placeholder='Enter your password'
-                    required
-                />
-            </div>
-            <div className='mb-3'>
-                <button 
-                    type="button" 
-                    className="btn btn-primary"
-                    onClick={() => {navigate ('/forgot-password');
-                    }}>
-                        Forgot Password
+    <div className='bodylogin'>
+        <LayoutLogin title = "Login">
+        <div className='login'>
+            <h1 className='h1'>Who goes there?</h1>
+            <form onSubmit={handleSubmit}>
+                <div className="divemail mb-3">
+                    <input 
+                        type="email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="fclas form-control" 
+                        id="InputEmail1" 
+                        placeholder='Email address'
+                        required
+                    />
+                </div>
+                <div className="divpass mb-3">
+                    <input 
+                        type="password"
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="fclas form-control" 
+                        id="exampleInputPassword1" 
+                        placeholder='Password'
+                        required
+                    />
+                </div>
+                <button type="submit" className="btncls btn btn">
+                    It's me
                 </button>
+                <div className='divbtn mb-3'>
+                    <button 
+                        type="button" 
+                        className="frgtclass btn"
+                        onClick={() => {navigate ('/forgot-password');
+                        }}>
+                            Forgot Password
+                    </button>
+                </div>
+            <div className='divreg'>
+                <Link  to="/register" className='registercls'>
+                    Don't have an account, register now!
+                </Link>    
             </div>
-            <button type="submit" className="btn btn-primary">
-                Login
-            </button>
-        </form>
-      </div>
-    </Layout>
-  )
-}
+            </form>
+        </div>
+        </LayoutLogin>
+    </div>
+  );
+};
 
-export default Login
+export default Login;

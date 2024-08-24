@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import Layout from "./../../components/Layout/Layout";
+import LayoutLogin from "./../../components/Layout/LayoutLogin";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import  toast from "react-hot-toast";
+import { Link } from 'react-router-dom';
 import "./Register.css";
 
 const Register = () => {
@@ -39,101 +40,90 @@ const Register = () => {
         }
     };
   return (
-    <Layout title = "Register">
-      <div className='register'>
-        <form onSubmit={handleSubmit}>
-            <h1 className='title'>Register Page</h1>
-            <div className="mb-3">
-                <label htmlFor="exampleInputName1" className="form-label">
-                    FirstName
-                </label>
-                <input 
-                    type="text" 
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputName" 
-                    placeholder='Enter your firstname'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputName1" className="form-label">
-                    LastName
-                </label>
-                <input 
-                    type="text" 
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputName"
-                    placeholder='Enter your lastname'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputEmail" className="form-label">
-                    Email
-                </label>
-                <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputEmail1" 
-                    placeholder='Enter your email'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
-                </label>
-                <input 
-                    type="password"
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputPassword1" 
-                    placeholder='Enter your password'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPhone" className="form-label">
-                    Phone
-                </label>
-                <input 
-                    type="text" 
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputEmail1" 
-                    placeholder='Enter your phone number'
-                    required
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputAddress" className="form-label">
-                    Address
-                </label>
-                <input 
-                    type="text" 
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    className="form-control" 
-                    id="exampleInputEmail1"
-                    placeholder='Enter your address' 
-                    required
-                />
-            </div>
-            <button type="submit" className="btn btn-primary">
-                Register
-            </button>
-        </form>
-      </div>
-    </Layout>
-  )
-}
+    <div className='regbody'>
+        <LayoutLogin title = "Register">
+        <div className='register'>
+            <form onSubmit={handleSubmit}>
+                <h1 className='reg-title'>Join us now </h1>
+                <div className="regdiv mb-3">
+                    <input 
+                        type="text" 
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputName" 
+                        placeholder='Firstname'
+                        required
+                    />
+                </div>
+                <div className="regdiv2 mb-3">
+                    <input 
+                        type="text" 
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputName"
+                        placeholder='Lastname'
+                        required
+                    />
+                </div>
+                <div className="regdiv3 mb-3">
+                    <input 
+                        type="email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputEmail1" 
+                        placeholder='Email address'
+                        required
+                    />
+                </div>
+                <div className="regdiv4 mb-3">
+                    <input 
+                        type="Password"
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputPassword1" 
+                        placeholder='Password'
+                        required
+                    />
+                </div>
+                <div className="regdiv5 mb-3">
+                    <input 
+                        type="text" 
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputEmail1" 
+                        placeholder='Phone number'
+                        required
+                    />
+                </div>
+                <div className="regdiv6 mb-3">
+                    <input 
+                        type="text" 
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        className="reginput form-control" 
+                        id="exampleInputEmail1"
+                        placeholder='Address' 
+                        required
+                    />
+                </div>
+                <button type="submit" className="regbtn btn-primary">
+                    Let's go
+                </button>
+                <div className='logindiv'>
+                    <Link  to="/login" className='Logincls'>
+                        Already have an account, Login..
+                    </Link>    
+                </div>
+            </form>
+        </div>
+        </LayoutLogin>
+    </div>
+  );
+};
 
 export default Register;

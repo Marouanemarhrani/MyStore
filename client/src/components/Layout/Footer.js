@@ -4,62 +4,95 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaMapMarkerAlt, FaPh
 
 const Footer = () => {
   return (
-    <footer className='footer bg-dark text-light p-6'>
-      <div className='container mx-auto'>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-          
-          {/* Contact Information */}
-          <div className='contact-info space-y-4'>
-            <h4 className='text-lg font-semibold'>Contact Us</h4>
-            <p><FaMapMarkerAlt className='inline-block mr-2' /> 123 Main Street, Anytown, USA</p>
-            <p><FaPhone className='inline-block mr-2' /> Phone: (123) 456-7890</p>
-            <p><FaEnvelope className='inline-block mr-2' /> Email: contact@yourcompany.com</p>
+    <footer className="footer-container">
+      <div className="footer-top">
+        <p>
+          Hello, nous sommes Back Market, la première place de marché dédiée aux produits reconditionnés. 
+          Notre mission ? Rendre mainstream la consommation de produits ressuscités. 
+          Ça sonne british et christique, mais c'est tout à fait ça.
+        </p>
+      </div>
+      <div className="footer-links">
+        <div className="footer-column">
+          <h4>A propos</h4>
+          <ul>
+            <li><a href="#">Qui sommes nous ?</a></li>
+            <li><a href="#">Revendre votre appareil</a></li>
+            <li><a href="#">Back Market pour les entreprises</a></li>
+            <li><a href="#">Offre étudiante</a></li>
+            <li><a href="#">On recrute !</a></li>
+            <li><a href="#">Presse</a></li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Besoin d'aide ?</h4>
+          <ul>
+            <li><a href="#">Devenir vendeur sur Back Market</a></li>
+            <li><a href="#">Connexion au Back Office marchand</a></li>
+            <li><a href="#">Paiement</a></li>
+            <li><a href="#">Livraison</a></li>
+            <li><a href="#">Retours & Remboursements</a></li>
+            <li><a href="#">Assurances</a></li>
+            <li><a href="#">Aide et Assistance</a></li>
+            <li><a href="#">Guides d'achat et conseils</a></li>
+            <li><a href="#">Comparer nos produits</a></li>
+            <li><a href="#">Idées cadeaux</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>La loi et l'ordre</h4>
+          <ul>
+            <li><a href="#">Conditions générales d'utilisation</a></li>
+            <li><a href="#">Conditions générales de vente</a></li>
+            <li><a href="#">Conditions Générales du Service de Reprise</a></li>
+            <li><a href="#">Contrat de garantie commerciale</a></li>
+            <li><a href="#">Protection des données</a></li>
+            <li><a href="#">Cookies et paramètres de confidentialité</a></li>
+            <li><a href="#">Autres infos légales</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Signaler un contenu illicite</a></li>
+            <li><a href="#">Achats 100% sécurisés</a></li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Coucou !</h4>
+          <ul>
+            <li><a href="#">Trustpilot</a></li>
+            <li><a href="#">Glassdoor</a></li>
+            <li><a href="#">Welcome to the Jungle</a></li>
+            <li><a href="#">Medium</a></li>
+            <li><a href="#">Nana Mouskouri</a></li>
+          </ul>
+          <div className="footer-social-icons">
+            <a href="#"><i className="fab fa-twitter"></i></a>
+            <a href="#"><i className="fab fa-linkedin"></i></a>
+            <a href="#"><i className="fab fa-facebook"></i></a>
+            <a href="#"><i className="fab fa-instagram"></i></a>
           </div>
-          
-          {/* Navigation Links */}
-          <div className='navigation space-y-4'>
-            <h4 className='text-lg font-semibold'>Navigation</h4>
-            <ul className='space-y-2'>
-              <li><a href='/about' className='hover:underline'>About Us</a></li>
-              <li><a href='/services' className='hover:underline'>Services</a></li>
-              <li><a href='/blog' className='hover:underline'>Blog</a></li>
-              <li><a href='/faq' className='hover:underline'>FAQs</a></li>
-              <li><a href='/careers' className='hover:underline'>Careers</a></li>
-            </ul>
-          </div>
-          
-          {/* Social Media Links */}
-          <div className='social-media space-y-4'>
-            <h4 className='text-lg font-semibold'>Follow Us</h4>
-            <div className='flex space-x-4'>
-              <a href='https://facebook.com' target='_blank' rel='noopener noreferrer' className='social-icon'><FaFacebookF /></a>
-              <a href='https://twitter.com' target='_blank' rel='noopener noreferrer' className='social-icon'><FaTwitter /></a>
-              <a href='https://instagram.com' target='_blank' rel='noopener noreferrer' className='social-icon'><FaInstagram /></a>
-              <a href='https://linkedin.com' target='_blank' rel='noopener noreferrer' className='social-icon'><FaLinkedinIn /></a>
-            </div>
+          <div className="footer-certifications">
+            <img src="certification.png" alt="Certified B Corporation" />
+            <img src="award.png" alt="Award" />
           </div>
         </div>
-        
-        {/* Map Section */}
-        <div className='map-section mt-6'>
-          <h4 className='text-lg font-semibold mb-4'>Find Us On The Map</h4>
-          <div className='map-container'>
-            <iframe
-              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12689.391748836286!2d-122.0822037!3d37.4198586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5e7ebeb9e4b%3A0x12f1620046478e2!2sGoogleplex!5e0!3m2!1sen!2sus!4v1624369289681!5m2!1sen!2sus'
-              width='100%'
-              height='200'
-              style={{ border: 0 }}
-              allowFullScreen
-              loading='lazy'
-              title='Google Map'
-            ></iframe>
-          </div>
+      </div>
+      <div className="footer-bottom">
+        <div className="footer-flags">
+          <img src="flag-fr.png" alt="France" />
+          <img src="flag-de.png" alt="Germany" />
+          <img src="flag-nl.png" alt="Netherlands" />
+          <img src="flag-be.png" alt="Belgium" />
+          <img src="flag-es.png" alt="Spain" />
+          <img src="flag-it.png" alt="Italy" />
+          <img src="flag-uk.png" alt="UK" />
+          <img src="flag-us.png" alt="USA" />
+          <img src="flag-au.png" alt="Australia" />
+          <img src="flag-kr.png" alt="South Korea" />
         </div>
-        
-        <div className='footer-bottom text-center mt-6'>
-          <p className='text-sm'>© 2024 YourCompany. All rights reserved.</p>
-          <a href='/privacy-policy' className='text-sm hover:underline'>Privacy Policy</a> | 
-          <a href='/terms-of-service' className='text-sm hover:underline'> Terms of Service</a>
+        <p>© 2024 Back Market</p>
+        <div className="footer-app-links">
+          <img src="google-play.png" alt="Google Play" />
+          <img src="app-store.png" alt="App Store" />
         </div>
       </div>
     </footer>
