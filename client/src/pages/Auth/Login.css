@@ -1,10 +1,10 @@
-.bodylogin{
-
-    background-color:rgba(255, 255, 255, 0.8);
+.bodylogin {
+    background-color: rgba(255, 255, 255, 0.8);
 }
+
 /* Adjust the form position */
 .login {
-    background-color:#f8f9fa ; /* White background with transparency */
+    background-color: #f8f9fa; /* White background with transparency */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -31,12 +31,33 @@
     width: 100%;
     margin-bottom: 15px;
     box-sizing: border-box;
+    padding-right: 40px; /* Add padding to make space for the icon */
 }
 
 .fclas:focus {
     outline: none;
     border-color: #3a3b3b; /* Border color on focus */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Password Wrapper */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Password Toggle Icon */
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.password-toggle-icon:hover {
+    color: #343a40;
 }
 
 /* Forgot password button */
@@ -72,21 +93,25 @@
     background-color: #474747; /* Darker blue on hover */
     color: #f8f9fa;
 }
-.registercls{
+
+.registercls {
     text-decoration: none;
     color: rgb(89, 89, 89);
 }
 
-.registercls:hover{
+.registercls:hover {
     color: #474747;
 }
-.divreg{
+
+.divreg {
     margin-top: 5%;
 }
-.divbtn{
+
+.divbtn {
     margin-top: 2%;
 }
-.h1{
+
+.h1 {
     text-align: left;
 }
 
