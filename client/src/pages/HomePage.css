@@ -256,18 +256,35 @@
   padding: 15px;
 }
 
+/* Ensure product name and description are one line */
 .home17 {
   font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 10px;
   color: #4c4a4a;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
 }
 
 .home18 {
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 15px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
 }
+
+/* Adjust buttons layout */
+.home-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensure buttons are aligned in the middle */
+  margin-top: 15px;
+  flex-wrap: nowrap; /* Ensure buttons stay in a single line */
+}
+
 
 .home19 {
   font-size: 1rem;
@@ -306,11 +323,6 @@
   background-color: #5a6268;
 }
 
-.home26-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
 
 .home22 {
   display: flex;

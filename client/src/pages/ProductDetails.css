@@ -27,7 +27,7 @@
   }
   
   /* Image container */
-.dtls2 {
+  .dtls2 {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -39,7 +39,6 @@
     object-fit: cover; /* Ensure the image covers the container without distortion */
     border-radius: 8px;
   }
-  
   
   /* Product details container */
   .dtls4 {
@@ -108,6 +107,322 @@
   
     .dtls10, .dtls12 {
       text-align: left; /* Keep text left-aligned on smaller screens */
+    }
+  }
+  
+  /* Container for related products section */
+  .dtls13 {
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+  
+  /* Title for related products */
+  .dtls13 h6 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Message for no related products */
+  .dtls14 {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Flex container for the product cards */
+  .dtls15 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    gap: 20px; /* Space between cards */
+  }
+  
+  /* Card styling */
+  .dtls18 {
+    flex: 1 1 calc(33.33% - 40px); /* Three cards per row on large screens */
+    max-width: 300px;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .dtls18:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+  }
+  
+  /* Image styling */
+  .dtls19 {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Card body */
+  .dtls20 {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Ensure product name is on one line */
+  .dtls21 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  /* Ensure product description is on one line */
+  .dtls22 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  .dtls23 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+  
+  /* Buttons layout adjustment */
+  .dtls26-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensure buttons are aligned in the middle */
+    margin-top: 15px;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  /* More Details Button */
+  .dtls24 {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dtls24:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add to Cart Button */
+  .dtls25 {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dtls25:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .dtls18 {
+      flex: 1 1 calc(50% - 40px); /* Two cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dtls18 {
+      flex: 1 1 calc(100% - 40px); /* One card per row on small screens */
+    }
+  
+    .dtls13 {
+      padding: 0 10px;
+    }
+  
+    .dtls13 h6 {
+      font-size: 1.25rem;
+    }
+  
+    .dtls26-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+  
+    .dtls24,
+    .dtls25 {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Part 2 ----------------------------------------------------- */
+  /* Container for related products section */
+  .dtls13 {
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+  
+  /* Center the title for related products */
+  .dtls13 h6 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Flex container for the product cards */
+  .dtls15 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the grid items horizontally */
+    gap: 20px; /* Space between cards */
+    margin-top: 20px; /* Add margin to create space between title and cards */
+  }
+  
+  /* Individual Product Card */
+  .dtls18 {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 300px; /* Set a fixed maximum width for consistency */
+  }
+  
+  .dtls18:hover {
+    transform: translateY(-5px);
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image Styling */
+  .dtls19 {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-bottom: 1px solid #eee; /* Add a subtle border between the image and content */
+  }
+  
+  /* Card Body */
+  .dtls20 {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Product Title */
+  .dtls21 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #4c4a4a;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  /* Product Description */
+  .dtls22 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  /* Product Price */
+  .dtls23 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 15px;
+  }
+  
+  /* Buttons Container */
+  .dtls26-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Add space between the buttons */
+  }
+  
+  /* More Details Button */
+  .dtls24 {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dtls24:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add to Cart Button */
+  .dtls25 {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dtls25:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .dtls18 {
+      flex: 1 1 calc(50% - 40px); /* Two cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dtls18 {
+      flex: 1 1 calc(100% - 40px); /* One card per row on small screens */
+    }
+  
+    .dtls13 {
+      padding: 0 10px;
+    }
+  
+    .dtls13 h6 {
+      font-size: 1.25rem;
+    }
+  
+    .dtls26-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+  
+    .dtls24,
+    .dtls25 {
+      width: 100%;
+      margin-bottom: 10px;
     }
   }
   

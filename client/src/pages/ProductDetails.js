@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useCart } from '../context/cart';
 import "./ProductDetails.css";
@@ -11,7 +12,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [cart, setCart] = useCart();
   const [relatedProducts, setRelatedProducts] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
@@ -80,33 +81,41 @@ const ProductDetails = () => {
         </div>
       </div>
       <div className="dtls13 row container">
-        <h6>Similar products</h6>
+        <h6>Other products related to your search</h6>
         {relatedProducts.length < 1 && (
-          <p className="dtls14 text-center">No similar products found</p>
+          <p className="dtls14 text-center">Sorry.. We haven't find any related product to your search</p>
         )}
         <div className="dtls15 d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-            <div className="card m-2" style={{ width: '18rem' }} key={p._id}>
+            <div className="dtls18 card m-2" style={{ width: '18rem' }} key={p._id}>
               <img
                 src={`${process.env.REACT_APP_API}/api/products/photoURL/${p._id}`}
-                className="card-img-top"
+                className="dtls19 card-img-top"
                 alt={p.name}
               />
-              <div className="card-body">
-                <h5 className="card-title">{p.name}</h5>
-                <p className="card-text">
+              <div className="dtls20 card-body">
+                <h5 className="dtls21 card-title">{p.name}</h5>
+                <p className="dtls22 card-text">
                   {p.description.substring(0, 30)}...
                 </p>
-                <p className="card-text">€ {p.price}</p>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    setCart([...cart, p]);
-                    toast.success('Item added to cart');
-                  }}
-                >
-                  Add to cart
-                </button>
+                <p className="dtls23 card-text">€ {p.price}</p>
+                <div className='dtls26-buttons'>
+                  <button
+                    className='dtls24 btn btn-primary ms-1'
+                    onClick={() => navigate(`/product/${p.slug}`)}
+                  >
+                    More details
+                  </button>
+                  <button
+                    className="dtls25 btn btn-secondary"
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      toast.success('Item added to cart');
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
             </div>
           ))}

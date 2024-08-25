@@ -241,7 +241,7 @@ const HomePage = () => {
                   <h5 className='home17 card-title'>{p.name}</h5>
                   <p className='home18 card-text'>{p.description.substring(0, 30)}...</p>
                   <p className='home19 card-text'>{p.price} €</p>
-                  <div className='home26-buttons'>
+                  <div className='home-buttons'>
                     <button
                       className='home20 btn btn-primary ms-1'
                       onClick={() => navigate(`/product/${p.slug}`)}
