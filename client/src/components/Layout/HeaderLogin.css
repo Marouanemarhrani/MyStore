@@ -34,13 +34,6 @@
     text-decoration: none; /* Remove underline from the link */
   }
   
-  /* Ensure navbar collapse is visible when toggled */
-  .navbar-collapse {
-    flex-grow: 1 !important;
-    display: flex !important;
-    justify-content: space-between;
-    visibility: visible !important;
-  }
   
   /* Media queries for responsiveness */
   @media (max-width: 1200px) {
@@ -60,10 +53,6 @@
       visibility: visible !important; /* Ensure visibility is not compromised */
       z-index: 1000; /* Ensure the header stays above other content */
       text-align: center;
-    }
-  
-    .navbar-collapse {
-      display: block !important; /* Ensure navbar collapse is visible */
     }
   
     .headerLogin6 {
