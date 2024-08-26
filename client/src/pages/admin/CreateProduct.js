@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import AdminMenu from '../../components/Layout/AdminMenu';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import {Select} from 'antd';
 import { useNavigate } from 'react-router-dom';
+import "./CreateProduct.css";
 
 const {Option} = Select;
 
@@ -63,20 +64,20 @@ const CreateProduct = () => {
         };
     };
   return (
-    <Layout title={"Dashboard - Create Product"}>
-        <div className='container-fluid m-3 p-3'>
-            <div className='row'>
-                <div className='col-md-3'>
+    <LayoutNF title={"Dashboard - Create Product"}>
+        <div className='cpdct container-fluid'>
+            <div className='cpdct1 row'>
+                <div className='cpdct2 col-md-3'>
                     <AdminMenu />
                 </div>
-                <div className='col-md-9'>
+                <div className='cpdct3 col-md-9'>
                     <h1>Create Product</h1>
-                    <div className='m-1 w-75'>
+                    <div className='cpdct4 m-1 w-75'>
                         <Select bordered={false}
                             placeholder="Select a category"
                             size="large"
                             showSearch
-                            className='form-select mb-3' 
+                            className='cpdct5 form-select mb-3' 
                             onChange={(value) => {
                                 setCategory(value);
                             }}
@@ -87,9 +88,9 @@ const CreateProduct = () => {
                                 </Option>
                             ))}
                          </Select>
-                         <div className='mb-3'>
+                         <div className='cpdct6 mb-3'>
                             <label 
-                                className='btn btn-outline-secondary col-md-12'
+                                className='cpdct7 btn btn-outline-secondary col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -101,9 +102,9 @@ const CreateProduct = () => {
                                 />
                             </label>
                          </div>
-                         <div className='mb-3'>
+                         <div className='cpdct8 mb-3'>
                             {photo && (
-                                <div className='text-center'> 
+                                <div className='cpdct9 text-center'> 
                                     <img 
                                         src={URL.createObjectURL(photo)} 
                                         alt="product-photo"
@@ -113,7 +114,7 @@ const CreateProduct = () => {
                                 </div>
                             )}
                          </div>
-                         <div className='mb-3'>
+                         <div className='cpdct10 mb-3'>
                             <input 
                                 type="text"
                                 value ={name}
@@ -122,36 +123,36 @@ const CreateProduct = () => {
                                 onChange={(e) => setName(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='cpdct11 mb-3'>
                             <textarea 
                                 type="text"
                                 value ={description}
                                 placeholder="write a description"
-                                className="form-control"
+                                className="cpdct12 form-control"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='cpdct13 mb-3'>
                             <input 
                                 type="number"
                                 value ={price}
                                 placeholder="write a price"
-                                className="form-control"
+                                className="cpdct14 form-control"
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='cpdct15 mb-3'>
                             <input 
                                 type="number"
                                 value ={quantity}
                                 placeholder="write a quantity"
-                                className="form-control"
+                                className="cpdct16 form-control"
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                          </div>
-                        <div className='mb-3'>
+                        <div className='cpdct17 mb-3'>
                             <button 
-                                className='btn btn-primary'
+                                className='cpdct18 btn btn-primary'
                                 onClick={handleCreate}
                             >
                                 Create Product
@@ -161,7 +162,7 @@ const CreateProduct = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

@@ -1,0 +1,155 @@
+/* CreateCategory Styles */
+.ccat {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  .ccat1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  
+  .ccat2 {
+    margin-bottom: 20px;
+  }
+  
+  .ccat3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .ccat3 h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .ccat4 {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for form */
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+  
+  .ccat5 {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .ccat6 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .ccat6 th, .ccat6 td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .ccat6 th {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .ccat6 tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Edit Button */
+  .ccat7 {
+    background-color: #17a2b8; /* Lighter vibrant blue */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ccat7:hover {
+    background-color: #138496; /* Slightly darker shade on hover */
+  }
+  
+  /* Delete Button */
+  .ccat8 {
+    background-color: #ff6b6b; /* Softer red color */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ccat8:hover {
+    background-color: #e63b3b; /* Darker shade on hover */
+  }
+  
+
+  
+  /* Modal Style */
+  .ant-modal {
+    top: 20%;
+  }
+  
+  .ant-modal-content {
+    border-radius: 8px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .ccat {
+      padding: 15px;
+    }
+  
+    .ccat3 h1 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  
+    .ccat4, .ccat5 {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .ccat6 th, .ccat6 td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .ccat7, .ccat8 {
+      padding: 6px 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ccat {
+      padding: 10px;
+    }
+  
+    .ccat3 h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  
+    .ccat6 th, .ccat6 td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .ccat7, .ccat8 {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
+  

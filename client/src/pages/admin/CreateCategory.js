@@ -1,5 +1,5 @@
 import  React, {useEffect, useState}  from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import AdminMenu from '../../components/Layout/AdminMenu';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -89,23 +89,23 @@ const CreateCategory = () => {
         };
     };
   return (
-    <Layout title={"Dashboard - Create Category"}>
-    <div className='container-fluid m-3 p-3'>
-        <div className='row'>
-            <div className='col-md-3'>
+    <LayoutNF title={"Dashboard - Create Category"}>
+    <div className='ccat container-fluid '>
+        <div className='ccat1 row'>
+            <div className='ccat2 col-md-3'>
                 <AdminMenu />
             </div>
-            <div className='col-md-9'>
+            <div className='ccat3 col-md-9'>
                 <h1>Manage Categories</h1>
-                <div className='p-3 w-50'>
+                <div className='ccat4 p-3 w-50'>
                     <CategoryForm
                     handleSubmit={handleSubmit}
                     value={name}
                     setValue={setName}
                     />
                 </div>
-                <div className='w-75'>
-                    <table className="table">
+                <div className='ccat5 w-75'>
+                    <table className="ccat6 table">
                         <thead>
                             <tr>
                             <th scope="col">Name</th>
@@ -119,7 +119,7 @@ const CreateCategory = () => {
                                     <td key={c._id}>{c.name}</td>
                                     <td>
                                         <button 
-                                            className='btn btn-primary ms-2'
+                                            className='ccat7 btn btn ms-2'
                                             onClick={() => {
                                                 setVisible(true);  
                                                 setUpdatedName(c.name);
@@ -129,7 +129,7 @@ const CreateCategory = () => {
                                             Edit
                                         </button>
                                         <button 
-                                            className='btn btn-danger ms-2'
+                                            className='ccat8 btn btn ms-2'
                                             onClick={() => {handleDelete(c._id)}}>
                                             Delete
                                         </button>
@@ -150,7 +150,7 @@ const CreateCategory = () => {
             </div>
         </div>
     </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

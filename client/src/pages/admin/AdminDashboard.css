@@ -1,0 +1,87 @@
+/* AdminDashboard Styles */
+.adm {
+    background-color: #f1f3f5; /* Light grey background */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+  
+  .adm1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0; /* Ensure no additional margin */
+  }
+  
+  .adm2 {
+    margin-bottom: 20px;
+  }
+  
+  .adm3 {
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: flex-start; /* Align items to the top */
+  }
+  
+  .adm4 {
+    background-color: #fff;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for the card */
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
+  
+  .adm4 h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333; /* Dark grey text color */
+  }
+  
+  /* Adjust the spacing of buttons in the AdminMenu */
+  .adminmenu .list-group-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .adm {
+      padding: 15px;
+    }
+  
+    .adm1 {
+      flex-direction: column;
+    }
+  
+    .adm2 {
+      width: 100%;
+    }
+  
+    .adm3 {
+      width: 100%;
+    }
+  
+    .adm4 {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .adm4 h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .adm {
+      padding: 10px;
+    }
+  
+    .adm4 h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+  }
+  

@@ -1,39 +1,40 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import "./AdminMenu.css";
  
 const AdminMenu = () => {
   return (
     <> 
-      <div className='text-center'>
-        <div className="list-group">
+      <div className='adminmenu text-center'>
+        <div className="adminmenu1 list-group">
             <h4>Admin panel</h4>
                 <NavLink 
                     to="/dashboard/admin/create-category" 
-                    className="list-group-item list-group-item-action"
+                    className="adminmenu2 list-group-item list-group-item-action"
                 >
                     Create Category
                 </NavLink>
                 <NavLink 
                     to="/dashboard/admin/create-product" 
-                    className="list-group-item list-group-item-action"
+                    className="adminmenu3 list-group-item list-group-item-action"
                 >
                     Create Product
                 </NavLink>
                 <NavLink 
                     to="/dashboard/admin/products" 
-                    className="list-group-item list-group-item-action"
+                    className="adminmenu4 list-group-item list-group-item-action"
                 >
                     Products
                 </NavLink>
                 <NavLink 
                     to="/dashboard/admin/orders" 
-                    className="list-group-item list-group-item-action"
+                    className="adminmenu5 list-group-item list-group-item-action"
                 >
                     Orders
                 </NavLink>
                 <NavLink 
                     to="/dashboard/admin/users" 
-                    className="list-group-item list-group-item-action"
+                    className="adminmenu6 list-group-item list-group-item-action"
                 >
                     Users
                 </NavLink>

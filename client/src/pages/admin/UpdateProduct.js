@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import AdminMenu from '../../components/Layout/AdminMenu';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import {Select} from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
+import "./UpdateProduct.css";
 
 const {Option} = Select;
 
@@ -104,20 +105,20 @@ const UpdateProduct = () => {
         };
     };
   return (
-    <Layout title={"Dashboard - Create Product"}>
-        <div className='container-fluid m-3 p-3'>
-            <div className='row'>
-                <div className='col-md-3'>
+    <LayoutNF title={"Dashboard - Create Product"}>
+        <div className='updct container-fluid '>
+            <div className='updct1 row'>
+                <div className='updct2 col-md-3'>
                     <AdminMenu />
                 </div>
-                <div className='col-md-9'>
+                <div className='updct3 col-md-9'>
                     <h1>Update Product</h1>
-                    <div className='m-1 w-75'>
+                    <div className='updct4 m-1 w-75'>
                         <Select bordered={false}
                             placeholder="Select a category"
                             size="large"
                             showSearch
-                            className='form-select mb-3' 
+                            className='updct5 form-select mb-3' 
                             onChange={(value) => {
                                 setCategory(value);
                             }}
@@ -129,9 +130,9 @@ const UpdateProduct = () => {
                                 </Option>
                             ))}
                          </Select>
-                         <div className='mb-3'>
+                         <div className='updct6 mb-3'>
                             <label 
-                                className='btn btn-outline-secondary col-md-12'
+                                className='updct7 btn btn-outline-secondary col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -143,54 +144,54 @@ const UpdateProduct = () => {
                                 />
                             </label>
                          </div>
-                         <div className='mb-3'>
+                         <div className='updct8 mb-3'>
                             {photo ? (
-                                <div className='text-center'> 
+                                <div className='updct9 text-center'> 
                                     <img 
                                         src={URL.createObjectURL(photo)} 
                                         alt="product-photo"
                                         height={'200px'} 
-                                        className='img img-responsive'
+                                        className='updct10 img img-responsive'
                                     />
                                 </div>
                             ) : (
-                            <div className='text-center'> 
+                            <div className='updct11 text-center'> 
                                 <img 
                                     src={`${process.env.REACT_APP_API}/api/products/photoURL/${id}`} 
                                     alt="product-photo"
                                     height={'200px'} 
-                                    className='img img-responsive'
+                                    className='updct12 img img-responsive'
                                 />
                             </div>)}
                          </div>
-                         <div className='mb-3'>
+                         <div className='updct13 mb-3'>
                             <input 
                                 type="text"
                                 value ={name}
                                 placeholder="write a name"
-                                className="form-control"
+                                className="updct14 form-control"
                                 onChange={(e) => setName(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='updct15 mb-3'>
                             <textarea 
                                 type="text"
                                 value ={description}
                                 placeholder="write a description"
-                                className="form-control"
+                                className="updct16 form-control"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='updct17 mb-3'>
                             <input 
                                 type="number"
                                 value ={price}
                                 placeholder="write a price"
-                                className="form-control"
+                                className="updct18 form-control"
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='updct19 mb-3'>
                             <input 
                                 type="number"
                                 value ={quantity}
@@ -199,17 +200,17 @@ const UpdateProduct = () => {
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                          </div>
-                        <div className='mb-3'>
+                        <div className='updct20 mb-3'>
                             <button 
-                                className='btn btn-primary'
+                                className='updct21 btn btn'
                                 onClick={handleUpdate}
                             >
                                 Update Product
                             </button>
                         </div> 
-                        <div className='mb-3'>
+                        <div className='updct22 mb-3'>
                             <button 
-                                className='btn btn-danger'
+                                className='updct23 btn btn'
                                 onClick={handleDelete}
                             >
                                 Delete Product
@@ -219,7 +220,7 @@ const UpdateProduct = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   )
 }
 
