@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import AdminMenu from '../../components/Layout/AdminMenu';
 
 const Users = () => {
   return (
-    <Layout title={"Dashboard - All users"}>
+    <LayoutNF title={"Dashboard - All users"}>
         <div className='container-fluid '>
             <div className='row'>
                 <div className='col-md-3'>
@@ -15,7 +15,7 @@ const Users = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

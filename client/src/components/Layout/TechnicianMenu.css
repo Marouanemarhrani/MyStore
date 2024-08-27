@@ -1,0 +1,73 @@
+/* TechnicianMenu Styles */
+.tecmenu {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 20px;
+}
+
+.tecmenu h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark grey for text */
+}
+
+.tecmenu1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.tecmenu1 .list-group-item {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 15px;
+    text-align: center;
+    background-color: #fff; /* White background for list items */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 5px;
+    color: #6c757d; /* Bootstrap primary color */
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tecmenu1 .list-group-item:hover {
+    background-color: #424242;
+    color: #fff;
+}
+
+.tecmenu1 .list-group-item.active {
+    background-color: #3b3a3a; /* Darker grey for active item */
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .tecmenu {
+        padding: 15px;
+    }
+
+    .tecmenu h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .tecmenu1 {
+        gap: 8px;
+    }
+
+    .tecmenu1 .list-group-item {
+        max-width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tecmenu h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .tecmenu1 .list-group-item {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}

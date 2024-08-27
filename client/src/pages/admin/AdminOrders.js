@@ -4,7 +4,7 @@ import { useAuth } from '../../context/auth';
 import { toast } from 'react-hot-toast';
 import moment from "moment";
 import AdminMenu from "../../components/Layout/AdminMenu"
-import Layout from "../../components/Layout/Layout";
+import LayoutNF from "../../components/Layout/LayoutNF";
 import { Select} from "antd"
 
 
@@ -46,7 +46,7 @@ const AdminOrders = () => {
         }
     };
     return (
-        <Layout title={"All Orders Data"}>
+        <LayoutNF title={"All Orders Data"}>
             <div className='container-fluid'>
             <div className="row">
                 <div className="col-md-3">
@@ -121,7 +121,7 @@ const AdminOrders = () => {
                 </div>
             </div>
             </div>
-        </Layout>
+        </LayoutNF>
     );
 };
 

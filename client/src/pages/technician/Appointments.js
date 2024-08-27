@@ -26,6 +26,7 @@ const Appointments = () => {
     }, []);
   return (
     <Layout>
+        <div className='container-fluid '>
       <div className='row'>
         <div className='col-md-3'>
             <TechnicianMenu />
@@ -51,6 +52,7 @@ const Appointments = () => {
                 ))}
             </div>
         </div>
+      </div>
       </div>
     </Layout>
   );
