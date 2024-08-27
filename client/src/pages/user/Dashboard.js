@@ -15,10 +15,10 @@ const Dashboard = () => {
             <UserMenu />
           </div>
           <div className='divd4 col-md-9'>
-            <div className='divd5 card w-75 p-3'>
+            <div className='divd5-card w-75 p-3'>
 
-              <h4>Personal informations</h4>
-              <div className='card-content'>
+              <h4 className='divdash7'>Personal informations</h4>
+              <div className='divDash5-card-content'>
                 <span className='labelclass'>Full Name :</span>
                 <span className='infoclass'>{auth?.user?.firstname} {auth?.user?.lastname}</span>
 

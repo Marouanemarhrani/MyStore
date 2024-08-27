@@ -1,87 +1,88 @@
-/* AdminDashboard Styles */
 .adm {
-    background-color: #f1f3f5; /* Light grey background */
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 100%;
-    box-sizing: border-box; /* Include padding and border in the width */
-  }
-  
+  display: flex;
+  height: 100vh;
+  width: auto;
+}
+
+.adm1 {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column; 
+}
+
+.adm2{
+  border-right: 2px solid #ddd; 
+  padding-right: 15px;
+
+}
+
+
+
+.adm3 {
+  padding-left: 15px;
+  border-right: 2px solid #ddd;
+}
+
+
+@media (min-width: 768px) {
   .adm1 {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0; /* Ensure no additional margin */
+      flex-direction: row; 
   }
-  
-  .adm2 {
-    margin-bottom: 20px;
+  .adm2{
+      border-right: 2px solid #ddd; 
   }
-  
   .adm3 {
-    display: flex;
-    justify-content: flex-start; /* Align content to the left */
-    align-items: flex-start; /* Align items to the top */
+      padding-left: 15px;
   }
-  
-  .adm4 {
-    background-color: #fff;
-    border: 1px solid #ddd; /* Light grey border */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for the card */
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+@media (max-width: 767px) {
+  .adm2{
+      border-right: none;
+      padding-bottom: 15px;
   }
-  
-  .adm4 h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333; /* Dark grey text color */
+  .adm3 {
+      padding-left: 0;
+      border-right: none;
   }
-  
-  /* Adjust the spacing of buttons in the AdminMenu */
-  .adminmenu .list-group-item {
-    margin-bottom: 10px;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .adm {
-      padding: 15px;
-    }
-  
-    .adm1 {
-      flex-direction: column;
-    }
-  
-    .adm2 {
-      width: 100%;
-    }
-  
-    .adm3 {
-      width: 100%;
-    }
-  
-    .adm4 {
-      width: 100%;
-      padding: 15px;
-    }
-  
-    .adm4 h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .adm {
-      padding: 10px;
-    }
-  
-    .adm4 h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-  }
-  
+}
+
+.adm4-card  {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; 
+  width: 100% !important;
+  height: 100%;
+}
+
+.adm5-card-content {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px; 
+  align-items: center; 
+}
+
+.adm-labelclass {
+
+  font-weight: 500;
+  text-align: right; 
+  padding-right: 10px;
+}
+
+.adm-infoclass {
+  font-weight: 400;
+  color: #333;
+  text-align: left; 
+}
+
+.adm-h4{
+  background-color: #efefef;
+  border-radius: 5px 5px 0px 0px;
+  padding: 10px;
+  text-align: center; 
+  font-weight: 600;
+}
