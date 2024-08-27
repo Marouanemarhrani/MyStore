@@ -4,6 +4,7 @@ import UserMenu from '../../components/Layout/UserMenu';
 import { useAuth } from '../../context/auth';
 import  toast from 'react-hot-toast';
 import axios from 'axios';
+import "./Profile.css"
 
 const Profile = () => {
     //context
@@ -55,79 +56,79 @@ const Profile = () => {
     };
   return (
     <LayoutNF title={"Profile"}>
-        <div className='container-fluid m-3 p-3'>
-            <div className='row'>
-                <div className='col-md-3'>
+        <div className='profuser container-fluid'>
+            <div className='profuser1 row'>
+                <div className='profuser2 col-md-3'>
                     <UserMenu />
                 </div>
-                <div className='col-md-9'>
-                    <div className='form-container'>
+                <div className='profuser3 col-md-9'>
+                    <div className='profuser4 form-container'>
                             <form onSubmit={handleSubmit} >
-                            <h4 className='title'>Update your profile</h4>
-                            <div className="mb-3">
+                            <h4 className='profuser5 title'>Profile</h4>
+                            <div className="profuser6 mb-3">
                                 <input 
                                     type="text" 
                                     value={firstname}
                                     onChange={(e) =>setFirstname(e.target.value)}
-                                    className="form-control" 
+                                    className="profuser7 form-control" 
                                     id="exampleInputEmail1"
                                     placeholder="Firstname"
                                     autoFocus
                                 />
                             </div>
-                            <div className="mb-3">
+                            <div className="profuser8 mb-3">
                                 <input 
                                     type="text" 
                                     value={lastname}
                                     onChange={(e) =>setLastname(e.target.value)}
-                                    className="form-control" 
+                                    className="profuser9 form-control" 
                                     id="exampleInputEmail1"
                                     placeholder="Lastname"
                                     autoFocus
                                 />
                             </div>
-                        <div className="mb-3">
+                        <div className="profuser10 mb-3">
                             <input 
                                 type="email" 
                                 value={email}
                                 onChange={(e) =>setEmail(e.target.value)}
-                                className="form-control" 
+                                className="profuser11 form-control" 
                                 id="exampleInputEmail1"
                                 placeholder="Email"
                                 disabled
                             />
                         </div>
-                        <div className="mb-3">
+                        <div className="profuser12 mb-3">
                             <input 
                             type="password" 
                             value={password}
                             onChange={(e) =>setPassword(e.target.value)}
-                            className="form-control" 
+                            className="profuser13 form-control" 
                             id="exampleInputEmail1"
                             placeholder="Password"
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="profuser14 mb-3">
                         <input 
                             type="text" 
                             value={phone}
                             onChange={(e) =>setPhone(e.target.value)}
-                            className="form-control" 
+                            className="profuser15 form-control" 
                             id="exampleInputEmail1"
                             placeholder="Phone number"
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="profuser16 mb-3">
                         <input 
                             type="text" 
                             value={address}
                             onChange={(e) =>setAddress(e.target.value)}
-                            className="form-control" 
+                            className="profuser17 form-control" 
                             id="exampleInputEmail1"
                             placeholder="Address"
                         />
                     </div>
-                        <button type="submit" className="btn btn-primary">
+                        <button type="submit" className="profuser18 btn btn">
                                 Update
                         </button>
                         </form>
