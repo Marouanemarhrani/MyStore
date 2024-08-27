@@ -1,7 +1,8 @@
 import React, {useState, useEffect } from 'react';
-import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import LayoutNF from '../components/Layout/LayoutNF';
+import "./ServiceDetails.css";
 
 const ServiceDetails = () => {
   const params = useParams();
@@ -22,22 +23,24 @@ const ServiceDetails = () => {
       console.log(error);
     }
   };
-  
+
   return (
-    <Layout>
-      <div className='row container mt-2'>
-        <div className='col-md-6'>
-          <h1 className='text-center'>Service Details</h1>
-          <h6>Name : {service.name}</h6>
-          <h6>Description : {service.description}</h6>
-          <h6>Price : {service.price}</h6>
-          <h6>Duration : {service?.duration}</h6>
-          <button className='btn btn-secondary ms-1'>Book an appointement</button>
+    <LayoutNF>
+      <div className='services-body'>
+      <div className='divsrvsdetails row container mt-2'>
+          <h1 className='div2-h1 text-center'>Service Details</h1>
+        <div className='div-srvs1 col-md-6'>
+
+          <h6 className='div3-h6'>Name : {service.name}</h6>
+          <h6 className='div3-h6'>Description : {service.description}</h6>
+          <h6 className='div3-h6'>Price : {service.price}</h6>
+          <h6 className='div3-h6'>Duration : {service?.duration}</h6>
+          <button className='book-btn-secondary ms-1'>Book an appointement</button>
         </div>
       </div>
-      
-    </Layout>
+      </div>
+    </LayoutNF>
   )
 };
 
-export default ServiceDetails;
+export default ServiceDetails; 
