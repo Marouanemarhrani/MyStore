@@ -15,10 +15,15 @@ const CartPage = () => {
     const [clientToken, setClientToken] = useState("");
     const [instance, setInstance] = useState("");
     const [loading, setLoading] = useState(false);
-    const [newAddress, setNewAddress] = useState(auth?.user?.address || "");
+    const[address, setAddress] = useState("");
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
+    //get user data
+    useEffect(() => {
+        const {address} = auth?.user;
+        setAddress(address);
+    }, [auth?.user])
     //total price
     const totalPrice = () => {
         try {
@@ -28,7 +33,7 @@ const CartPage = () => {
             });
             return total.toLocaleString("en-US", {
                 style:"currency",
-                currency: "MAD",
+                currency: "EUR",
             });
         } catch (error) {
             console.log(error);
@@ -49,7 +54,29 @@ const CartPage = () => {
            toast.error("There was an error in removing the item") 
         }
     };
-
+    //Update address
+    const handleSaveAddress = async(e) => {
+        e.preventDefault();
+        try {
+            const {data} = await axios.put(
+            `${process.env.REACT_APP_API}/api/users/update-address`,{
+                address,
+            });
+            if(data?.error){
+                toast.error(data?.error)
+            }else{
+                setAuth({...auth, user:data?.updatedAddress});
+                let ls = localStorage.getItem("auth");
+                ls = JSON.parse(ls);
+                ls.user = data.updatedAddress;
+                localStorage.setItem("auth", JSON.stringify(ls));
+                toast.success("Address Updated successfully");
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error('Oops.. Something went wrong, Try again');
+        }
+    };
     //get payment gateway Token
     const getToken = async () => {
         try {
@@ -89,31 +116,6 @@ const CartPage = () => {
         }
     };
 
-    // Save new address
-    const handleSaveAddress = async () => {
-        try {
-            const { data } = await axios.put(
-                `${process.env.REACT_APP_API}/api/users/update-address`,
-                { address: newAddress },
-                {
-                    headers: {
-                        Authorization: `Bearer ${auth?.token}`,
-                    },
-                }
-            );
-            setAuth({ ...auth, user: data?.updatedUser });
-            let ls = localStorage.getItem("auth");
-            ls = JSON.parse(ls);
-            ls.user = data.updatedUser;
-            localStorage.setItem("auth", JSON.stringify(ls));
-            setShowModal(false);
-            toast.success("Address updated successfully.");
-        } catch (error) {
-            console.log(error);
-            toast.error("There was an error updating the address.");
-        }
-    };
-
     return (
         <LayoutNF title={"Your cart | SMARTFIX"}>
             <div className="div-cart container">
@@ -147,7 +149,7 @@ const CartPage = () => {
                                 <div className="div-cart10 col-md-8">
                                     <h2 className="cart-h2">{p.name}</h2>
                                     <p className="cart-p">{p.description.substring(0, 30)}</p>
-                                    <p className="cart-p">Price: {p.price} MAD</p>
+                                    <p className="cart-p">Price: {p.price} €</p>
                                     <button 
                                         className="btn-remove btn-danger"
                                         onClick={() => removeCartItem(p._id)}
@@ -228,8 +230,6 @@ const CartPage = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Address Edit Modal */}
             <Modal
                 isOpen={showModal}
                 onRequestClose={() => setShowModal(false)}
@@ -238,14 +238,19 @@ const CartPage = () => {
                 overlayClassName="Overlay"
             >
                 <h2>Edit Address</h2>
-                <input 
-                    type="text" 
-                    value={newAddress} 
-                    onChange={(e) => setNewAddress(e.target.value)} 
-                    className="form-control mb-3"
-                />
-                <button className="btn-edit-address btn-primary" onClick={handleSaveAddress}>Save Address</button>
-                <button className="btn-edit-address btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
+                <form onSubmit={handleSaveAddress} >
+                    <input 
+                        type="text" 
+                        value={address}
+                        onChange={(e) =>setAddress(e.target.value)}
+                        id="exampleInputEmail1"
+                        placeholder="Address"
+                        className="form-control mb-3"
+                        autofocus
+                    />
+                    <button type="submit" className="btn-edit-address btn-primary">Save Address</button>
+                    <button className="btn-edit-address btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
+                </form>
             </Modal>
         </LayoutNF>
     );
