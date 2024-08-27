@@ -30,7 +30,7 @@ import TechnicianDashboard from "./pages/technician/TechnicianDashboard";
 import TechnicianRoute from "./components/Routes/TechnicianRoute";
 import CreateAppointment from "./pages/technician/CreateAppointment";
 import Appointments from "./pages/technician/Appointments";
-import UpdateAppointment from "./pages/technician/UpdateAppoitment";
+import UpdateAppointment from "./pages/technician/UpdateAppointment";
 import Help from "./pages/Help";
 
 function App() {

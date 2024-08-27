@@ -1,28 +1,40 @@
 import React from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import TechnicianMenu from '../../components/Layout/TechnicianMenu';
 import { useAuth } from '../../context/auth';
+import "./TechnicianDashboard.css"; // Create and link your CSS file
 
 const TechnicianDashboard = () => {
   const [auth] = useAuth();
 
   return (
-    <Layout>
-      <div className='container-fluid m-3 p-3'>
-        <div className='row'>
-          <div className='col-md-3'>
+    <LayoutNF title={"Technician Dashboard"}>
+      <div className='techDashboard container-fluid m-3 p-3'>
+        <div className='techDashRow row'>
+          <div className='techMenu col-md-3'>
             <TechnicianMenu />
           </div>
-          <div className='col-md-9'>
-            <div className='card w-75 p-3'>
-              <h3>Technician Name: {auth?.user?.firstname}</h3>
-              <h3>Technician Email: {auth?.user?.email}</h3>
-              <h3>Technician Phone: {auth?.user?.phone}</h3>
+          <div className='techDashContent col-md-9'>
+            <div className='techCard w-75 p-3'>
+              <h4 className='techInfoTitle'>Technician Information</h4>
+              <div className='techCardContent'>
+                <span className='techLabel'>Full Name :</span>
+                <span className='techInfo'>{auth?.user?.firstname} {auth?.user?.lastname}</span>
+
+                <span className='techLabel'>Email :</span>
+                <span className='techInfo'>{auth?.user?.email}</span>
+
+                <span className='techLabel'>Phone :</span>
+                <span className='techInfo'>{auth?.user?.phone}</span>
+
+                <span className='techLabel'>Address :</span>
+                <span className='techInfo'>{auth?.user?.address}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

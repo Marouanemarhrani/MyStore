@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import TechnicianMenu from '../../components/Layout/TechnicianMenu';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "./CreateAppointment.css";
 
 const CreateAppointment = () => {
     const navigate =useNavigate();
@@ -36,54 +37,54 @@ const CreateAppointment = () => {
         };
     };
   return (
-    <Layout title={"Dashboard - Create Product"}>
-        <div className='container-fluid m-3 p-3'>
-            <div className='row'>
-                <div className='col-md-3'>
+    <LayoutNF title={"Dashboard - Create Appointment"}>
+        <div className='capp container-fluid '>
+            <div className='capp1 row'>
+                <div className='capp2 col-md-3'>
                     <TechnicianMenu />
                 </div>
-                <div className='col-md-9'>
+                <div className='capp3 col-md-9'>
                     <h1>Create Appointment</h1>
-                    <div className='m-1 w-75'>
-                         <div className='mb-3'>
+                    <div className='capp4 m-1 w-75'>
+                         <div className='capp5 mb-3'>
                             <input 
                                 type="text"
                                 value ={client}
                                 placeholder="write a client name"
-                                className="form-control"
+                                className="capp6 form-control"
                                 onChange={(e) => setClient(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='capp7 mb-3'>
                             <input 
                                 type="date"
                                 value={date}
                                 placeholder="Select a date"
-                                className="form-control"
+                                className="capp8 form-control"
                                 onChange={(e) => setDate(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='capp9 mb-3'>
                             <input 
                                 type="text"
                                 value ={time}
                                 placeholder="write a time"
-                                className="form-control"
+                                className="capp10 form-control"
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                          </div>
-                         <div className='mb-3'>
+                         <div className='capp11 mb-3'>
                             <input 
                                 type="text"
                                 value ={description}
                                 placeholder="write a description"
-                                className="form-control"
+                                className="capp11 form-control"
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                          </div>
-                        <div className='mb-3'>
+                        <div className='capp12 mb-3'>
                             <button 
-                                className='btn btn-primary'
+                                className='capp13 btn btn'
                                 onClick={handleCreate}
                             >
                                 Create Appointments
@@ -93,7 +94,7 @@ const CreateAppointment = () => {
                 </div>
             </div>
         </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 
