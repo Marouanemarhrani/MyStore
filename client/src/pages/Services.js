@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import useService from '../hooks/useService';
 import { Link } from 'react-router-dom';
 import "./Services.css";
 import LayoutNF from '../components/Layout/LayoutNF';
 
-const Services = () => {
+const ServicesAdmin = () => {
     const services = useService();
   return (
     <LayoutNF title={"All services"}>
@@ -14,6 +14,13 @@ const Services = () => {
         <div className='divallsrvs2 row'>
             {services.map((c) => (
                 <div className='divallsrvs3 col-md-6 mt-5 mb-3 gx-3 gy-3' key={c._id}>
+                  <div className="div-srvs2">
+                    <img
+                      src={`${process.env.REACT_APP_API}/api/services/service/photoURL/${c._id}`}
+                      className="srvcphoto"
+                      alt={c.name}
+                    />
+                  </div>
                   <Link to={`/service/${c.slug}`} className='services-btn btn-primary'>
                     {c.name}
                   </Link>
@@ -26,4 +33,4 @@ const Services = () => {
   )
 };
 
-export default Services;
+export default ServicesAdmin;

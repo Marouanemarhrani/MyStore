@@ -32,6 +32,9 @@ import CreateAppointment from "./pages/technician/CreateAppointment";
 import Appointments from "./pages/technician/Appointments";
 import UpdateAppointment from "./pages/technician/UpdateAppointment";
 import Help from "./pages/Help";
+import CreateService from "./pages/admin/CreateService";
+import ServicesAdmin from "./pages/admin/Servicesadmin";
+import UpdateService from "./pages/admin/UpdateService";
 
 function App() {
   return (
@@ -56,6 +59,9 @@ function App() {
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/product/:slug" element={<UpdateProduct />} />
           <Route path="admin/products" element={<Products />} />
+          <Route path="admin/create-service" element={<CreateService />} />
+          <Route path="admin/service/:slug" element={<UpdateService />} />
+          <Route path="admin/services" element={<ServicesAdmin />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/orders" element={<AdminOrders />} />
         </Route>
@@ -63,7 +69,7 @@ function App() {
         <Route path="/dashboard" element={<TechnicianRoute />}>
           <Route path="technician" element={<TechnicianDashboard />} />
           <Route path="technician/create-appointment" element={<CreateAppointment />} />
-          <Route path="technician/appointment/:slug" element={<UpdateAppointment />} />
+          <Route path="technician/appointment/:lastname" element={<UpdateAppointment />} />
           <Route path="technician/appointments" element={<Appointments />} />
         </Route>
 

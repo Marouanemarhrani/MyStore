@@ -10,7 +10,10 @@ const UpdateAppointment = () => {
     const navigate =useNavigate();
     const params = useParams();
     const [id, setId] = useState("");
-    const [client, setClient] = useState([]);
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [description, setDescription] = useState("");
@@ -20,11 +23,17 @@ const UpdateAppointment = () => {
     const getSingleAppointment = async () => {
         try {
             const {data} = await axios.get(
-                `${process.env.REACT_APP_API}/api/appointments/single-appointment/${params.slug}`
+                `${process.env.REACT_APP_API}/api/appointments/single-appointment/${params.lastname}`
             );
+            const formattedDate = new Date(data.appointment.date).toISOString().split('T')[0];
+            
             setId(data.appointment._id);
-            setClient(data.appointment.client);
-            setDate(data.appointment.date);
+            setFirstname(data.appointment.firstname);
+            setLastname(data.appointment.lastname);
+            setEmail(data.appointment.email);
+            setPhone(data.appointment.phone);
+            
+            setDate(formattedDate);
             setTime(data.appointment.time);
             setDescription(data.appointment.description);
         } catch (error) {
@@ -45,7 +54,10 @@ const UpdateAppointment = () => {
             
             const {data} = axios.put(
                 `${process.env.REACT_APP_API}/api/appointments/update-appointment/${id}`,{
-                    client, 
+                    firstname,
+                    lastname,
+                    email,
+                    phone, 
                     date, 
                     time, 
                     description,
@@ -85,15 +97,42 @@ const UpdateAppointment = () => {
                     <TechnicianMenu />
                 </div>
                 <div className='upapp3 col-md-9'>
-                    <h1>Update Technician</h1>
+                    <h1>Update Appointment</h1>
                     <div className='upapp4 m-1 w-75'>
                          <div className='upapp5 mb-3'>
                             <input 
                                 type="text"
-                                value ={client}
-                                placeholder="write a client"
+                                value ={firstname}
+                                placeholder="write a firstname"
                                 className="upapp6 form-control"
-                                onChange={(e) => setClient(e.target.value)}
+                                onChange={(e) => setFirstname(e.target.value)}
+                            />
+                         </div>
+                         <div className='upapp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={lastname}
+                                placeholder="write a lastname"
+                                className="upapp6 form-control"
+                                onChange={(e) => setLastname(e.target.value)}
+                            />
+                         </div>
+                         <div className='upapp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={email}
+                                placeholder="write a email"
+                                className="upapp6 form-control"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                         </div>
+                         <div className='upapp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={phone}
+                                placeholder="write a phone"
+                                className="upapp6 form-control"
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                          </div>
                          <div className='upapp7 mb-3'>
@@ -115,7 +154,7 @@ const UpdateAppointment = () => {
                             />
                          </div>
                          <div className='mb-3'>
-                            <input 
+                            <textarea 
                                 type="text"
                                 value ={description}
                                 placeholder="write a description"

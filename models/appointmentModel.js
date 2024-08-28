@@ -1,21 +1,27 @@
 import mongoose from 'mongoose';
 
 const appointmentSchema = new mongoose.Schema({
-    client: {
-        type:String,
+    firstname:{
+        type: String,
         required: true,
     },
-    slug: {
+    lastname:{
         type: String,
-        lowercase: true,
+        required: true,
+    },
+    email:{
+        type: String,
+        required: true,
+    },
+    phone:{
+        type: Number,
+        required: true,
     },
     date: {
         type: Date,
-        required: true,
     },
     time: {
         type: String,
-        required: true,
     },
     description: {
         type: String,

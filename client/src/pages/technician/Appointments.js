@@ -38,13 +38,13 @@ const Appointments = () => {
                     {appointments?.map((p) => (
                         <Link 
                             key={p._id}
-                            to={`/dashboard/technician/appointment/${p.slug}`}
+                            to={`/dashboard/technician/appointment/${p.lastname}`}
                             className='app6 appointment-link'
                         >
                             <div className="app7 card m-2" style={{width: '18rem'}}>
                                 
                                 <div className="app8 card-body">
-                                    <h5 className="app9 card-title">{p.client}</h5>
+                                    <h5 className="app9 card-title">{p.firstname} {p.lastname}</h5>
                                     <p className="app10 card-text">{p.date}</p>
                                     <p className="app11 card-text">{p.time}</p>
                                 </div>

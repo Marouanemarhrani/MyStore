@@ -12,10 +12,10 @@ import {
 const router = express.Router();
 
 // Create appointment
-router.post('/create-appointment', requireSignIn, isTechnician, createAppointmentController);
+router.post('/create-appointment', createAppointmentController);
 
 // Update appointment
-router.put('/update-appointment/:id', requireSignIn, isTechnician, updateAppointmentController);
+router.put('/update-appointment/:id', requireSignIn, updateAppointmentController);
 
 // Get all appointments 
 router.get('/appointments', requireSignIn, isTechnician, getAppointmentsController);
@@ -27,6 +27,6 @@ router.get('/appointment/:id', requireSignIn, isAdmin, getAppointmentController)
 router.delete('/appointment/:id', requireSignIn, isTechnician, deleteAppointmentController);
 
 //single appointments
-router.get("/single-appointment/:slug", requireSignIn, isTechnician, singleAppointmentController);
+router.get("/single-appointment/:lastname", requireSignIn, isTechnician, singleAppointmentController);
 
 export default router;

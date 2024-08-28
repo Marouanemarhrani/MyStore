@@ -8,19 +8,25 @@ import "./CreateAppointment.css";
 
 const CreateAppointment = () => {
     const navigate =useNavigate();
-    const [client, setClient] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
     const [date, setDate] = useState("");
     const [time, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
     
-    //create product function
+    //create appointment function
     const handleCreate = async (e) => {
         e.preventDefault()
         try {
             const {data} = axios.post(
                 `${process.env.REACT_APP_API}/api/appointments/create-appointment`, {
-                    client,
+                    firstname,
+                    lastname,
+                    email,
+                    phone,
                     date,
                     time,
                     description,
@@ -33,7 +39,7 @@ const CreateAppointment = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error('Somthing went wrong in create');
+            toast.error('Somthing went wrong in create appointment');
         };
     };
   return (
@@ -49,10 +55,37 @@ const CreateAppointment = () => {
                          <div className='capp5 mb-3'>
                             <input 
                                 type="text"
-                                value ={client}
-                                placeholder="write a client name"
+                                value ={firstname}
+                                placeholder="write a firstname "
                                 className="capp6 form-control"
-                                onChange={(e) => setClient(e.target.value)}
+                                onChange={(e) => setFirstname(e.target.value)}
+                            />
+                         </div>
+                         <div className='capp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={lastname}
+                                placeholder="write a lastname"
+                                className="capp6 form-control"
+                                onChange={(e) => setLastname(e.target.value)}
+                            />
+                         </div>
+                         <div className='capp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={email}
+                                placeholder="write a email"
+                                className="capp6 form-control"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                         </div>
+                         <div className='capp5 mb-3'>
+                            <input 
+                                type="text"
+                                value ={phone}
+                                placeholder="write a phone"
+                                className="capp6 form-control"
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                          </div>
                          <div className='capp7 mb-3'>
@@ -74,7 +107,7 @@ const CreateAppointment = () => {
                             />
                          </div>
                          <div className='capp11 mb-3'>
-                            <input 
+                            <textarea 
                                 type="text"
                                 value ={description}
                                 placeholder="write a description"

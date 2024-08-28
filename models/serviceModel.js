@@ -28,6 +28,10 @@ const serviceSchema = new mongoose.Schema({
         enum: ['active', 'inactive'], // Enum to control service status
         default: 'active',
     },
+    photo: {
+        data: Buffer,
+        contentType: String
+    },
 }, { timestamps: true });
 
 export default mongoose.model('Service', serviceSchema);

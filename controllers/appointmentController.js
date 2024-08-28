@@ -1,17 +1,20 @@
 import appointmentModel from '../models/appointmentModel.js';
 import slugify from 'slugify';
+import userModel from '../models/userModel.js';
 
 // Create appointment
 export const createAppointmentController = async (req, res) => {
     try {
-        const { client, date, time, description } = req.body;
+        const { firstname, lastname, email, date, time, phone, description } = req.body;
 
         const appointment = new appointmentModel({
-            client,
+            firstname,
+            lastname, 
             date,
             time,
+            email,
+            phone,
             description,
-            slug: slugify(client),
         });
 
         await appointment.save();
@@ -33,11 +36,11 @@ export const createAppointmentController = async (req, res) => {
 // Update appointment
 export const updateAppointmentController = async (req, res) => {
     try {
-      const { client, date, time, description } = req.body;
+      const { firstname, lastname, email, date, time, phone, description } = req.body;
       const { id } = req.params;
       const appointment = await appointmentModel.findByIdAndUpdate(
         id,
-        { client, date, time, description, slug: slugify(client) },
+        { firstname, lastname, email, date, time, phone, description },
         { new: true }
       );
       res.status(200).send({
@@ -78,7 +81,7 @@ export const getAppointmentsController = async (req, res) => {
 // single appointment
 export const singleAppointmentController = async (req, res) => {
     try {
-      const appointment = await appointmentModel.findOne({ slug: req.params.slug });
+      const appointment = await appointmentModel.findOne({ lastname: req.params.lastname });
       res.status(200).send({
         success: true,
         message: "Get SIngle Appoitnment SUccessfully",
