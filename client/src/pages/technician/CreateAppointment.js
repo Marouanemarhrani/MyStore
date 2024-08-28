@@ -72,7 +72,7 @@ const CreateAppointment = () => {
                          </div>
                          <div className='capp5 mb-3'>
                             <input 
-                                type="text"
+                                type="email"
                                 value ={email}
                                 placeholder="write a email"
                                 className="capp6 form-control"

@@ -130,7 +130,7 @@ const UpdateAppointment = () => {
                          </div>
                          <div className='upapp5 mb-3'>
                             <input 
-                                type="text"
+                                type="email"
                                 value ={email}
                                 placeholder="write a email"
                                 className="upapp6 form-control"
