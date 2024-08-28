@@ -20,12 +20,6 @@ const TechnicianMenu = () => {
                 >
                     Appointments
                 </NavLink>
-                <NavLink 
-                    to="/dashboard/technician/orders" 
-                    className="tecmenu4 list-group-item list-group-item-action"
-                >
-                    Orders
-                </NavLink>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../../components/Layout/Layout';
+import LayoutNF from '../../components/Layout/LayoutNF';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ const Appointments = () => {
         getAllAppointments();
     }, []);
   return (
-    <Layout>
+    <LayoutNF>
         <div className='app container-fluid '>
         <div className='app1 row'>
             <div className='app2 col-md-3'>
@@ -38,7 +38,7 @@ const Appointments = () => {
                     {appointments?.map((p) => (
                         <Link 
                             key={p._id}
-                            to={`/dashboard/technician/appointment/${p.lastname}`}
+                            to={`/dashboard/technician/appointment/${p.lastname}/${p.firstname}`}
                             className='app6 appointment-link'
                         >
                             <div className="app7 card m-2" style={{width: '18rem'}}>
@@ -47,6 +47,7 @@ const Appointments = () => {
                                     <h5 className="app9 card-title">{p.firstname} {p.lastname}</h5>
                                     <p className="app10 card-text">{p.date}</p>
                                     <p className="app11 card-text">{p.time}</p>
+                                    <p className="app11 card-text">{p.status}</p>
                                 </div>
                             </div>
                         </Link>    
@@ -55,7 +56,7 @@ const Appointments = () => {
             </div>
         </div>
       </div>
-    </Layout>
+    </LayoutNF>
   );
 };
 

@@ -36,11 +36,11 @@ export const createAppointmentController = async (req, res) => {
 // Update appointment
 export const updateAppointmentController = async (req, res) => {
     try {
-      const { firstname, lastname, email, date, time, phone, description } = req.body;
+      const { firstname, lastname, email, date, time, phone, description, status } = req.body;
       const { id } = req.params;
       const appointment = await appointmentModel.findByIdAndUpdate(
         id,
-        { firstname, lastname, email, date, time, phone, description },
+        { firstname, lastname, email, date, time, phone, description, status },
         { new: true }
       );
       res.status(200).send({
@@ -81,7 +81,7 @@ export const getAppointmentsController = async (req, res) => {
 // single appointment
 export const singleAppointmentController = async (req, res) => {
     try {
-      const appointment = await appointmentModel.findOne({ lastname: req.params.lastname });
+      const appointment = await appointmentModel.findOne({ lastname: req.params.lastname, firstname: req.params.firstname });
       res.status(200).send({
         success: true,
         message: "Get SIngle Appoitnment SUccessfully",

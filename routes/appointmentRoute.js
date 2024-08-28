@@ -27,6 +27,6 @@ router.get('/appointment/:id', requireSignIn, isAdmin, getAppointmentController)
 router.delete('/appointment/:id', requireSignIn, isTechnician, deleteAppointmentController);
 
 //single appointments
-router.get("/single-appointment/:lastname", requireSignIn, isTechnician, singleAppointmentController);
+router.get("/single-appointment/:lastname/:firstname", requireSignIn, isTechnician, singleAppointmentController);
 
 export default router;

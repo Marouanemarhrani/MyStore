@@ -69,7 +69,7 @@ function App() {
         <Route path="/dashboard" element={<TechnicianRoute />}>
           <Route path="technician" element={<TechnicianDashboard />} />
           <Route path="technician/create-appointment" element={<CreateAppointment />} />
-          <Route path="technician/appointment/:lastname" element={<UpdateAppointment />} />
+          <Route path="technician/appointment/:lastname/:firstname" element={<UpdateAppointment />} />
           <Route path="technician/appointments" element={<Appointments />} />
         </Route>
 
