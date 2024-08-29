@@ -1,0 +1,137 @@
+/* Main container */
+.ctgries.container-fluid {
+  padding: 20px;
+}
+
+/* AdminMenu and Categories List Layout */
+.ctgries1.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.ctgries2 {
+  margin-bottom: 20px;
+}
+
+.ctgries3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.ctgries4 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Categories list container */
+.ctgries5 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Individual category card */
+.ctgries6.category-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ctgries7.card {
+  width: 300px; /* Fixed width */
+  height: 400px; /* Fixed height */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px; /* Space between cards */
+}
+
+.ctgries7.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Category image */
+.ctgries8.card-img-top {
+  width: 100%;
+  height: 220px; /* Fixed height for images */
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  border-bottom: 1px solid #ddd;
+}
+
+/* Card body */
+.ctgries9.card-body {
+  padding: 15px;
+  height: 180px; /* Fixed height for the body */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ctgries10.card-title {
+  font-size: 18px;
+  margin-bottom: 5px; /* Reduced margin for closer spacing */
+  color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .ctgries.container-fluid {
+      padding: 15px;
+  }
+
+  .ctgries4 {
+      font-size: 24px;
+  }
+
+  .ctgries7.card {
+      width: 100%;
+      max-width: 300px; /* Ensures consistency on smaller screens */
+      height: 350px; /* Adjust height for smaller screens */
+  }
+
+  .ctgries8.card-img-top {
+      height: 180px; /* Adjust image height */
+  }
+
+  .ctgries9.card-body {
+      height: 170px; /* Adjust body height */
+  }
+
+  .ctgries10.card-title {
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctgries.container-fluid {
+      padding: 10px;
+  }
+
+  .ctgries4 {
+      font-size: 20px;
+  }
+
+  .ctgries7.card {
+      width: 100%;
+      max-width: 300px;
+      height: 320px; /* Further adjust height for smaller screens */
+  }
+
+  .ctgries8.card-img-top {
+      height: 160px; /* Further adjust image height */
+  }
+
+  .ctgries9.card-body {
+      height: 160px; /* Further adjust body height */
+  }
+
+  .ctgries10.card-title {
+      font-size: 14px;
+  }
+}

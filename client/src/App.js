@@ -35,6 +35,8 @@ import Help from "./pages/Help";
 import CreateService from "./pages/admin/CreateService";
 import ServicesAdmin from "./pages/admin/Servicesadmin";
 import UpdateService from "./pages/admin/UpdateService";
+import CategoriesAdm from "./pages/admin/CategoriesAdm";
+import UpdateCategory from "./pages/admin/UpdateCategory";
 
 function App() {
   return (
@@ -56,6 +58,8 @@ function App() {
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
+          <Route path="admin/category/:slug" element={<UpdateCategory />} />
+          <Route path="admin/categories" element={<CategoriesAdm/>} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/product/:slug" element={<UpdateProduct />} />
           <Route path="admin/products" element={<Products />} />

@@ -3,89 +3,33 @@ import LayoutNF from '../../components/Layout/LayoutNF';
 import AdminMenu from '../../components/Layout/AdminMenu';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import CategoryForm from '../../components/Form/CategoryForm';
-import {Modal} from 'antd';
+import { useNavigate } from 'react-router-dom';
 import './CreateCategory.css';
 
 const CreateCategory = () => {
-    const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
     const [name, setName] = useState("");
-    const [visible, setVisible] = useState(false);
-    const [selected, setSelected] = useState(null);
-    const [updatedName, setUpdatedName] = useState("");
+    const [photo, setPhoto] = useState("");
     //Handle Form
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
+            const categoryData = new FormData();
+            categoryData.append("name", name);
+            categoryData.append("photo", photo);
             const {data} = await axios.post(
-                `${process.env.REACT_APP_API}/api/categories/create-category`,{
-                name,
-            });
+                `${process.env.REACT_APP_API}/api/categories/create-category`,
+                categoryData,
+            );
             if(data?.success){
-                toast.success(`${name} created`);
-                getAllCategory();
+                toast.success('Category created successfully');
+                navigate('/dashboard/admin/categories');
             }else{
-                toast.error(data.message);
+                toast.error('Error in creating');
             };
         } catch (error) {
             console.log(error);
             toast.error('something went wrong in input form');
-        };
-    };
-    //get all categories
-    const getAllCategory = async () => {
-        try {
-            const {data} = await axios.get(
-                `${process.env.REACT_APP_API}/api/categories/get-category`
-            );
-            if(data?.success){
-                setCategories(data?.category);
-            };
-        } catch (error) {
-            console.log(error);
-            toast.error('Something went wrong in getting category');
-        };
-    };
-    useEffect(() => {
-        getAllCategory();
-    },[]);
-
-    //update category
-    const handleUpdate = async(e) => {
-        e.preventDefault();
-        try {
-            const {data} = await axios.put(
-                `${process.env.REACT_APP_API}/api/categories/update-category/${selected._id}`, 
-                 {name:updatedName}
-            );
-            if(data.success){
-                toast.success(`${updatedName} is updated`);
-                setSelected(null);
-                setUpdatedName("");
-                setVisible(false);
-                getAllCategory();
-            }else{
-                toast.error(data.message);
-            }
-        } catch (error) {
-            toast.error('Something wrong in update category');
-        };
-    };
-
-    //delete category
-    const handleDelete = async(pId) => {
-        try {
-            const {data} = await axios.delete(
-                `${process.env.REACT_APP_API}/api/categories/delete-category/${pId}`,
-            );
-            if(data.success){
-                toast.success(`${name} is deleted`);
-                getAllCategory();
-            }else{
-                toast.error(data.message);
-            }
-        } catch (error) {
-            toast.error('Something wrong in update category');
         };
     };
   return (
@@ -98,55 +42,50 @@ const CreateCategory = () => {
             <div className='ccat3 col-md-9'>
                 <h1>Manage Categories</h1>
                 <div className='ccat4 p-3 w-50'>
-                    <CategoryForm
-                    handleSubmit={handleSubmit}
-                    value={name}
-                    setValue={setName}
-                    />
+                    <div className='ccat5 mb-3'>
+                        <input 
+                            type="text"
+                            value ={name}
+                            placeholder="write a name"
+                            className="ccat13 form-control"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    <div className='ccat6 mb-3'>
+                        <label 
+                            className='ccat7 btn btn-outline-secondary col-md-12'
+                        >
+                            {photo ? photo.name : "upload Photo" }
+                            <input 
+                                type="file" 
+                                name="photo"
+                                accept="image/*"
+                                onChange={(e) => setPhoto(e.target.files[0])} 
+                                hidden 
+                            />
+                        </label>
+                    </div>
+                    <div className='ccat8 mb-3'>
+                        {photo && (
+                            <div className='ccat9 text-center'> 
+                                <img 
+                                    src={URL.createObjectURL(photo)} 
+                                    alt="category-photo"
+                                    height={'200px'} 
+                                    className='ccat10 img-responsive'
+                                />
+                            </div>
+                        )}
+                    </div>
+                    <div className='ccat11 mb-3'>
+                        <button 
+                            className='ccat12 btn btn-primary'
+                            onClick={handleSubmit}
+                        >
+                            Create Category
+                        </button>
+                    </div> 
                 </div>
-                <div className='ccat5 w-75'>
-                    <table className="ccat6 table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {categories?.map((c) => (
-                            <>
-                                <tr>
-                                    <td key={c._id}>{c.name}</td>
-                                    <td>
-                                        <button 
-                                            className='ccat7 btn btn ms-2'
-                                            onClick={() => {
-                                                setVisible(true);  
-                                                setUpdatedName(c.name);
-                                                setSelected(c);
-                                            }}
-                                            >
-                                            Edit
-                                        </button>
-                                        <button 
-                                            className='ccat8 btn btn ms-2'
-                                            onClick={() => {handleDelete(c._id)}}>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            </>
-                        ))}
-                        </tbody>
-                    </table>
-                </div>
-                <Modal 
-                    onCancel={() => setVisible(false)} 
-                    footer={null}
-                    visible={visible}
-                >
-                    <CategoryForm value={updatedName} setValue={setUpdatedName} handleSubmit={handleUpdate} />
-                </Modal>
             </div>
         </div>
     </div>
