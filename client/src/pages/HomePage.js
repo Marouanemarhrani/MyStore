@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import Layout from '../components/Layout/Layout';
 import axios from 'axios';
 import { Checkbox, Radio } from 'antd';
@@ -18,6 +18,7 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const [bestseller, setBestseller] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
@@ -27,8 +28,40 @@ const HomePage = () => {
   const [cart, setCart] = useCart();
   const [showBanner, setShowBanner] = useState(true);
 
+  const carouselRef = useRef(null);
   const navigate = useNavigate();
 
+  const scrollRight = () => {
+    const carousel = document.querySelector('.home40.bestseller-carousel');
+    const scrollAmount = carousel.offsetWidth;
+  
+    // Scroll to the right by the width of the visible items
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  
+    // Check if we're at the end and reset to the start if necessary
+    if (carousel.scrollLeft + scrollAmount >= carousel.scrollWidth) {
+      setTimeout(() => {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      }, 300);  // Short delay to ensure smooth transition
+    }
+  };
+  
+  const scrollLeft = () => {
+    const carousel = document.querySelector('.home40.bestseller-carousel');
+    const scrollAmount = carousel.offsetWidth;
+  
+    // Scroll to the left by the width of the visible items
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  
+    // Check if we're at the start and reset to the end if necessary
+    if (carousel.scrollLeft <= 0) {
+      setTimeout(() => {
+        carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+      }, 300);  // Short delay to ensure smooth transition
+    }
+  };
+  
+    
   // Get all categories
   const getAllCategory = async () => {
     try {
@@ -43,7 +76,18 @@ const HomePage = () => {
       toast.error('Something went wrong in getting categories');
     };
   };
-
+  //get Best sellers
+  const getBestSeller = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/products/bestseller`
+      );
+      setBestseller(data?.bestsellers);
+    } catch (error) {
+      console.log(error);
+      toast.error('Error getting bestsellers');
+    }
+  };
   // Fetch all products
   const getAllProducts = async () => {
     try {
@@ -131,6 +175,7 @@ const HomePage = () => {
   useEffect(() => {
     getAllCategory();
     getAllProducts();
+    getBestSeller();
     getTotal();
   }, []);
 
@@ -224,6 +269,45 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+
+
+        <div className="home37 bestsellers-section">
+          <h5 className="home38 bestseller-title">Nos meilleures ventes</h5>
+          <p className="home39 bestseller-subtitle">Ça part aussi vite que des petits pains (au chocolat).</p>
+          <div className="home40 bestseller-carousel-wrapper">
+            <div className="home40 bestseller-carousel" ref={carouselRef}>
+              {bestseller.slice(0, 12).map((c, index) => (
+                <div key={c._id} className={`home41 bestseller-card ${index >= 4 ? 'hidden' : ''}`}>
+                  <img
+                    src={`${process.env.REACT_APP_API}/api/products/photoURL/${c._id}`}
+                    alt={c.name}
+                    className="home42 bestseller-image"
+                  />
+                  <div className="home43 bestseller-details">
+                    <h6 className="home44 bestseller-name">{c.name}</h6>
+                    <p className="home45 bestseller-price">À partir de {c.price} €</p>
+                    <p className="home46 bestseller-rating">★ {c.rating}/5</p>
+                    <button
+                      className="home47 btn btn-primary"
+                      onClick={() => navigate(`/product/${c.slug}`)}
+                    >
+                      Plus de détails
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="carousel-arrow carousel-arrow-left" onClick={scrollLeft}>
+              &#8249;
+            </div>
+            <div className="carousel-arrow carousel-arrow-right" onClick={scrollRight}>
+              &#8250;
+            </div>
+          </div>
+        </div>
+
+
+
         <div className='home11 col-md-8 offset-1'>
           <div className='home12'>
             <h5>All Products</h5>

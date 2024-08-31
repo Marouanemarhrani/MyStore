@@ -17,6 +17,7 @@ import {
     productListController,
     braintreeTokenController,
     brainTreePaymentController,
+    getBestsellerProducts,
 } from '../controllers/productController.js';
 
 const router = express.Router();
@@ -59,6 +60,9 @@ router.get('/product-count', productCountController);
 
 //product per page
 router.get('/product-list/:page', productListController);
+
+//bestseller
+router.get('/bestseller', getBestsellerProducts);
 
 //payments routes
 //token

@@ -337,6 +337,32 @@ export const productListController = async (req, res) => {
     }
 };
 
+export const getBestsellerProducts = async (req, res) => {
+    try {
+        const bestsellers = await productModel.find({ bestseller: true })
+            .populate("category");
+
+        // Check if any bestseller products are found
+        if (bestsellers.length === 0) {
+            return res.status(404).json({
+                message: 'No bestseller products found.'
+            });
+        }
+
+        // Return the list of bestseller products
+        res.status(200).send({
+            success: true,
+            bestsellers,
+        });
+    } catch (error) {
+        // Handle any errors
+        res.status(500).json({
+            message: 'Server error while fetching bestseller products',
+            error: error.message
+        });
+    }
+};
+
 //payment gatway api
 //token
 export const braintreeTokenController = async (req, res) => {

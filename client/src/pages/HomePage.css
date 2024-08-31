@@ -430,3 +430,219 @@
     width: 150px; /* Adjust width for smaller screens */
   }
 }
+
+/* Bestsellers Section */
+.home37.bestsellers-section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff; /* Pure white background for a clean look */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow for a more subtle effect */
+  max-width: 1200px; /* Limit the maximum width to improve readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home38.bestseller-title {
+  font-weight: 700;
+  font-size: 1.8rem; /* Slightly larger title for emphasis */
+  color: #333333; /* Darker color for better readability */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.home39.bestseller-subtitle {
+  font-weight: 400;
+  font-size: 1.1rem; /* Larger subtitle for better visibility */
+  color: #555555; /* Slightly darker subtitle for contrast */
+  margin-bottom: 25px; /* Increased margin for spacing */
+  text-align: center;
+}
+
+/* Carousel Wrapper */
+.home40.bestseller-carousel-wrapper {
+  position: relative;
+  overflow: hidden; /* Hide overflow */
+  width: 100%;
+}
+
+/* Bestsellers Carousel */
+.home40.bestseller-carousel {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling */
+  scroll-behavior: smooth; /* Ensures smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* Enhances scrolling on touch devices */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  padding-bottom: 10px; /* Adds some spacing at the bottom for the arrows */
+}
+
+.home40.bestseller-carousel::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari, and Opera */
+}
+
+/* Bestseller Card */
+.home41.bestseller-card {
+  background-color: #fafafa; /* Light gray for a softer background */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  padding: 15px;
+  min-width: 23%; /* Ensure that each card has a fixed minimum width */
+  box-sizing: border-box;
+  margin: 0 15px; /* Increased margin for better spacing */
+  flex-shrink: 0; /* Prevent shrinking of cards */
+}
+
+.home41.bestseller-card:hover {
+  transform: translateY(-10px); /* Higher translation for a stronger hover effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+/* Bestseller Image */
+.home42.bestseller-image {
+  width: 100%;
+  height: 160px; /* Slightly taller for better visibility */
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Bestseller Details */
+.home43.bestseller-details {
+  padding: 10px;
+}
+
+.home44.bestseller-name {
+  font-size: 1.1rem; /* Slightly larger font for product names */
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333333; /* Darker color for emphasis */
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.home45.bestseller-price {
+  font-size: 1rem; /* Larger font for price */
+  font-weight: 700;
+  color: #28a745; /* Green for positive connotation */
+  margin-bottom: 10px;
+}
+
+.home46.bestseller-rating {
+  font-size: 0.9rem;
+  color: #ffc107; /* Bright yellow for ratings */
+  margin-bottom: 15px;
+}
+
+.home47.btn {
+  width: 100%;
+  padding: 12px 0; /* Increased padding for a larger button */
+  font-size: 1rem; /* Larger button text */
+  font-weight: 600;
+  border-radius: 8px; /* More rounded corners */
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover */
+}
+
+.home47.btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+/* Custom Navigation Arrows */
+.carousel-arrow {
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  width: 40px; /* Slightly larger arrows for better usability */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px; /* Larger arrow icons */
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.carousel-arrow-left {
+  left: 15px; /* Increased distance from the edge */
+}
+
+.carousel-arrow-right {
+  right: 15px; /* Increased distance from the edge */
+}
+
+.carousel-arrow:hover {
+  background-color: #000000; /* Darker on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .home41.bestseller-card {
+    min-width: 45%; /* Show two items at a time on smaller screens */
+  }
+
+  .home42.bestseller-image {
+    height: 140px; /* Adjust image height for smaller screens */
+  }
+
+  .home47.btn {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home41.bestseller-card {
+    min-width: 90%; /* Show one item at a time on mobile devices */
+  }
+
+  .home42.bestseller-image {
+    height: 130px; /* Smaller image height for mobile devices */
+  }
+
+  .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .home38.bestseller-title {
+    font-size: 1.5rem; /* Smaller title for mobile devices */
+  }
+
+  .home39.bestseller-subtitle {
+    font-size: 1rem; /* Smaller subtitle for mobile devices */
+  }
+}
+
+@media (max-width: 480px) {
+  .home41.bestseller-card {
+    min-width: 100%; /* Full width for very small screens */
+  }
+
+  .home42.bestseller-image {
+    height: 120px; /* Smallest image height */
+  }
+
+  .home47.btn {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+
+
