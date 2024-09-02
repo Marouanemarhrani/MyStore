@@ -2,14 +2,13 @@ import express from "express";
 import formidable from 'express-formidable';
 import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
 import {
-  categoryControlller,
+  categoryController,
   createCategoryController,
-  deleteCategoryCOntroller,
+  deleteCategoryController,
   getCategoryPhotourlController,
   singleCategoryController,
   updateCategoryController,
 } from "./../controllers/categoryController.js";
-import { getServicePhotourlController } from "../controllers/serviceController.js";
 
 const router = express.Router();
 
@@ -33,7 +32,7 @@ router.put(
 );
 
 //getAll category
-router.get("/get-category", categoryControlller);
+router.get("/get-category", categoryController);
 
 //single category
 router.get("/single-category/:slug", singleCategoryController);
@@ -43,7 +42,7 @@ router.delete(
   "/delete-category/:id",
   requireSignIn,
   isAdmin,
-  deleteCategoryCOntroller
+  deleteCategoryController
 );
 
 //Get URL of photo by id

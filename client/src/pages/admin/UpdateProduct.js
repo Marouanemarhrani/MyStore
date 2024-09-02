@@ -13,11 +13,14 @@ const UpdateProduct = () => {
     const navigate =useNavigate();
     const params = useParams();
     const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
+    const [brand, setBrand] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [bestseller, setBestseller] = useState("");
     const [photo, setPhoto] = useState("");
     const [id, setId] = useState("");
 
@@ -33,6 +36,8 @@ const UpdateProduct = () => {
             setDescription(data.product.description);
             setPrice(data.product.price);
             setQuantity(data.product.quantity);
+            setBrand(data.product.brand._id);
+            setBestseller(data.product.bestseller);
             setCategory(data.product.category._id);
         } catch (error) {
             console.log(error);
@@ -58,8 +63,25 @@ const UpdateProduct = () => {
             toast.error('Something went wrong in getting category');
         };
     };
+
+    //get all brands
+    const getAllBrand = async () => {
+        try {
+            const {data} = await axios.get(
+                `${process.env.REACT_APP_API}/api/brands/get-brand`
+            );
+            if(data?.success){
+                setBrands(data?.brand);
+            };
+        } catch (error) {
+            console.log(error);
+            toast.error('Something went wrong in getting brand');
+        };
+    };
+
     useEffect(() => {
         getAllCategory();
+        getAllBrand();
     },[]);
 
     //update product function
@@ -72,6 +94,8 @@ const UpdateProduct = () => {
             productData.append("price", price);
             productData.append("quantity", quantity);
             photo && productData.append("photo", photo);
+            productData.append("brand", brand);
+            productData.append("bestseller", bestseller);
             productData.append("category", category);
             const {data} = axios.put(
                 `${process.env.REACT_APP_API}/api/products/product/${id}`,
@@ -125,6 +149,22 @@ const UpdateProduct = () => {
                             value={category}
                         >
                             {categories?.map((c) => (
+                                <Option key={c._id} value={c._id}>
+                                    {c.name}
+                                </Option>
+                            ))}
+                         </Select>
+                         <Select bordered={false}
+                            placeholder="Select a brand"
+                            size="large"
+                            showSearch
+                            className='updct5 form-select mb-3' 
+                            onChange={(value) => {
+                                setBrand(value);
+                            }}
+                            value={brand}
+                        >
+                            {brands?.map((c) => (
                                 <Option key={c._id} value={c._id}>
                                     {c.name}
                                 </Option>
@@ -200,6 +240,23 @@ const UpdateProduct = () => {
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                          </div>
+                         <div className='updct19 mb-3'>
+                            <Select
+                                bordered={false}
+                                placeholder="BestSeller??"
+                                size='large'
+                                showSearch
+                                className='updct5 form-select mb-3'
+                                onChange={(value) =>{
+                                    setBestseller(value);
+                                }}
+                                value={bestseller ? "yes" : "No"}
+                            >
+                                <Option value="0">No</Option>
+                                <Option value="1">Yes</Option>
+                            </Select>
+                        </div>
+
                         <div className='updct20 mb-3'>
                             <button 
                                 className='updct21 btn btn'

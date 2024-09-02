@@ -1,8 +1,8 @@
-import categoryModel from "../models/categoryModel.js";
+import brandModel from "../models/brandModel.js";
 import slugify from "slugify";
 import fs from 'fs';
 
-const validateCategoryFields = (fields, files) => {
+const validateBrandFields = (fields, files) => {
   const { name} = fields;
   const { photo } = files;
   if (!name) return { error: "Name is required" };
@@ -10,141 +10,141 @@ const validateCategoryFields = (fields, files) => {
   return null;
 };
 
-//create category
-export const createCategoryController = async (req, res) => {
+//create brand
+export const createBrandController = async (req, res) => {
   try {
-      const validationError = validateCategoryFields(req.fields, req.files);
+      const validationError = validateBrandFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
 
       const { name } = req.fields;
       const { photo } = req.files;
-      const existingCategory = await categoryModel.findOne({ name });
-        if (existingCategory) {
+      const existingBrand = await brandModel.findOne({ name });
+        if (existingBrand) {
           return res.status(200).send({
             success: false,
-            message: "Category Already Exisits",
+            message: "Brand Already Exisits",
           });
         }
-      const category = new categoryModel({ ...req.fields, slug: slugify(name) });
+      const brand = new brandModel({ ...req.fields, slug: slugify(name) });
 
       if (photo) {
-          category.photo.data = fs.readFileSync(photo.path);
-          category.photo.contentType = photo.type;
+          brand.photo.data = fs.readFileSync(photo.path);
+          brand.photo.contentType = photo.type;
       }
 
-      await category.save();
+      await brand.save();
       res.status(201).send({
           success: true,
-          message: 'category created successfully',
-          category,
+          message: 'brand created successfully',
+          brand,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
           success: false,
-          message: 'Error creating category',
+          message: 'Error creating brand',
           error,
       });
   }
 };
     
 
-//update category
-export const updateCategoryController = async (req, res) => {
+//update brand
+export const updateBrandController = async (req, res) => {
   try {
-      const validationError = validateCategoryFields(req.fields, req.files);
+      const validationError = validateBrandFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
 
       const { name } = req.fields;
       const { photo } = req.files;
-      const category = await categoryModel.findByIdAndUpdate(
+      const brand = await brandModel.findByIdAndUpdate(
           req.params.id,
           { ...req.fields, slug: slugify(name) },
           { new: true }
       );
 
       if (photo) {
-          category.photo.data = fs.readFileSync(photo.path);
-          category.photo.contentType = photo.type;
+          brand.photo.data = fs.readFileSync(photo.path);
+          brand.photo.contentType = photo.type;
       }
 
-      await category.save();
+      await brand.save();
       res.status(200).send({
           success: true,
-          message: 'category updated successfully',
-          category,
+          message: 'brand updated successfully',
+          brand,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
           success: false,
-          message: 'Error updating category',
+          message: 'Error updating brand',
           error,
       });
   }
 };
 
-// get all cat
-export const categoryController = async (req, res) => {
+// get all brand
+export const brandController = async (req, res) => {
   try {
-    const category = await categoryModel.find({}).select("-photo");
+    const brand = await brandModel.find({}).select("-photo");
     res.status(200).send({
       success: true,
-      message: "All Categories List",
-      category,
+      message: "All Brands List",
+      brand,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error while getting all categories",
+      message: "Error while getting all brands",
     });
   }
 };
 
-// single category
-export const singleCategoryController = async (req, res) => {
+// single brand
+export const singleBrandController = async (req, res) => {
   try {
-    const category = await categoryModel.findOne({ slug: req.params.slug }).select("-photo");
+    const brand = await brandModel.findOne({ slug: req.params.slug }).select("-photo");
     res.status(200).send({
       success: true,
-      message: "Get SIngle Category SUccessfully",
-      category,
+      message: "Get SIngle Brand SUccessfully",
+      brand,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error While getting Single Category",
+      message: "Error While getting Single Brand",
     });
   }
 };
 
-//delete category
-export const deleteCategoryController = async (req, res) => {
+//delete brand
+export const deleteBrandController = async (req, res) => {
   try {
     const { id } = req.params;
-    await categoryModel.findByIdAndDelete(id);
+    await brandModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Categry Deleted Successfully",
+      message: "Brand Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting category",
+      message: "error while deleting brand",
       error,
     });
   }
 };
 
 //photo url
-export const getCategoryPhotourlController = async(req, res) => {
+export const getBrandPhotourlController = async(req, res) => {
   try {
-      const photoURL = await categoryModel.findById(req.params.id).select("photo");
+      const photoURL = await brandModel.findById(req.params.id).select("photo");
       if(photoURL.photo.data) {
           res.set("Content-type", photoURL.photo.contentType);
           return res.status(200).send(photoURL.photo.data);

@@ -18,11 +18,12 @@ const gateway = new braintree.BraintreeGateway({
 
 
 const validateProductFields = (fields, files) => {
-    const { name, description, price, category, quantity } = fields;
+    const { name, description, price, brand, category, quantity } = fields;
     const { photo } = files;
     if (!name) return { error: "Name is required" };
     if (!description) return { error: "Description is required" };
     if (!price) return { error: "Price is required" };
+    if (!brand) return { error: "Brand is required" };
     if (!category) return { error: "Category is required" };
     if (!quantity) return { error: "Quantity is required" };
     if (!photo || photo.size > 1000000) return { error: "Photo is required and should be less than 1MB" };
@@ -63,6 +64,7 @@ export const getProductsController = async (req, res) => {
     try {
         const products = await productModel.find({})
             .populate('category')
+            .populate('brand')
             .select("-photo")
             .limit(100)
             .sort({ createdAt: -1 });
@@ -87,7 +89,8 @@ export const getProductController = async (req, res) => {
     try {
         const product = await productModel.findOne({ slug: req.params.slug })
             .select("-photo")
-            .populate("category");
+            .populate("category")
+            .populate("brand");
 
         if (!product) {
             return res.status(404).send({
@@ -116,7 +119,7 @@ export const updateProductController = async (req, res) => {
         const validationError = validateProductFields(req.fields, req.files);
         if (validationError) return res.status(400).send(validationError);
 
-        const { name } = req.fields;
+        const { name, bestseller } = req.fields;
         const { photo } = req.files;
         const product = await productModel.findByIdAndUpdate(
             req.params.id,
@@ -174,7 +177,8 @@ export const relatedProductController = async (req, res) => {
             _id: { $ne: pid },
         }).select("-photo")
             .limit(3)
-            .populate("category");
+            .populate("category")
+            .populate("brand");
 
         res.status(200).send({
             success: true,
@@ -193,7 +197,7 @@ export const relatedProductController = async (req, res) => {
 export const productCategoryController = async (req, res) => {
     try {
         const category = await categoryModel.findOne({ slug: req.params.slug });
-        const products = await productModel.find({ category }).populate('category');
+        const products = await productModel.find({ category }).populate('category').populate('brand');
 
         res.status(200).send({
             success: true,
@@ -214,7 +218,8 @@ export const searchProductIDController = async (req, res) => {
     try {
         const product = await productModel.findOne({ _id: req.params.id })
             .select("-photo")
-            .populate("category");
+            .populate("category")
+            .populate("brand");
 
         if (!product) {
             return res.status(404).send({
@@ -340,7 +345,8 @@ export const productListController = async (req, res) => {
 export const getBestsellerProducts = async (req, res) => {
     try {
         const bestsellers = await productModel.find({ bestseller: true })
-            .populate("category");
+            .populate("category")
+            .populate("brand");
 
         // Check if any bestseller products are found
         if (bestsellers.length === 0) {

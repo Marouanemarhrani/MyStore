@@ -12,10 +12,12 @@ const {Option} = Select;
 const CreateProduct = () => {
     const navigate =useNavigate();
     const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
+    const [brand, setBrand] = useState("");
     const [quantity, setQuantity] = useState("");
     const [photo, setPhoto] = useState("");
 
@@ -33,8 +35,24 @@ const CreateProduct = () => {
             toast.error('Something went wrong in getting category');
         };
     };
+
+    //get all brands
+    const getAllBrand = async () => {
+        try {
+            const {data} = await axios.get(
+                `${process.env.REACT_APP_API}/api/brands/get-brand`
+            );
+            if(data?.success){
+                setBrands(data?.brand);
+            };
+        } catch (error) {
+            console.log(error);
+            toast.error('Something went wrong in getting brand');
+        };
+    };
     useEffect(() => {
         getAllCategory();
+        getAllBrand();
     },[]);
 
     //create product function
@@ -47,6 +65,7 @@ const CreateProduct = () => {
             productData.append("price", price);
             productData.append("quantity", quantity);
             productData.append("photo", photo);
+            productData.append("brand", brand);
             productData.append("category", category);
             const {data} = axios.post(
                 `${process.env.REACT_APP_API}/api/products/product`,
@@ -83,6 +102,21 @@ const CreateProduct = () => {
                             }}
                         >
                             {categories?.map((c) => (
+                                <Option key={c._id} value={c._id}>
+                                    {c.name}
+                                </Option>
+                            ))}
+                         </Select>
+                         <Select bordered={false}
+                            placeholder="Select a Brand"
+                            size="large"
+                            showSearch
+                            className='cpdct5 form-select mb-3' 
+                            onChange={(value) => {
+                                setBrand(value);
+                            }}
+                        >
+                            {brands?.map((c) => (
                                 <Option key={c._id} value={c._id}>
                                     {c.name}
                                 </Option>

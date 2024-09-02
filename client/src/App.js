@@ -37,6 +37,9 @@ import ServicesAdmin from "./pages/admin/Servicesadmin";
 import UpdateService from "./pages/admin/UpdateService";
 import CategoriesAdm from "./pages/admin/CategoriesAdm";
 import UpdateCategory from "./pages/admin/UpdateCategory";
+import CreateBrand from "./pages/admin/CreateBrand";
+import Brands from "./pages/admin/Brands";
+import UpdateBrand from "./pages/admin/UpdateBrand";
 
 function App() {
   return (
@@ -60,6 +63,9 @@ function App() {
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/category/:slug" element={<UpdateCategory />} />
           <Route path="admin/categories" element={<CategoriesAdm/>} />
+          <Route path="admin/create-brand" element={<CreateBrand />} />
+          <Route path="admin/brand/:slug" element={<UpdateBrand />} />
+          <Route path="admin/brands" element={<Brands/>} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/product/:slug" element={<UpdateProduct />} />
           <Route path="admin/products" element={<Products />} />

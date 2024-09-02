@@ -1,0 +1,100 @@
+/* CreateCategory.css */
+
+/* Main container */
+.cbrnd {
+    padding: 20px;
+  }
+  
+  /* Row styling */
+  .cbrnd1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /* Sidebar (AdminMenu) */
+  .cbrnd2 {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Heading */
+  .cbrnd3 h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Form container */
+  .cbrnd4 {
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form group spacing */
+  .cbrnd5, .cbrnd6, .cbrnd7, .cbrnd8, .cbrnd11 {
+    margin-bottom: 15px;
+  }
+  
+  /* Input field styling */
+  .cbrnd13.form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+  
+  /* File upload button */
+  .cbrnd7.btn {
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Image preview container */
+  .cbrnd9 {
+    margin-top: 10px;
+  }
+  
+  /* Image preview */
+  .cbrnd10 {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #dee2e6;
+  }
+  
+  /* Create button */
+  .cbrnd12.btn {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .cbrnd12.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .cbrnd1 {
+      flex-direction: column;
+    }
+  
+    .cbrnd2, .cbrnd3 {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  
+    .cbrnd4 {
+      width: 100%;
+    }
+  }
+  

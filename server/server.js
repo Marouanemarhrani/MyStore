@@ -9,7 +9,8 @@ import userRoute from './routes/userRoute.js';
 import categoryRoute from './routes/categoryRoute.js';
 import productRoute from './routes/productRoute.js';
 import appointmentRoute from './routes/appointmentRoute.js';
-import serviceRoute from './routes/serviceRoute.js'
+import serviceRoute from './routes/serviceRoute.js';
+import brandRoute from './routes/brandRoute.js';
 
 // Configure environment variables
 dotenv.config();
@@ -31,6 +32,7 @@ app.use('/api/categories', categoryRoute);
 app.use('/api/products', productRoute);
 app.use('/api/appointments', appointmentRoute);
 app.use('/api/services', serviceRoute);
+app.use('/api/brands', brandRoute);
 
 // Define port
 const PORT = process.env.PORT || 8080;
