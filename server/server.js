@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import connectDB from './config/db.js';
-import { fileURLToPath } from 'url';
 
 // Import routes
 import userRoute from './routes/userRoute.js';
@@ -37,10 +36,6 @@ app.use('/api/brands', brandRoute);
 
 // Define port
 const PORT = process.env.PORT || 8080;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Start server
 app.listen(PORT, () => {
