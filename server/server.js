@@ -37,6 +37,8 @@ app.use('/api/brands', brandRoute);
 // Define port
 const PORT = process.env.PORT || 8080;
 
+app.use(express.static("./client/build")); 
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
