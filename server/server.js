@@ -13,6 +13,7 @@ import productRoute from './routes/productRoute.js';
 import appointmentRoute from './routes/appointmentRoute.js';
 import serviceRoute from './routes/serviceRoute.js';
 import brandRoute from './routes/brandRoute.js';
+import companyRoute from './routes/companyRoute.js';
 
 // Configure environment variables
 dotenv.config();
@@ -42,6 +43,7 @@ app.use('/api/products', productRoute);
 app.use('/api/appointments', appointmentRoute);
 app.use('/api/services', serviceRoute);
 app.use('/api/brands', brandRoute);
+app.use('/api/companies', companyRoute);
 
 // Handle all other routes and return the React app
 app.use('*', (req, res) => {

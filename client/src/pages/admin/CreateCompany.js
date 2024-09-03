@@ -5,17 +5,15 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import {Select} from 'antd';
 import { useNavigate } from 'react-router-dom';
-import "./CreateBrand.css";
+import "./CreateCompany.css";
 
 const {Option} = Select;
 
-const CreateBrand = () => {
+const CreateCompany = () => {
     const navigate =useNavigate();
     const [categories, setCategories] = useState([]);
-    const [companies, setcompanies] = useState([]);
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
-    const [company, setcompany] = useState("");
     const [photo, setPhoto] = useState("");
 
     //get all categories
@@ -32,44 +30,27 @@ const CreateBrand = () => {
             toast.error('Something went wrong in getting category');
         };
     };
-
-    //get all companies
-    const getAllcompany = async () => {
-        try {
-            const {data} = await axios.get(
-                `${process.env.REACT_APP_API}/api/companies/get-company`
-            );
-            if(data?.success){
-                setcompanies(data?.company);
-            };
-        } catch (error) {
-            console.log(error);
-            toast.error('Something went wrong in getting company');
-        };
-    };
     useEffect(() => {
         getAllCategory();
-        getAllcompany();
     },[]);
 
-    //create brand function
+    //create company function
     const handleCreate = async (e) => {
         e.preventDefault()
         try {
-            const brandData = new FormData();
-            brandData.append("name", name);
-            brandData.append("photo", photo);
-            brandData.append("category", category);
-            brandData.append("company", company);
+            const companyData = new FormData();
+            companyData.append("name", name);
+            companyData.append("photo", photo);
+            companyData.append("category", category);
             const {data} = axios.post(
-                `${process.env.REACT_APP_API}/api/brands/create-brand`,
-                    brandData
+                `${process.env.REACT_APP_API}/api/companies/create-company`,
+                    companyData
             );
             if(data?.success){
                 toast.error(data?.message);
             }else{
-                toast.success('Brand created successfully');
-                navigate('/dashboard/admin/brands');
+                toast.success('Company created successfully');
+                navigate('/dashboard/admin/companies');
             }
         } catch (error) {
             console.log(error);
@@ -77,20 +58,20 @@ const CreateBrand = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Brand"}>
-        <div className='cbrnd container-fluid'>
-            <div className='cbrnd1 row'>
-                <div className='cbrnd2 col-md-3'>
+    <LayoutNF title={"Dashboard - Create Company"}>
+        <div className='ccmp container-fluid'>
+            <div className='ccmp1 row'>
+                <div className='ccmp2 col-md-3'>
                     <AdminMenu />
                 </div>
-                <div className='cbrnd3 col-md-9'>
-                    <h1>Create Brand</h1>
-                    <div className='cbrnd4 m-1 w-75'>
+                <div className='ccmp3 col-md-9'>
+                    <h1>Create Company</h1>
+                    <div className='ccmp4 m-1 w-75'>
                         <Select bordered={false}
                             placeholder="Select a category"
                             size="large"
                             showSearch
-                            className='cbrnd5 form-select mb-3' 
+                            className='ccmp5 form-select mb-3' 
                             onChange={(value) => {
                                 setCategory(value);
                             }}
@@ -101,24 +82,9 @@ const CreateBrand = () => {
                                 </Option>
                             ))}
                          </Select>
-                         <Select bordered={false}
-                            placeholder="Select a company"
-                            size="large"
-                            showSearch
-                            className='cbrnd5 form-select mb-3' 
-                            onChange={(value) => {
-                                setcompany(value);
-                            }}
-                        >
-                            {companies?.map((c) => (
-                                <Option key={c._id} value={c._id}>
-                                    {c.name}
-                                </Option>
-                            ))}
-                         </Select>
-                         <div className='cbrnd6 mb-3'>
+                         <div className='ccmp6 mb-3'>
                             <label 
-                                className='cbrnd7 btn btn-outline-secondary col-md-12'
+                                className='ccmp7 btn btn-outline-secondary col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -130,19 +96,19 @@ const CreateBrand = () => {
                                 />
                             </label>
                          </div>
-                         <div className='cbrnd8 mb-3'>
+                         <div className='ccmp8 mb-3'>
                             {photo && (
-                                <div className='cbrnd9 text-center'> 
+                                <div className='ccmp9 text-center'> 
                                     <img 
                                         src={URL.createObjectURL(photo)} 
-                                        alt="brand-photo"
+                                        alt="company-photo"
                                         height={'200px'} 
                                         className='img img-responsive'
                                     />
                                 </div>
                             )}
                          </div>
-                         <div className='cbrnd10 mb-3'>
+                         <div className='ccmp10 mb-3'>
                             <input 
                                 type="text"
                                 value ={name}
@@ -151,12 +117,12 @@ const CreateBrand = () => {
                                 onChange={(e) => setName(e.target.value)}
                             />
                          </div>
-                        <div className='cbrnd17 mb-3'>
+                        <div className='ccmp17 mb-3'>
                             <button 
-                                className='cbrnd18 btn btn-primary'
+                                className='ccmp18 btn btn-primary'
                                 onClick={handleCreate}
                             >
-                                Create Brand
+                                Create Company
                             </button>
                         </div> 
                     </div>
@@ -167,4 +133,4 @@ const CreateBrand = () => {
   );
 };
 
-export default CreateBrand;
+export default CreateCompany;

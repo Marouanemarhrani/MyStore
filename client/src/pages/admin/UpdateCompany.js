@@ -5,39 +5,36 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import {Select} from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
-import "./UpdateBrand.css";
+import "./UpdateCompany.css";
 
 const {Option} = Select;
 
-const UpdateBrand = () => {
+const UpdateCompany = () => {
     const navigate =useNavigate();
     const params = useParams();
     const [categories, setCategories] = useState([]);
-    const [companies, setCompanies] = useState([]);
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
-    const [company, setCompany] = useState("");
     const [photo, setPhoto] = useState("");
     const [id, setId] = useState("");
 
 
-    //get single brand
-    const getSingleBrand= async () => {
+    //get single company
+    const getSingleCompany = async () => {
         try {
             const {data} = await axios.get(
-                `${process.env.REACT_APP_API}/api/brands/single-brand/${params.slug}`
+                `${process.env.REACT_APP_API}/api/companies/single-company/${params.slug}`
             );
-            setName(data.brand.name);
-            setId(data.brand._id);
-            setCompany(data.brand.company._id);
-            setCategory(data.brand.category._id);
+            setName(data.company.name);
+            setId(data.company._id);
+            setCategory(data.company.category._id);
         } catch (error) {
             console.log(error);
-            toast.error('Something went wrong in getting single brand');
+            toast.error('Something went wrong in getting single company');
         }
     };
     useEffect(() => {
-        getSingleBrand()
+        getSingleCompany()
         //eslint-disable-next-line
     }, []);
 
@@ -56,44 +53,27 @@ const UpdateBrand = () => {
         };
     };
 
-    //get all companies
-    const getAllCompany = async () => {
-        try {
-            const {data} = await axios.get(
-                `${process.env.REACT_APP_API}/api/companies/get-company`
-            );
-            if(data?.success){
-                setCompanies(data?.company);
-            };
-        } catch (error) {
-            console.log(error);
-            toast.error('Something went wrong in getting company');
-        };
-    };
-
     useEffect(() => {
         getAllCategory();
-        getAllCompany();
     },[]);
 
-    //update brand function
+    //update company function
     const handleUpdate = async (e) => {
         e.preventDefault()
         try {
-            const brandData = new FormData();
-            brandData.append("name", name);
-            photo && brandData.append("photo", photo);
-            brandData.append("category", category);
-            brandData.append("company", company);
+            const companyData = new FormData();
+            companyData.append("name", name);
+            photo && companyData.append("photo", photo);
+            companyData.append("category", category);
             const {data} = axios.put(
-                `${process.env.REACT_APP_API}/api/brands/update-brand/${id}`,
-                    brandData
+                `${process.env.REACT_APP_API}/api/companies/update-company/${id}`,
+                    companyData
             );
             if(data?.success){
                 toast.error(data?.message);
             }else{
-                toast.success('Brand updated successfully');
-                navigate('/dashboard/admin/brands');
+                toast.success('Company updated successfully');
+                navigate('/dashboard/admin/companies');
             }
         } catch (error) {
             console.log(error);
@@ -101,36 +81,36 @@ const UpdateBrand = () => {
         };
     };
 
-    //delete brand 
+    //delete company 
     const handleDelete = async() => {
         try {
-            let answer = window.prompt('Delete brand?');
+            let answer = window.prompt('Delete company?');
             if(!answer) return;
             const {data} = await axios.delete(
-                `${process.env.REACT_APP_API}/api/brands/delete-brand/${id}`
+                `${process.env.REACT_APP_API}/api/companies/delete-company/${id}`
             );
-            toast.success('Brand deleted successfully');
-            navigate('/dashboard/admin/brands');
+            toast.success('Company deleted successfully');
+            navigate('/dashboard/admin/companies');
         } catch (error) {
             console.log(error);
             toast.error('Something wrong in delete');
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create brand"}>
-        <div className='upbrnd container-fluid '>
-            <div className='upbrnd1 row'>
-                <div className='upbrnd2 col-md-3'>
+    <LayoutNF title={"Dashboard - Create Company"}>
+        <div className='upcmp container-fluid '>
+            <div className='upcmp1 row'>
+                <div className='upcmp2 col-md-3'>
                     <AdminMenu />
                 </div>
-                <div className='upbrnd3 col-md-9'>
-                    <h1>Update Brand</h1>
-                    <div className='upbrnd4 m-1 w-75'>
+                <div className='upcmp3 col-md-9'>
+                    <h1>Update Company</h1>
+                    <div className='upcmp4 m-1 w-75'>
                         <Select bordered={false}
                             placeholder="Select a category"
                             size="large"
                             showSearch
-                            className='upbrnd5 form-select mb-3' 
+                            className='upcmp5 form-select mb-3' 
                             onChange={(value) => {
                                 setCategory(value);
                             }}
@@ -142,25 +122,9 @@ const UpdateBrand = () => {
                                 </Option>
                             ))}
                          </Select>
-                         <Select bordered={false}
-                            placeholder="Select a company"
-                            size="large"
-                            showSearch
-                            className='upbrnd5 form-select mb-3' 
-                            onChange={(value) => {
-                                setCompany(value);
-                            }}
-                            value={company}
-                        >
-                            {companies?.map((c) => (
-                                <Option key={c._id} value={c._id}>
-                                    {c.name}
-                                </Option>
-                            ))}
-                         </Select>
-                         <div className='upbrnd6 mb-3'>
+                         <div className='upcmp6 mb-3'>
                             <label 
-                                className='upbrnd7 btn btn-outline-secondary col-md-12'
+                                className='upcmp7 btn btn-outline-secondary col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -172,49 +136,49 @@ const UpdateBrand = () => {
                                 />
                             </label>
                          </div>
-                         <div className='upbrnd8 mb-3'>
+                         <div className='upcmp8 mb-3'>
                             {photo ? (
-                                <div className='upbrnd9 text-center'> 
+                                <div className='upcmp9 text-center'> 
                                     <img 
                                         src={URL.createObjectURL(photo)} 
-                                        alt="brand-photo"
+                                        alt="company-photo"
                                         height={'200px'} 
-                                        className='upbrnd10 img img-responsive'
+                                        className='upcmp10 img img-responsive'
                                     />
                                 </div>
                             ) : (
-                            <div className='upbrnd11 text-center'> 
+                            <div className='upcmp11 text-center'> 
                                 <img 
-                                    src={`${process.env.REACT_APP_API}/api/brands/brand/photoURL/${id}`} 
-                                    alt="brand-photo"
+                                    src={`${process.env.REACT_APP_API}/api/companies/company/photoURL/${id}`} 
+                                    alt="company-photo"
                                     height={'200px'} 
-                                    className='upbrnd12 img img-responsive'
+                                    className='upcmp12 img img-responsive'
                                 />
                             </div>)}
                          </div>
-                         <div className='upbrnd13 mb-3'>
+                         <div className='upcmp13 mb-3'>
                             <input 
                                 type="text"
                                 value ={name}
                                 placeholder="write a name"
-                                className="upbrnd14 form-control"
+                                className="upcmp14 form-control"
                                 onChange={(e) => setName(e.target.value)}
                             />
                          </div>
-                        <div className='upbrnd20 mb-3'>
+                        <div className='upcmp20 mb-3'>
                             <button 
-                                className='upbrnd21 btn btn'
+                                className='upcmp21 btn btn'
                                 onClick={handleUpdate}
                             >
-                                Update Brand
+                                Update Company
                             </button>
                         </div> 
-                        <div className='upbrnd22 mb-3'>
+                        <div className='upcmp22 mb-3'>
                             <button 
-                                className='upbrnd23 btn btn'
+                                className='upcmp23 btn btn'
                                 onClick={handleDelete}
                             >
-                                Delete Brand
+                                Delete Company
                             </button>
                         </div> 
                     </div>
@@ -225,4 +189,4 @@ const UpdateBrand = () => {
   )
 }
 
-export default UpdateBrand;
+export default UpdateCompany;

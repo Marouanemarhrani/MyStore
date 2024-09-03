@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const brandSchema = new mongoose.Schema({
+const companySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -10,12 +10,7 @@ const brandSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
   },
-  company: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Company",
-    required: true
-},
-category: {
+  category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: true
@@ -26,4 +21,4 @@ category: {
 },
 });
 
-export default mongoose.model("Brand", brandSchema);
+export default mongoose.model("Company", companySchema);

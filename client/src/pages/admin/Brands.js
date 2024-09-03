@@ -49,6 +49,8 @@ const Brands = () => {
                                 alt={p.name} 
                             />
                             <div className="ctgries9 card-body">
+                                <h5 className="ctgries10 card-title">{p.category?.name}</h5>
+                                <h5 className="ctgries10 card-title">{p.company?.name}</h5>
                                 <h5 className="ctgries10 card-title">{p.name}</h5>
                             </div>
                         </div>

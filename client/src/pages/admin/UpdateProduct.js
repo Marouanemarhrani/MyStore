@@ -14,10 +14,12 @@ const UpdateProduct = () => {
     const params = useParams();
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
+    const [companies, setCompanies] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
+    const [company, setcompany] = useState("");
     const [brand, setBrand] = useState("");
     const [quantity, setQuantity] = useState("");
     const [bestseller, setBestseller] = useState("");
@@ -39,6 +41,7 @@ const UpdateProduct = () => {
             setBrand(data.product.brand._id);
             setBestseller(data.product.bestseller);
             setCategory(data.product.category._id);
+            setcompany(data.product.company._id);
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong in getting single product');
@@ -79,7 +82,23 @@ const UpdateProduct = () => {
         };
     };
 
+    //get all companies
+    const getAllCompany = async () => {
+        try {
+            const {data} = await axios.get(
+                `${process.env.REACT_APP_API}/api/companies/get-company`
+            );
+            if(data?.success){
+                setCompanies(data?.company);
+            };
+        } catch (error) {
+            console.log(error);
+            toast.error('Something went wrong in getting company');
+        };
+    };
+
     useEffect(() => {
+        getAllCompany();
         getAllCategory();
         getAllBrand();
     },[]);
@@ -97,6 +116,7 @@ const UpdateProduct = () => {
             productData.append("brand", brand);
             productData.append("bestseller", bestseller);
             productData.append("category", category);
+            productData.append("company", company);
             const {data} = axios.put(
                 `${process.env.REACT_APP_API}/api/products/product/${id}`,
                     productData
@@ -149,6 +169,22 @@ const UpdateProduct = () => {
                             value={category}
                         >
                             {categories?.map((c) => (
+                                <Option key={c._id} value={c._id}>
+                                    {c.name}
+                                </Option>
+                            ))}
+                         </Select>
+                         <Select bordered={false}
+                            placeholder="Select a company"
+                            size="large"
+                            showSearch
+                            className='updct5 form-select mb-3' 
+                            onChange={(value) => {
+                                setcompany(value);
+                            }}
+                            value={company}
+                        >
+                            {companies?.map((c) => (
                                 <Option key={c._id} value={c._id}>
                                     {c.name}
                                 </Option>

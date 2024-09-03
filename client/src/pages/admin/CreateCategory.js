@@ -79,7 +79,7 @@ const CreateCategory = () => {
                     </div>
                     <div className='ccat11 mb-3'>
                         <button 
-                            className='ccat12 btn btn-primary'
+                            className='ccat12 btn '
                             onClick={handleSubmit}
                         >
                             Create Category

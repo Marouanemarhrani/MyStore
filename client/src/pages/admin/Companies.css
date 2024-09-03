@@ -1,0 +1,155 @@
+/* Main container */
+.cmp.container-fluid {
+    padding: 20px;
+  }
+  
+  /* AdminMenu and Product List Layout */
+  .cmp1.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  
+  .cmp2 {
+    margin-bottom: 20px;
+  }
+  
+  .cmp3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Header */
+  .cmp4 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Product list container */
+  .cmp5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Individual product card */
+  .cmp6.product-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .cmp7.card {
+    width: 300px; /* Fixed width */
+    height: 400px; /* Fixed height */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px; /* Space between cards */
+  }
+  
+  .cmp7.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product image */
+  .cmp8.card-img-top {
+    width: 100%;
+    height: 220px; /* Fixed height for images */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Card body */
+  .cmp9.card-body {
+    padding: 15px;
+    height: 180px; /* Fixed height for the body */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .cmp10.card-title {
+    font-size: 18px;
+    margin-bottom: 5px; /* Reduced margin for closer spacing */
+    color: #333;
+  }
+  
+  .cmp11.card-text {
+    font-size: 14px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10px; /* Added margin for spacing */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .cmp.container-fluid {
+      padding: 15px;
+    }
+  
+    .cmp4 {
+      font-size: 24px;
+    }
+  
+    .cmp7.card {
+      width: 100%;
+      max-width: 300px; /* Ensures consistency on smaller screens */
+      height: 350px; /* Adjust height for smaller screens */
+    }
+  
+    .cmp8.card-img-top {
+      height: 180px; /* Adjust image height */
+    }
+  
+    .cmp9.card-body {
+      height: 170px; /* Adjust body height */
+    }
+  
+    .cmp10.card-title {
+      font-size: 16px;
+    }
+  
+    .cmp11.card-text {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cmp.container-fluid {
+      padding: 10px;
+    }
+  
+    .cmp4 {
+      font-size: 20px;
+    }
+  
+    .cmp7.card {
+      width: 100%;
+      max-width: 300px;
+      height: 320px; /* Further adjust height for smaller screens */
+    }
+  
+    .cmp8.card-img-top {
+      height: 160px; /* Further adjust image height */
+    }
+  
+    .cmp9.card-body {
+      height: 160px; /* Further adjust body height */
+    }
+  
+    .cmp10.card-title {
+      font-size: 14px;
+    }
+  
+    .cmp11.card-text {
+      font-size: 12px;
+    }
+  }
+  

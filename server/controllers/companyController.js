@@ -1,158 +1,151 @@
-import brandModel from "../models/brandModel.js";
+import companyModel from "../models/companyModel.js";
 import slugify from "slugify";
 import fs from 'fs';
 
-const validateBrandFields = (fields, files) => {
-  const { name, company, category} = fields;
+const validateCompanyFields = (fields, files) => {
+  const { name, category} = fields;
   const { photo } = files;
   if (!name) return { error: "Name is required" };
   if (!category) return { error: "Category is required" };
-  if (!company) return { error: "Company is required" };
   if (!photo || photo.size > 1000000) return { error: "Photo is required and should be less than 1MB" };
   return null;
 };
 
-//create brand
-export const createBrandController = async (req, res) => {
+//create company
+export const createCompanyController = async (req, res) => {
   try {
-      const validationError = validateBrandFields(req.fields, req.files);
+      const validationError = validateCompanyFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
 
       const { name } = req.fields;
       const { photo } = req.files;
-      const existingBrand = await brandModel.findOne({ name });
-        if (existingBrand) {
+      const existingCompany = await companyModel.findOne({ name });
+        if (existingCompany) {
           return res.status(200).send({
             success: false,
-            message: "Brand Already Exisits",
+            message: "Company Already Exisits",
           });
         }
-      const brand = new brandModel({ ...req.fields, slug: slugify(name) });
+      const company = new companyModel({ ...req.fields, slug: slugify(name) });
 
       if (photo) {
-          brand.photo.data = fs.readFileSync(photo.path);
-          brand.photo.contentType = photo.type;
+          company.photo.data = fs.readFileSync(photo.path);
+          company.photo.contentType = photo.type;
       }
 
-      await brand.save();
+      await company.save();
       res.status(201).send({
           success: true,
-          message: 'brand created successfully',
-          brand,
+          message: 'company created successfully',
+          company,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
           success: false,
-          message: 'Error creating brand',
+          message: 'Error creating company',
           error,
       });
   }
 };
     
 
-//update brand
-export const updateBrandController = async (req, res) => {
+//update company
+export const updateCompanyController = async (req, res) => {
   try {
-      const validationError = validateBrandFields(req.fields, req.files);
+      const validationError = validateCompanyFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
 
       const { name } = req.fields;
       const { photo } = req.files;
-      const brand = await brandModel.findByIdAndUpdate(
+      const company = await companyModel.findByIdAndUpdate(
           req.params.id,
           { ...req.fields, slug: slugify(name) },
           { new: true }
       );
 
       if (photo) {
-          brand.photo.data = fs.readFileSync(photo.path);
-          brand.photo.contentType = photo.type;
+          company.photo.data = fs.readFileSync(photo.path);
+          company.photo.contentType = photo.type;
       }
 
-      await brand.save();
+      await company.save();
       res.status(200).send({
           success: true,
-          message: 'brand updated successfully',
-          brand,
+          message: 'company updated successfully',
+          company,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
           success: false,
-          message: 'Error updating brand',
+          message: 'Error updating company',
           error,
       });
   }
 };
 
-// get all brand
-export const brandController = async (req, res) => {
+// get all cat
+export const companyController = async (req, res) => {
   try {
-    const brand = await brandModel.find({})
-    .select("-photo")
-    .populate("category")
-    .populate('company');
+    const company = await companyModel.find({}).select("-photo").populate("category");
     res.status(200).send({
       success: true,
-      message: "All Brands List",
-      brand,
+      message: "All Companies List",
+      company,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error while getting all brands",
+      message: "Error while getting all companies",
     });
   }
 };
 
-// single brand
-export const singleBrandController = async (req, res) => {
+// single company
+export const singleCompanyController = async (req, res) => {
   try {
-    const brand = await brandModel.findOne({ slug: req.params.slug })
-    .select("-photo")
-    .populate("category")
-    .populate('company');
+    const company = await companyModel.findOne({ slug: req.params.slug }).select("-photo").populate("category");
     res.status(200).send({
       success: true,
-      message: "Get SIngle Brand SUccessfully",
-      brand,
+      message: "Get SIngle Company SUccessfully",
+      company,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       error,
-      message: "Error While getting Single Brand",
+      message: "Error While getting Single Company",
     });
   }
 };
 
-//delete brand
-export const deleteBrandController = async (req, res) => {
+//delete company
+export const deleteCompanyController = async (req, res) => {
   try {
     const { id } = req.params;
-    await brandModel.findByIdAndDelete(id);
+    await companyModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Brand Deleted Successfully",
+      message: "Categry Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting brand",
+      message: "error while deleting company",
       error,
     });
   }
 };
 
 //photo url
-export const getBrandPhotourlController = async(req, res) => {
+export const getCompanyPhotourlController = async(req, res) => {
   try {
-      const photoURL = await brandModel.findById(req.params.id).select("photo");
+      const photoURL = await companyModel.findById(req.params.id).select("photo");
       if(photoURL.photo.data) {
           res.set("Content-type", photoURL.photo.contentType);
           return res.status(200).send(photoURL.photo.data);

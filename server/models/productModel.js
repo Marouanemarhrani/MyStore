@@ -33,6 +33,11 @@ const productSchema = new mongoose.Schema({
         ref: "Category",
         required: true
     },
+    company: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Company",
+        required: true
+    },
     quantity: {
         type: Number,
         required: true,
