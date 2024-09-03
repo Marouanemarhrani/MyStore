@@ -2,14 +2,13 @@ version: '3'
 
 services:
   server:
-    build: ./server
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     environment:
       - NODE_ENV=development
-    volumes:
-      - ./server:/app
-      - /app/node_modules
     depends_on:
       - mongo
 
@@ -34,8 +33,8 @@ services:
     image: mongo-express
     container_name: mongo-express
     environment:
-      - ME_CONFIG_BASICAUTH_USERNAME=storedb         # Username to access Mongo Express
-      - ME_CONFIG_BASICAUTH_PASSWORD=123        # Password to access Mongo Express
+      - ME_CONFIG_BASICAUTH_USERNAME=storedb
+      - ME_CONFIG_BASICAUTH_PASSWORD=123
       - ME_CONFIG_MONGODB_URL=mongodb+srv://storedb:123@cluster0.yuzsf2m.mongodb.net/
       - ME_CONFIG_MONGODB_SERVER=mongo
     ports:
