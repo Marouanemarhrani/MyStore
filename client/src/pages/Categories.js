@@ -1,11 +1,12 @@
 import React from 'react';
 import useCategory from '../hooks/useCategory';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LayoutNF from '../components/Layout/LayoutNF';
 import "./Categories.css";
 
 const Categories = () => {
     const categories = useCategory();
+    const navigate = useNavigate();
   return (
     <LayoutNF title={"All categories"}>
       <div className='ctg1 body'>
@@ -21,9 +22,11 @@ const Categories = () => {
                       alt={c.name}
                     />
                   </div>
-                  <Link to={`/category/${c.slug}`} className='ctg7 btn'>
-                    {c.name}
-                  </Link>
+                  <button 
+                    onClick={() => navigate(`/category/${c.slug}`)}
+                    className='ctg7 btn '>
+                      {c.name}
+                  </button>
                 </div>
             ))}
         </div>

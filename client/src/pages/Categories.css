@@ -68,9 +68,9 @@
 .ctg7 {
     padding: 10px 20px;
     font-size: 1rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-color: #333333;
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
@@ -80,7 +80,9 @@
 }
 
 .ctg7:hover {
-    background-color: #0056b3;
+    background-color: #3d3d3d;
+    background-color: #3d3d3d;
+    color: #ffffff;
 }
 
 /* Responsive Design */

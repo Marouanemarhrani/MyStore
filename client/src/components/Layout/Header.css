@@ -61,13 +61,14 @@
 /* Dropdown item styles */
 .header11, .header12, .header16, .header17 {
   padding: 10px 20px;
-  color: black;
+  color: #606060;
   text-decoration: none;
   display: block;
 }
+
 .header11:hover, .header12:hover, .header16:hover, .header17:hover {
   background-color: #f0f0f0; /* Light background on hover */
-  color: #007bff; /* Text color change on hover */
+  color: #000000; /* Text color change on hover */
 }
 
 /* Styling for the search input */
@@ -81,7 +82,7 @@
   display: flex;
   align-items: center;
   gap: 10px; /* Space between right-side items */
-  margin-right: 30px; /* Move the icons to the left */
+  margin-right: 30px; /* Move the icons to the right */
   justify-content: flex-end; /* Ensure the icons are right-aligned */
 }
 
@@ -98,32 +99,14 @@
   display: flex;
 }
 
-.header24 .header25 :hover{
-  color: #484747 !important;
+.header24 .header25:hover {
+  color: #000000 !important;
 }
-
-.header21,
-.header23{
-  font-size: 1.5rem; /* Larger icon for user profile */
-  position: relative; /* Ensure the dropdown aligns correctly */
-  color: #606060 !important;
-  display: flex;
-}
-
-.header21:hover,
-.header23:hover{
-  color: #484747 !important;
-}
-
 .header26 {
   right: 0; /* Align the dropdown to the right edge of the container */
   left: auto; /* Prevent it from overflowing to the left */
   transform: translateX(-50%); /* Adjust position so it doesn't overflow */
   padding: 10px 0; /* Padding for dropdown items */
-}
-
-.header27, .header28 {
-  padding: 10px 20px; /* Add padding for dropdown links */
 }
 
 /* Cart icon styling */
@@ -132,8 +115,9 @@
   position: relative; /* Position to allow badge adjustment */
   color: #606060 !important;
 }
-.header29 .header30 :hover{
-  color: #484747 !important;
+
+.header29 .header30:hover {
+  color: #000000 !important;
 }
 
 .header29 .ant-badge-count {

@@ -63,9 +63,9 @@
 .services-btn {
     padding: 10px 20px;
     font-size: 1rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-color: #333333;
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
@@ -75,7 +75,9 @@
 }
 
 .services-btn:hover {
-    background-color: #0056b3;
+    background-color: #3d3d3d;
+    background-color: #3d3d3d;
+    color: #ffffff;
 }
 
 @media (min-width: 768px) {

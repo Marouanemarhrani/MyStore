@@ -131,13 +131,16 @@
   
   .btn-update-cart12, 
   .btn-login-cart13 {
-    background-color: #ffc107;
-    color: #333;
+    background-color: #ffffff;
+    border-color: #e0a800;
+    color: #e0a800;
   }
   
   .btn-update-cart12:hover, 
   .btn-login-cart13:hover {
     background-color: #e0a800;
+    border: #e0a800;
+    color: #ffffff;
   }
   
   .make-payment-btn-cart14 {

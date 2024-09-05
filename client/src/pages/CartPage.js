@@ -178,7 +178,7 @@ const CartPage = () => {
                                     <h5 className="div-cart12-h5">{auth?.user?.address}</h5>
                                 </div>
                                 <button 
-                                    className="btn-update-cart12 btn-outline-warning"
+                                    className="btn-update-cart12 btn"
                                     onClick={() => setShowModal(true)}
                                 >
                                     Edit Address
@@ -187,7 +187,7 @@ const CartPage = () => {
                         ): (
                             <div className="div-cart13 mb-3">
                                     <button 
-                                        className="btn-login-cart13 btn-outline-warning" 
+                                        className="btn-login-cart13 btn" 
                                         onClick={() => navigate('/login', {
                                             state:"/cart",
                                         })}

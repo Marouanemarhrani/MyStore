@@ -1,11 +1,12 @@
 import React from 'react';
 import useService from '../hooks/useService';
-import { Link } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import "./Services.css";
 import LayoutNF from '../components/Layout/LayoutNF';
 
 const ServicesAdmin = () => {
     const services = useService();
+    const navigate = useNavigate();
   return (
     <LayoutNF title={"All services"}>
       <div className='srvs-body'>
@@ -21,9 +22,11 @@ const ServicesAdmin = () => {
                       alt={c.name}
                     />
                   </div>
-                  <Link to={`/service/${c.slug}`} className='services-btn '>
-                    {c.name}
-                  </Link>
+                  <button 
+                    onClick={() => navigate(`/service/${c.slug}`)}
+                    className='services-btn btn '>
+                      {c.name}
+                  </button>
                 </div>
             ))}
         </div>

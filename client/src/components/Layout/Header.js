@@ -7,7 +7,7 @@ import useCategory from '../../hooks/useCategory';
 import useService from '../../hooks/useService';
 import SearchInput from '../Form/SearchInput';
 import { useCart } from '../../context/cart';
-import { Avatar, Badge } from 'antd';
+import { Badge } from 'antd';
 import { AiOutlineUser } from "react-icons/ai";
 import logo from "./../../data/logo.png";
 import './Header.css'; 
@@ -36,15 +36,6 @@ const Header = () => {
           <Link to="/" className="header6 navbar-brand">
             <img src={logo} alt="SmartFix Logo" className="navbar-logo" />
           </Link>
-
-          {/* Cart icon at the top right */}
-          <div className="header-cart">
-            <Badge count={cart?.length} showZero>
-              <NavLink to="/cart" className="header30 nav-link">
-                <IoBagOutline />
-              </NavLink>
-            </Badge>
-          </div>
 
           {/* Toggler button for the collapsed menu */}
           <button 
@@ -163,6 +154,15 @@ const Header = () => {
                   </li>
                 </>
               )}
+
+              {/* Cart icon moved to the right */}
+              <li className="header29 nav-item">
+                <Badge count={cart?.length} showZero>
+                  <NavLink to="/cart" className="header30 nav-link">
+                    <IoBagOutline />
+                  </NavLink>
+                </Badge>
+              </li>
             </ul>
           </div>
         </div>
