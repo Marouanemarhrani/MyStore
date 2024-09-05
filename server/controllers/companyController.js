@@ -159,3 +159,29 @@ export const getCompanyPhotourlController = async(req, res) => {
       })
   }
 };
+
+//get specific companies
+
+export const getSpecificCompanies = async (req, res) => {
+  try {
+    // Hard-coded array of company names
+    const names = ["Apple iPhone", "Apple Macbook", "Apple Watch", "Apple iPad", ];
+
+    // Use the $in operator to find documents where the value of "name" is in the provided array
+    const companies = await companyModel.find({
+      name: { $in: names }
+    });
+
+    if (companies.length === 0) {
+      return res.status(404).json({ message: 'No companies found' });
+    } else {
+      res.status(200).send({
+        success: true,
+        message: "companies are here Successfully",
+        companies,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

@@ -15,20 +15,23 @@ const CartPage = () => {
     const [clientToken, setClientToken] = useState("");
     const [instance, setInstance] = useState("");
     const [loading, setLoading] = useState(false);
-    const[address, setAddress] = useState("");
+    const [address, setAddress] = useState("");
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
-    //get user data
+    // Get user data and address safely
     useEffect(() => {
-        const {address} = auth?.user;
-        setAddress(address);
-    }, [auth?.user])
-    //total price
+        if (auth?.user) {
+            const { address } = auth.user;
+            setAddress(address || '');  // Set an empty string if address is undefined
+        }
+    }, [auth?.user]);
+
+    // Calculate total price
     const totalPrice = () => {
         try {
             let total = 0;
-            cart?.map((item) => {
+            cart?.forEach((item) => {
                 total += item.price;
             });
             return total.toLocaleString("en-US", {
@@ -37,11 +40,11 @@ const CartPage = () => {
             });
         } catch (error) {
             console.log(error);
-            toast.error("There was an error in the total");
+            toast.error("There was an error calculating the total");
         }
     };
 
-    //delete item
+    // Delete item from cart
     const removeCartItem = (pid) => {
         try {
             let myCart = [...cart];
@@ -51,10 +54,11 @@ const CartPage = () => {
             localStorage.setItem("cart", JSON.stringify(myCart));
         } catch (error) {
            console.log(error);
-           toast.error("There was an error in removing the item") 
+           toast.error("There was an error removing the item") 
         }
     };
-    //Update address
+
+    // Update address
     const handleSaveAddress = async(e) => {
         e.preventDefault();
         try {
@@ -77,7 +81,8 @@ const CartPage = () => {
             toast.error('Oops.. Something went wrong, Try again');
         }
     };
-    //get payment gateway Token
+
+    // Get payment gateway token
     const getToken = async () => {
         try {
             const {data} = await axios.get(
@@ -86,7 +91,7 @@ const CartPage = () => {
             setClientToken(data?.clientToken)
         } catch (error) {
             console.log(error);
-            toast.error("There was an error in payment")
+            toast.error("There was an error fetching the payment token")
         }
     };
 
@@ -94,7 +99,7 @@ const CartPage = () => {
         getToken();
     }, [auth?.token]);
 
-    //handle payments
+    // Handle payment
     const handlePayment = async () => {
         try {
             setLoading(true);
@@ -113,6 +118,7 @@ const CartPage = () => {
         } catch (error) {
             console.log(error);
             setLoading(false);
+            toast.error("There was an issue with the payment");
         }
     };
 
@@ -127,7 +133,7 @@ const CartPage = () => {
                         <h4 className="div-cart5-h4 text-center">
                             {cart?.length
                                 ? ` You have ${cart.length} items in your cart 
-                                ${auth?.token ? "" : "You have to login first before you go to checkout"} `
+                                ${auth?.token ? "" : "You need to login first before proceeding to checkout"} `
                                 : "Your cart is empty" 
                             }
                         </h4>
@@ -151,7 +157,7 @@ const CartPage = () => {
                                     <p className="cart-p">{p.description.substring(0, 30)}</p>
                                     <p className="cart-p">Price: {p.price} €</p>
                                     <button 
-                                        className="btn-remove btn-danger"
+                                        className="btn-remove btn"
                                         onClick={() => removeCartItem(p._id)}
                                     >
                                         Remove
@@ -170,24 +176,16 @@ const CartPage = () => {
                                 <div className="div-cart12-address mb-3">
                                     <h4 className="div-cart12-h4">Current Address</h4>
                                     <h5 className="div-cart12-h5">{auth?.user?.address}</h5>
-                                    <button 
-                                        className="btn-update-cart12 btn-outline-warning"
-                                        onClick={() => setShowModal(true)}
-                                    >
-                                        Edit Address
-                                    </button>
                                 </div>
+                                <button 
+                                    className="btn-update-cart12 btn-outline-warning"
+                                    onClick={() => setShowModal(true)}
+                                >
+                                    Edit Address
+                                </button>
                             </>
                         ): (
                             <div className="div-cart13 mb-3">
-                                {auth?.token ? (
-                                    <button 
-                                        className="btn-updateaddres-cart13 btn-outline-warning"  
-                                        onClick={() => navigate('/dashboard/user/profile')}
-                                    >
-                                        Update Address
-                                    </button>
-                                ) : (
                                     <button 
                                         className="btn-login-cart13 btn-outline-warning" 
                                         onClick={() => navigate('/login', {
@@ -196,7 +194,6 @@ const CartPage = () => {
                                     >
                                         Please Login To Checkout
                                     </button>
-                                )} 
                             </div>
                         )}
                         <div className="div-cart14 mt-2">
@@ -221,12 +218,6 @@ const CartPage = () => {
                                 </>
                             )}
                         </div>
-                        <button
-                            className="checkout-btn"
-                            onClick={handlePayment}
-                        >
-                            Checkout
-                        </button>
                     </div>
                 </div>
             </div>

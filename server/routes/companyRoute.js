@@ -6,6 +6,7 @@ import {
   createCompanyController,
   deleteCompanyController,
   getCompanyPhotourlController,
+  getSpecificCompanies,
   singleCompanyController,
   updateCompanyController,
 } from "./../controllers/companyController.js";
@@ -47,5 +48,8 @@ router.delete(
 
 //Get URL of photo by id
 router.get('/company/photoURL/:id', getCompanyPhotourlController);
+
+//getAll company
+router.get("/getapple", getSpecificCompanies);
 
 export default router;

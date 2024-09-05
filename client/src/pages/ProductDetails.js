@@ -99,23 +99,23 @@ const ProductDetails = () => {
                   {p.description.substring(0, 30)}...
                 </p>
                 <p className="dtls23 card-text">€ {p.price}</p>
-                <div className='dtls26-buttons'>
-                  <button
-                    className='dtls24 btn btn-primary ms-1'
-                    onClick={() => navigate(`/product/${p.slug}`)}
-                  >
-                    More details
-                  </button>
-                  <button
-                    className="dtls25 btn btn-secondary"
-                    onClick={() => {
-                      setCart([...cart, p]);
-                      toast.success('Item added to cart');
-                    }}
-                  >
-                    Add to cart
-                  </button>
-                </div>
+                <div className='dtls26-home-buttons'>
+                    <button
+                      className='dtls24 btn btn-primary ms-1'
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More details
+                    </button>
+                    <button
+                      className='dtls25 btn ms-1'
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        toast.success('Item added to cart');
+                      }}
+                    >
+                      Add to cart
+                    </button>
+                  </div>
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 import productModel from "../models/productModel.js";
 import categoryModel from "../models/categoryModel.js";
 import orderModel from "../models/orderModel.js";
+import companyModel from "../models/companyModel.js";
 import fs from "fs";
 import slugify from "slugify";
 import braintree from 'braintree';
@@ -435,4 +436,22 @@ export const brainTreePaymentController = async(req, res) => {
     }
 };
 
+export const productCompanyController = async (req, res) => {
+    try {
+        const company = await companyModel.findOne({ slug: req.params.slug });
+        const products = await productModel.find({ company }).populate('category').populate('brand').populate('company');
 
+        res.status(200).send({
+            success: true,
+            company,
+            products,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            success: false,
+            message: "Error retrieving products by company",
+            error,
+        });
+    }
+};

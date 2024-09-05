@@ -9,6 +9,7 @@ import SearchInput from '../Form/SearchInput';
 import { useCart } from '../../context/cart';
 import { Avatar, Badge } from 'antd';
 import { AiOutlineUser } from "react-icons/ai";
+import logo from "./../../data/logo.png"
 import './Header.css'; 
 
 const Header = () => {
@@ -44,7 +45,7 @@ const Header = () => {
             <Link 
               to="/" 
               className="header6 navbar-brand">
-                SmartFix
+                <img src={logo} alt="SmartFix Logo" className="navbar-logo" />
             </Link>
             <ul className="header7 navbar-nav mb-2 mb-lg-0">
               <li className="header8 nav-item dropdown">

@@ -5,6 +5,7 @@ import { useAuth } from '../../context/auth';
 import  toast from 'react-hot-toast';
 import axios from 'axios';
 import "./Profile.css"
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     //context
@@ -16,6 +17,8 @@ const Profile = () => {
     const[password, setPassword] = useState("");
     const[phone, setPhone] = useState("");
     const[address, setAddress] = useState("");
+
+    const navigate = useNavigate();
 
     //get user data
     useEffect(() => {
@@ -48,6 +51,7 @@ const Profile = () => {
                 ls.user = data.updatedUser;
                 localStorage.setItem("auth", JSON.stringify(ls));
                 toast.success("Profile Updated successfully");
+                navigate('/dashboard/user');
             }
         } catch (error) {
             console.log(error);

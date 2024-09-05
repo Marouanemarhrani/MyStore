@@ -30,10 +30,10 @@ const CreateService = () => {
                     ServiceData
             );
             if(data?.success){
-                toast.success('Category created successfully');
-                navigate('/dashboard/admin/services');
-            }else{
                 toast.error('Error in creating');
+            }else{
+                toast.success('Service created successfully');
+                navigate('/dashboard/admin/services');
             };
         } catch (error) {
             console.log(error);

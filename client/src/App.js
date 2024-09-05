@@ -43,6 +43,7 @@ import UpdateBrand from "./pages/admin/UpdateBrand";
 import Companies from "./pages/admin/Companies";
 import UpdateCompany from "./pages/admin/UpdateCompany";
 import CreateCompany from "./pages/admin/CreateCompany";
+import CompanyProduct from "./pages/CompanyProduct";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/service/:slug" element={<ServiceDetails />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
+        <Route path="/company/:slug" element={<CompanyProduct />} />
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />

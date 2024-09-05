@@ -1,0 +1,50 @@
+version: '3.4'
+
+services:
+  server:
+    image: marouanemarhrani/storedb:server
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - MONGO_URL=mongodb+srv://storedb:123@cluster0.yuzsf2m.mongodb.net/
+      - JWT_SECRET=cosanostra123
+      - BRAINTREE_MERCHANT_ID=djf5xy7wpyrn2xhq
+      - BRAINTREE_PUBLIC_KEY=sy5zqpyjbbgvpqpm
+      - BRAINTREE_PRIVATE_KEY=6044dd4c4e13698f87f9cb36c6d4742a
+    depends_on:
+      - mongo
+    restart: always
+
+  client:
+    image: marouanemarhrani/storedb:client
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API=https://smartfix-gdb7crbpe3eahva0.eastus-01.azurewebsites.net
+    restart: always
+
+  mongo:
+    image: marouanemarhrani/storedb:mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+  mongo-express:
+    image: marouanemarhrani/storedb:mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=storedb
+      - ME_CONFIG_BASICAUTH_PASSWORD=123
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    depends_on:
+      - mongo
+    restart: always
+
+volumes:
+  mongo-data:

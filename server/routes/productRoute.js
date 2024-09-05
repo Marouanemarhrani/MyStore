@@ -18,6 +18,7 @@ import {
     braintreeTokenController,
     brainTreePaymentController,
     getBestsellerProducts,
+    productCompanyController,
 } from '../controllers/productController.js';
 
 const router = express.Router();
@@ -70,6 +71,9 @@ router.get('/braintree/token', braintreeTokenController);
 
 //payments
 router.post('/braintree/payment', requireSignIn, brainTreePaymentController);
+
+// Get products by company
+router.get('/product/company/:slug', productCompanyController);
 
 
 
