@@ -74,7 +74,7 @@ const ServiceDetails = () => {
           <h6 className='div3-h6'>Description : {service.description}</h6>
           <h6 className='div3-h6'>Price : {service.price}</h6>
           <h6 className='div3-h6'>Duration : {service?.duration}</h6>
-          <button className='book-btn-secondary ms-1 ' onClick={() => setShowModal(true)}>Book an appointement</button>
+          <button className='book-btn ms-1 ' onClick={() => setShowModal(true)}>Book an appointement</button>
           <Modal
                 isOpen={showModal}
                 onRequestClose={() => setShowModal(false)}
@@ -124,8 +124,8 @@ const ServiceDetails = () => {
                         className="book3 form-control mb-3"
                         autofocus
                     />
-                    <button type="submit" className="book4 btn-primary">Submit request</button>
-                    <button className="book5 btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
+                    <button type="submit" className="book4 btn">Submit request</button>
+                    <button className="book5 btn" onClick={() => setShowModal(false)}>Cancel</button>
                 </form>
             </Modal>
         </div>

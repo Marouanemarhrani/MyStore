@@ -21,7 +21,7 @@ const Categories = () => {
                       alt={c.name}
                     />
                   </div>
-                  <Link to={`/category/${c.slug}`} className='ctg7 btn-primary'>
+                  <Link to={`/category/${c.slug}`} className='ctg7 btn'>
                     {c.name}
                   </Link>
                 </div>

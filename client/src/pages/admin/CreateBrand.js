@@ -118,7 +118,7 @@ const CreateBrand = () => {
                          </Select>
                          <div className='cbrnd6 mb-3'>
                             <label 
-                                className='cbrnd7 btn btn-outline-secondary col-md-12'
+                                className='cbrnd7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -153,7 +153,7 @@ const CreateBrand = () => {
                          </div>
                         <div className='cbrnd17 mb-3'>
                             <button 
-                                className='cbrnd18 btn btn-primary'
+                                className='cbrnd18 btn '
                                 onClick={handleCreate}
                             >
                                 Create Brand

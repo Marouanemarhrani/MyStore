@@ -54,7 +54,7 @@
     margin: 10px 0;
 }
 
-.book-btn-secondary {
+.book-btn {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -65,7 +65,7 @@
     transition: background-color 0.3s ease;
 }
 
-.book-btn-secondary:hover {
+.book-btn:hover {
     background-color: #0056b3;
 }
 
@@ -100,7 +100,7 @@
         text-align: center;
     }
 
-    .book-btn-secondary {
+    .book-btn {
         width: 100%;
         text-align: center;
     }

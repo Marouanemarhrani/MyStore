@@ -82,7 +82,7 @@ const UpdateCategory = () => {
                     <div className='upcate4 m-1 w-75'>
                          <div className='upcate6 mb-3'>
                             <label 
-                                className='upcate7 btn btn-outline-secondary col-md-12'
+                                className='upcate7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 

@@ -1,73 +1,64 @@
 /* General navbar settings for responsiveness */
 .headerLogin1 {
-    background-color: #f8f9fa; /* Light background color */
-    padding: 10px 15px; /* Padding for spacing */
-    width: 100%; /* Ensure the navbar spans the full width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    border-bottom: 1px solid #ddd; /* Optional: Add a subtle border at the bottom for separation */
-    display: flex; /* Flexbox for alignment */
-    justify-content: space-between; /* Space between logo and other elements */
-    align-items: center; /* Vertical alignment */
-    position: relative; /* Ensure the header stays positioned correctly */
-    z-index: 10; /* Ensure the header stays above other content */
-  }
-  
+  background-color: #ffffff; /* White background for a clean look */
+  padding: 10px 20px; /* Padding around the navbar */
+}
+
+.headerLogin2 {
+  display: flex;
+  justify-content: center; /* Center the logo in the middle */
+  align-items: center; /* Vertically aligns items */
+}
+
+/* Navbar brand/logo */
+.headerLogin6 {
+  font-size: 1.5rem; /* Size of the brand text */
+  font-weight: bold; /* Bold logo text (if used) */
+  text-transform: uppercase; /* Uppercase branding */
+}
+
+.headerlogin-navbar-logo {
+  height: 65px; /* Default height for the logo */
+  width: auto; /* Maintain the logo aspect ratio */
+  transition: height 0.3s ease; /* Smooth transition for resizing */
+  display: block; /* Ensure logo remains visible */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
   .headerLogin2 {
-    display: flex;
-    justify-content: space-between; /* Space between logo and other elements */
-    align-items: center; /* Vertical alignment */
-    width: 100%; /* Ensure the container spans the full width */
+    justify-content: center; /* Keep the logo centered on smaller screens */
   }
-  
-  .headerLogin5 {
-    flex-grow: 1; /* Allow the collapse to grow and take up available space */
-    display: flex;
-    justify-content: space-between; /* Distribute space evenly between elements */
-    align-items: center;
+
+  .headerlogin-navbar-logo {
+    height: 55px; /* Smaller height for medium screens */
   }
-  
+}
+
+@media (max-width: 768px) {
+  .headerLogin2 {
+    padding: 5px 15px; /* Adjust padding for medium screens */
+  }
+
+  .headerlogin-navbar-logo {
+    height: 45px; /* Smaller height for smaller screens */
+  }
+
   .headerLogin6 {
-    font-size: 1.5rem; /* Font size for branding */
-    font-weight: bold; /* Bold text for branding */
-    text-transform: uppercase; /* Uppercase text for branding */
-    color: #000; /* Ensure text color is visible */
-    text-decoration: none; /* Remove underline from the link */
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
   }
-  
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 1200px) {
-    .headerLogin1 {
-      padding: 8px 10px; /* Adjust padding for smaller screens */
-    }
-  
-    .headerLogin6 {
-      font-size: 1.3rem; /* Slightly smaller font size for screens < 1200px */
-    }
+}
+
+@media (max-width: 576px) {
+  .headerLogin2 {
+    padding: 5px 10px; /* Reduce padding further on very small screens */
   }
-  
-  @media (max-width: 992px) {
-    .headerLogin1 {
-      padding: 10px 15px; /* Further reduce padding for screens < 992px */
-      display: flex !important; /* Ensure the header remains a flexbox */
-      visibility: visible !important; /* Ensure visibility is not compromised */
-      z-index: 1000; /* Ensure the header stays above other content */
-      text-align: center;
-    }
-  
-    .headerLogin6 {
-      font-size: 1.2rem; /* Adjust font size for mobile devices */
-    }
+
+  .headerlogin-navbar-logo {
+    height: 35px; /* Even smaller height for mobile */
   }
-  
-  @media (max-width: 768px) {
-    .headerLogin1 {
-      padding: 10px 15px; /* Further adjust padding for screens < 768px */
-      display: flex !important; /* Flexbox layout for smaller screens */
-    }
-  
-    .headerLogin6 {
-      font-size: 1.1rem; /* Further adjust font size for mobile devices */
-    }
+
+  .headerLogin6 {
+    font-size: 1rem; /* Smaller font for mobile devices */
   }
-  
+}

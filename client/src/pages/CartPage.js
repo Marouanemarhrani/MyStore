@@ -209,7 +209,7 @@ const CartPage = () => {
                                         onInstance={(instance) => setInstance(instance)}
                                     />
                                     <button 
-                                        className="make-payment-btn-cart14 btn-primary" 
+                                        className="make-payment-btn-cart14 btn" 
                                         onClick={handlePayment}
                                         disabled={loading || !instance || !auth?.user?.address} 
                                     >
@@ -239,8 +239,8 @@ const CartPage = () => {
                         className="form-control mb-3"
                         autofocus
                     />
-                    <button type="submit" className="btn-edit-address btn-primary">Save Address</button>
-                    <button className="btn-edit-address btn-secondary" onClick={() => setShowModal(false)}>Cancel</button>
+                    <button type="submit" className="btn-edit-address btn">Save Address</button>
+                    <button className="btn-edit-address btn" onClick={() => setShowModal(false)}>Cancel</button>
                 </form>
             </Modal>
         </LayoutNF>

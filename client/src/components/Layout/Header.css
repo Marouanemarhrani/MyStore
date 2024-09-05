@@ -37,24 +37,37 @@
 }
 
 /* Dropdown menu settings */
-.header8 .header9 {
-  font-size: 1rem; /* Standard font size */
+.header8, .header13 {
+  position: relative; /* Ensure dropdown stays aligned with nav items */
 }
 
-.header10 {
-  padding: 10px 0; /* Padding for dropdown items */
+.header10, .header15 {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for dropdown */
+  z-index: 1000;
+  min-width: 200px;
+  padding: 0;
 }
 
+/* Show dropdown on hover */
+.header8:hover .header10, .header13:hover .header15 {
+  display: block; /* Show dropdown when hovering over Services or Categories */
+}
+
+/* Dropdown item styles */
 .header11, .header12, .header16, .header17 {
-  padding: 10px 20px; /* Add padding for dropdown links */
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+  display: block;
 }
-
-.header13 .header14 {
-  font-size: 1rem; /* Standard font size */
-}
-
-.header15 {
-  padding: 10px 0; /* Padding for dropdown items */
+.header11:hover, .header12:hover, .header16:hover, .header17:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+  color: #007bff; /* Text color change on hover */
 }
 
 /* Styling for the search input */

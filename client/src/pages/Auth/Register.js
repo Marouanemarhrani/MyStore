@@ -128,7 +128,7 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="regbtn btn-primary">
+                        <button type="submit" className="regbtn btn">
                             Let's go
                         </button>
                         <div className='logindiv'>

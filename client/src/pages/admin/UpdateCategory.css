@@ -44,7 +44,7 @@
   }
   
   /* File upload button */
-  .upcate7.btn-outline-secondary {
+  .upcate7.btn-outline {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
@@ -111,7 +111,7 @@
     }
   
     .upcate14.form-control,
-    .upcate7.btn-outline-secondary,
+    .upcate7.btn-outline,
     .upcate21.btn,
     .upcate23.btn {
         font-size: 14px;
@@ -136,7 +136,7 @@
     }
   
     .upcate14.form-control,
-    .upcate7.btn-outline-secondary,
+    .upcate7.btn-outline,
     .upcate21.btn,
     .upcate23.btn {
         font-size: 12px;

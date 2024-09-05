@@ -208,7 +208,7 @@ const UpdateProduct = () => {
                          </Select>
                          <div className='updct6 mb-3'>
                             <label 
-                                className='updct7 btn btn-outline-secondary col-md-12'
+                                className='updct7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 

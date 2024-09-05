@@ -47,7 +47,7 @@
 }
 
 /* File upload button */
-.upbrnd7.btn-outline-secondary {
+.upbrnd7.btn-outline {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;
@@ -134,7 +134,7 @@
   .upbrnd18.form-control,
   .upbrnd19.form-control,
   .upbrnd5.form-select,
-  .upbrnd7.btn-outline-secondary,
+  .upbrnd7.btn-outline,
   .upbrnd21.btn,
   .upbrnd23.btn {
       font-size: 14px;
@@ -163,7 +163,7 @@
   .upbrnd18.form-control,
   .upbrnd19.form-control,
   .upbrnd5.form-select,
-  .upbrnd7.btn-outline-secondary,
+  .upbrnd7.btn-outline,
   .upbrnd21.btn,
   .upbrnd23.btn {
       font-size: 12px;

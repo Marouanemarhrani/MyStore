@@ -84,7 +84,7 @@ const CreateCompany = () => {
                          </Select>
                          <div className='ccmp6 mb-3'>
                             <label 
-                                className='ccmp7 btn btn-outline-secondary col-md-12'
+                                className='ccmp7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -119,7 +119,7 @@ const CreateCompany = () => {
                          </div>
                         <div className='ccmp17 mb-3'>
                             <button 
-                                className='ccmp18 btn btn-primary'
+                                className='ccmp18 btn '
                                 onClick={handleCreate}
                             >
                                 Create Company

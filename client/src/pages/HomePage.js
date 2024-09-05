@@ -13,7 +13,10 @@ import image from "./../data/image.png";
 import image1 from "./../data/image1.png";
 import image2 from "./../data/image2.png";
 import image3 from "./../data/image3.png";
-import image4 from "./../data/image4.jpg";
+import banner from "./../data/banner.png";
+import banner1 from "./../data/banner1.png";
+import banner2 from "./../data/banner2.png";
+import banner3 from "./../data/banner3.png";
 import video from "./../data/video.mp4";
 import "./HomePage.css";
 
@@ -284,8 +287,6 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-
-
         <div className="home37 bestsellers-section">
           <h5 className="home38 bestseller-title">Our Bestsellers</h5>
           <p className="home39 bestseller-subtitle">It goes faster then chocolates</p>
@@ -339,7 +340,7 @@ const HomePage = () => {
                   <p className='home19 card-text'>{p.price} €</p>
                   <div className='home-buttons'>
                     <button
-                      className='home20 btn btn-primary ms-1'
+                      className='home20 btn ms-1'
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More details
@@ -378,16 +379,16 @@ const HomePage = () => {
           </div>
           <div className="home27-banner-section col-md-12">
               <div className="home28-banner col-md-3">
-                  <img src={image4} alt="Banner 1" className="home29-banner-image" />
+                  <img src={banner} alt="Banner" className="home29-banner-image" />
               </div>
               <div className="home30-banner col-md-3">
-                  <img src={image4} alt="Banner 2" className="home31-banner-image" />
+                  <img src={banner1} alt="Banner1" className="home31-banner-image" />
               </div>
               <div className="home71-banner col-md-3">
-                  <img src={image4} alt="Banner 3" className="home74-banner-image" />
+                  <img src={banner2} alt="Banner2" className="home74-banner-image" />
               </div>
               <div className="home72-banner col-md-3">
-                  <img src={image4} alt="Banner 4" className="home73-banner-image" />
+                  <img src={banner3} alt="Banner3" className="home73-banner-image" />
               </div>
           </div>
           <div className="home70-banner-section col-md-12">
@@ -399,7 +400,7 @@ const HomePage = () => {
         <div className='home50 col-md-8 offset-1'>
             <div className='home51'>
               <h5>Apple Products</h5>
-              <h10>Find all aplle products here</h10>
+              <h10>Apple fan? Find all apple products here</h10>
             </div>
             <div className='home52 d-flex flex-wrap'>
               {appleCompanies.map(company => (

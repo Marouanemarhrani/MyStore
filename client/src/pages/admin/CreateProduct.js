@@ -158,7 +158,7 @@ const CreateProduct = () => {
                          </Select>
                          <div className='cpdct6 mb-3'>
                             <label 
-                                className='cpdct7 btn btn-outline-secondary col-md-12'
+                                className='cpdct7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -220,7 +220,7 @@ const CreateProduct = () => {
                          </div>
                         <div className='cpdct17 mb-3'>
                             <button 
-                                className='cpdct18 btn btn-primary'
+                                className='cpdct18 btn '
                                 onClick={handleCreate}
                             >
                                 Create Product

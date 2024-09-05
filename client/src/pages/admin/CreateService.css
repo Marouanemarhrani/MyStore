@@ -32,7 +32,7 @@
   }
   
   /* File upload button */
-  .csrvcs7.btn-outline-secondary {
+  .csrvcs7.btn-outline {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
@@ -49,7 +49,7 @@
   }
   
   /* Create Product Button */
-  .csrvcs18.btn-primary {
+  .csrvcs18.btn {
     background-color: white;
     color: black;
     padding: 10px 20px;
@@ -60,7 +60,7 @@
     font-weight: 600;
   }
   
-  .csrvcs18.btn-primary:hover {
+  .csrvcs18.btn:hover {
     background-color: #047c2c; /* Darker shade on hover */
     border: 1px solid #047c2c;
     color: white;
@@ -85,8 +85,8 @@
     .csrvcs14 .form-control,
     .csrvcs15 .form-control,
     .csrvcs16 .form-control,
-    .csrvcs7.btn-outline-secondary,
-    .csrvcs18.btn-primary {
+    .csrvcs7.btn-outline,
+    .csrvcs18.btn {
       font-size: 14px;
       padding: 8px;
     }
@@ -108,8 +108,8 @@
     .csrvcs14 .form-control,
     .csrvcs15 .form-control,
     .csrvcs16 .form-control,
-    .csrvcs7.btn-outline-secondary,
-    .csrvcs18.btn-primary {
+    .csrvcs7.btn-outline,
+    .csrvcs18.btn {
       font-size: 12px;
       padding: 6px;
     }

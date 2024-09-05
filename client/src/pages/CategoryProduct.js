@@ -48,13 +48,13 @@ const CategoryProduct = () => {
                         <p className='catpdct11 card-text'>€ {p.price}</p>
                         <div className='catpdct-buttons'>
                             <button 
-                                className='catpdct12 btn btn-primary ms-1'
+                                className='catpdct12 btn ms-1'
                                 onClick={() => navigate(`/product/${p.slug}`)}
                             >
                                 More details
                             </button>
                             <button
-                                className='catpdct13 btn btn-secondary ms-1'
+                                className='catpdct13 btn btn ms-1'
                                 onClick={() => {
                                     setCart([...cart, p]);
                                     toast.success('Item added to cart');

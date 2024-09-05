@@ -124,7 +124,7 @@ const UpdateCompany = () => {
                          </Select>
                          <div className='upcmp6 mb-3'>
                             <label 
-                                className='upcmp7 btn btn-outline-secondary col-md-12'
+                                className='upcmp7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 

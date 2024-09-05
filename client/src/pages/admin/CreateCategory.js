@@ -53,7 +53,7 @@ const CreateCategory = () => {
                     </div>
                     <div className='ccat6 mb-3'>
                         <label 
-                            className='ccat7 btn btn-outline-secondary col-md-12'
+                            className='ccat7 btn btn-outline col-md-12'
                         >
                             {photo ? photo.name : "upload Photo" }
                             <input 

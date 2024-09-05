@@ -52,7 +52,7 @@ const CreateService = () => {
                     <div className='csrvcs4 m-1 w-75'>
                          <div className='csrvcs6 mb-3'>
                             <label 
-                                className='csrvcs7 btn btn-outline-secondary col-md-12'
+                                className='csrvcs7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 
@@ -114,7 +114,7 @@ const CreateService = () => {
                          </div>
                         <div className='csrvcs17 mb-3'>
                             <button 
-                                className='csrvcs18 btn btn-primary'
+                                className='csrvcs18 btn'
                                 onClick={handleCreate}
                             >
                                 Create Service

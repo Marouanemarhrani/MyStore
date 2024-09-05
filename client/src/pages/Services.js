@@ -21,7 +21,7 @@ const ServicesAdmin = () => {
                       alt={c.name}
                     />
                   </div>
-                  <Link to={`/service/${c.slug}`} className='services-btn btn-primary'>
+                  <Link to={`/service/${c.slug}`} className='services-btn '>
                     {c.name}
                   </Link>
                 </div>

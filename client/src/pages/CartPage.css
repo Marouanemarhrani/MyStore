@@ -152,25 +152,25 @@
     color: #ffffff;
   }
   
-  .btn-edit-address.btn-primary {
+  .btn-edit-address.btn {
     background-color: #ffffff;
     border-color: #272727;
     color: #272727;
   }
   
-  .btn-edit-address.btn-primary:hover {
+  .btn-edit-address.btn:hover {
     background-color: #28a745;
     border-color: #28a745;
     color: #ffffff;
   }
   
-  .btn-edit-address.btn-secondary {
+  .btn-edit-address.btn {
     background-color: #ffffff;
     border-color: #c82333;
     color: #c82333;
   }
   
-  .btn-edit-address.btn-secondary:hover {
+  .btn-edit-address.btn:hover {
     background-color: #c82333;
     color:#ffffff ;
     border-color: #c82333;

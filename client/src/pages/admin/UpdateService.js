@@ -94,7 +94,7 @@ const UpdateService = () => {
                     <div className='upsrvcs4 m-1 w-75'>
                          <div className='upsrvcs6 mb-3'>
                             <label 
-                                className='upsrvcs7 btn btn-outline-secondary col-md-12'
+                                className='upsrvcs7 btn btn-outline col-md-12'
                             >
                                 {photo ? photo.name : "upload Photo" }
                                 <input 

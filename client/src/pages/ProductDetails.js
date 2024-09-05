@@ -60,7 +60,7 @@ const ProductDetails = () => {
             <div className="dtls7-btn-container">
               <h4 className="dtls8 text-success">{product.price} €</h4>
               <button
-                className="dtls9 btn btn-dark btn-lg"
+                className="dtls9 btn btn-lg"
                 onClick={() => {
                   setCart([...cart, product]);
                   toast.success('Item added to cart');
@@ -101,7 +101,7 @@ const ProductDetails = () => {
                 <p className="dtls23 card-text">€ {p.price}</p>
                 <div className='dtls26-home-buttons'>
                     <button
-                      className='dtls24 btn btn-primary ms-1'
+                      className='dtls24 btn ms-1'
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More details

@@ -35,13 +35,13 @@ const Search = () => {
                 <p className='srchpdct19 card-text'>{p.price} €</p>
                 <div className='srchpdct-buttons'>
                     <button
-                      className='srchpdct20 btn btn-primary ms-1'
+                      className='srchpdct20 btn ms-1'
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More details
                     </button>
                     <button
-                      className='srchpdct21 btn btn-secondary ms-1'
+                      className='srchpdct21 btn btn ms-1'
                       onClick={() => {
                         setCart([...cart, p]);
                         toast.success('Item added to cart');
