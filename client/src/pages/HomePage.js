@@ -17,6 +17,7 @@ import banner from "./../data/banner.png";
 import banner1 from "./../data/banner1.png";
 import banner2 from "./../data/banner2.png";
 import banner3 from "./../data/banner3.png";
+import filterimage from "./../data/filter.png";
 import video from "./../data/video.mp4";
 import "./HomePage.css";
 
@@ -24,47 +25,47 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [bestseller, setBestseller] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [companies, setCompanies] = useState([]);
   const [appleCompanies, setAppleCompanies] = useState([]);
-  const [checked, setChecked] = useState([]);
+  const [checkedCategories, setCheckedCategories] = useState([]);
+  const [checkedCompanies, setCheckedCompanies] = useState([]);
   const [radio, setRadio] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(1);
   const [cart, setCart] = useCart();
   const [showBanner, setShowBanner] = useState(true);
+  const [showCategory, setShowCategory] = useState(false);
+  const [showBrands, setShowBrands] = useState(false);
+  const [showPrice, setShowPrice] = useState(false);
 
   const carouselRef = useRef(null);
   const navigate = useNavigate();
 
   const scrollRight = () => {
-    const carousel = document.querySelector('.home40.bestseller-carousel');
+    const carousel = carouselRef.current;
     const scrollAmount = carousel.offsetWidth;
-  
-    // Scroll to the right by the width of the visible items
+    
     carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  
-    // Check if we're at the end and reset to the start if necessary
     if (carousel.scrollLeft + scrollAmount >= carousel.scrollWidth) {
       setTimeout(() => {
         carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      }, 300);  // Short delay to ensure smooth transition
+      }, 300);
     }
   };
   
   const scrollLeft = () => {
-    const carousel = document.querySelector('.home40.bestseller-carousel');
+    const carousel = carouselRef.current;
     const scrollAmount = carousel.offsetWidth;
   
-    // Scroll to the left by the width of the visible items
     carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  
-    // Check if we're at the start and reset to the end if necessary
     if (carousel.scrollLeft <= 0) {
       setTimeout(() => {
         carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-      }, 300);  // Short delay to ensure smooth transition
+      }, 300);
     }
   };
+  
   
     
   // Get all categories
@@ -81,6 +82,20 @@ const HomePage = () => {
       toast.error('Something went wrong in getting categories');
     };
   };
+  //get all companies
+  const getAllCompany = async () => {
+    try {
+        const {data} = await axios.get(
+            `${process.env.REACT_APP_API}/api/companies/get-company`
+        );
+        if(data?.success){
+            setCompanies(data?.company);
+        };
+    } catch (error) {
+        console.log(error);
+        toast.error('Something went wrong in getting company');
+    };
+};
 
   //get apple companies
   const getApplecompanies = async () => {
@@ -163,7 +178,11 @@ const HomePage = () => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_API}/api/products/product-filters`,
-        { checked, radio }
+        { 
+          checked: checkedCategories,  // Categories selected
+          companies: checkedCompanies,  // Companies selected
+          radio  // Price range selected
+        }
       );
       setProducts(data?.products);
     } catch (error) {
@@ -171,15 +190,22 @@ const HomePage = () => {
       toast.error('Error applying filters');
     }
   };
-
+  
   // Handle category filter changes
-  const handleFilter = (e) => {
-    const { value, checked } = e.target;
-    setChecked((prevChecked) =>
-      checked ? [...prevChecked, value] : prevChecked.filter((id) => id !== value)
-    );
-  };
+    const handleCategoryFilter = (e) => {
+      const { value, checked } = e.target;
+      setCheckedCategories((prevChecked) =>
+        checked ? [...prevChecked, value] : prevChecked.filter((id) => id !== value)
+      );
+    };
 
+    // Handle company filter changes
+    const handleCompanyFilter = (e) => {
+      const { value, checked } = e.target;
+      setCheckedCompanies((prevChecked) =>
+        checked ? [...prevChecked, value] : prevChecked.filter((id) => id !== value)
+      );
+    };
   // Handle price filter changes
   const handlePriceChange = (e) => {
     setRadio(e.target.value);
@@ -187,14 +213,17 @@ const HomePage = () => {
 
   // Reset all filters
   const handleResetFilters = () => {
-    setChecked([]);
+    setCheckedCategories([]);
+    setCheckedCompanies([]);  // Reset company filter
     setRadio([]);
     getAllProducts(); // Fetch all products after resetting filters
   };
+  
 
   // Use effects for fetching data and applying filters
   useEffect(() => {
     getAllCategory();
+    getAllCompany();
     getApplecompanies();
     getAllProducts();
     getBestSeller();
@@ -202,13 +231,13 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if (checked.length || radio.length) {
-      filterProduct();
+    if (checkedCategories.length || checkedCompanies.length || radio.length) {
+      filterProduct();  // Apply filters when any are selected
     } else {
-      getAllProducts(); // Fetch all products when no filters are applied
+      getAllProducts();  // Fetch all products when no filters are applied
     }
-  }, [checked, radio]);
-
+  }, [checkedCategories, checkedCompanies, radio]);  // Add checkedCompanies to the dependency array
+  
   return (
     <Layout title={'Home'}>
       {showBanner && (
@@ -256,37 +285,83 @@ const HomePage = () => {
         </Carousel>
       </div>
       <div className='home3 container-fluid row mt-3'>
-        <div className='home4 col-md-2'>
-          <h5 className='home5 text-center'>Filter By Category</h5>
-          <div className='home6 d-flex flex-column'>
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                value={c._id}
-                checked={checked.includes(c._id)}
-                onChange={handleFilter}
-              >
-                {c.name}
-              </Checkbox>
-            ))}
-          </div>
-          {/* Price filter */}
-          <h5 className='home7 text-center mt-4'>Filter By Price</h5>
-          <div className='home8 d-flex flex-column'>
-            <Radio.Group onChange={handlePriceChange} value={radio}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
+        <div className="filter-image-section">
+          {/* Title */}
+          <h2 className="filter-section-title">We help you choose your products</h2>
+
+          {/* Inner container for image and filters */}
+          <div className="inner-content">
+            {/* Image on the left */}
+            <div className="image-container">
+              <img src={filterimage} alt="Filter Image" />
+            </div>
+
+            {/* Filters on the right */}
+            <div className='home4'>
+              {/* Toggle Category Filter */}
+              <button className='home101 btn' onClick={() => setShowCategory(!showCategory)}>
+                {showCategory ? 'Hide Categories' : 'Show Categories'}
+              </button>
+              {showCategory && (
+                <div className='home6 d-flex flex-column'>
+                  {categories?.map((category) => (
+                    <Checkbox
+                      key={category._id}
+                      value={category._id}
+                      checked={checkedCategories.includes(category._id)} 
+                      onChange={handleCategoryFilter}
+                    >
+                      {category.name}
+                    </Checkbox>
+                  ))}
                 </div>
-              ))}
-            </Radio.Group>
-          </div>
-          <div className='home9 d-flex flex-column'>
-            <button className='home10 btn btn-danger' onClick={handleResetFilters}>
-              RESET FILTERS
-            </button>
+              )}
+
+              {/* Toggle Brand Filter */}
+              <button className='home101 btn mt-4' onClick={() => setShowBrands(!showBrands)}>
+                {showBrands ? 'Hide Brands' : 'Show Brands'}
+              </button>
+              {showBrands && (
+                <div className='home100 d-flex flex-column'>
+                  {companies?.map((company) => (
+                    <Checkbox
+                      key={company._id}
+                      value={company._id}
+                      checked={checkedCompanies.includes(company._id)} 
+                      onChange={handleCompanyFilter}
+                    >
+                      {company.name}
+                    </Checkbox>
+                  ))}
+                </div>
+              )}
+
+              {/* Toggle Price Filter */}
+              <button className='home101 btn mt-4' onClick={() => setShowPrice(!showPrice)}>
+                {showPrice ? 'Hide Price Range' : 'Show Price Range'}
+              </button>
+              {showPrice && (
+                <div className='home8 d-flex flex-column'>
+                  <Radio.Group onChange={handlePriceChange} value={radio}>
+                    {Prices?.map((p) => (
+                      <div key={p._id}>
+                        <Radio value={p.array}>{p.name}</Radio>
+                      </div>
+                    ))}
+                  </Radio.Group>
+                </div>
+              )}
+
+              {/* Reset Filters */}
+              <div className='home9 d-flex flex-column mt-4'>
+                <button className='home10 btn' onClick={handleResetFilters}>
+                  Clear filters
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+
         <div className="home37 bestsellers-section">
           <h5 className="home38 bestseller-title">Our Bestsellers</h5>
           <p className="home39 bestseller-subtitle">It goes faster then chocolates</p>

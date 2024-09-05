@@ -131,26 +131,6 @@
   }
 }
 
-/* Centering the Filter Section */
-.home4 {
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column; /* Changed to column for centering */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  width: 80%; /* Set a width so it doesn’t stretch too wide */
-  margin: 0 auto; /* Center the entire filter section on the page */
-  box-sizing: border-box;
-}
-
-.home6, .home8 {
-  width: 100%; /* Make the filter sections take up the full width */
-}
-
 /* Filter Headings */
 .home5, .home7 {
   font-size: 1.2rem;
@@ -159,36 +139,6 @@
   padding-bottom: 5px;
   text-align: center;
   width: auto;
-}
-
-/* Filter and Reset Button */
-.home9 {
-  text-align: center;
-  margin-top: 0;
-  width: auto;
-}
-
-.home10 {
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: auto;
-}
-
-.home10:hover {
-  background-color: #c82333;
-  transform: translateY(-3px);
-}
-
-.home10:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }
 
 /* Centering the Product Section */
@@ -721,5 +671,138 @@
 @media (max-width: 768px) {
   .home28-banner, .home30-banner, .home71-banner, .home72-banner, .video-banner {
     flex: 0 0 100%; /* Full width on smaller screens */
+  }
+}
+
+
+/* Container for filter, image, and title, centered with margin */
+.filter-image-section {
+  display: flex;
+  justify-content: center; /* Center content */
+  align-items: center; /* Vertically center content */
+  flex-direction: column; /* Stack title, image, and filters vertically */
+  margin: 30px auto; /* Add margin to top and bottom */
+  width: 90%; /* Control the width of the entire section */
+  max-width: 1200px; /* Limit the maximum width */
+}
+
+/* Title styling */
+.filter-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px; /* Spacing below the title */
+  text-align: center;
+}
+
+/* Inner container for image and filters */
+.inner-content {
+  display: flex;
+  justify-content: space-between; /* Space between image and filters */
+  align-items: center;
+  width: 100%;
+}
+
+/* Image container */
+.image-container {
+  flex: 1;
+  text-align: left; /* Align image to the left */
+  padding-right: 20px; /* Space between image and filters */
+}
+
+.image-container img {
+  width: 85%; /* Adjust size of the image */
+}
+
+/* Filter container */
+.home4 {
+  flex: 0 0 300px; /* Set the filter to a fixed width */
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Button Styling */
+.home101 {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-color: #272727;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px; /* Add space between the buttons */
+  background-color: #ffffff;
+  color: #272727;
+}
+
+.home101.btn:hover {
+  background-color: #272727;
+  border-color: #272727;
+  color: #ffffff;
+}
+
+/* Reset Button Styling */
+.home10.btn {
+  background-color: #ffffff;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.home10.btn:hover {
+  background-color: #c82333;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+/* Category, Brand, and Price Filter Container */
+.home6, .home100, .home8 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+}
+
+/* Ensure consistent alignment for checkboxes */
+.home6 .ant-checkbox-wrapper,
+.home100 .ant-checkbox-wrapper,
+.home8 .ant-radio-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .filter-image-section {
+    width: 100%;
+  }
+
+  .inner-content {
+    flex-direction: column;
+  }
+
+  .image-container {
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .image-container img {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .home4 {
+    width: 90%;
+  }
+
+  .home101, .home100 {
+    font-size: 0.9rem;
+    padding: 10px;
   }
 }

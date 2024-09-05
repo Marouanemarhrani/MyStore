@@ -285,24 +285,37 @@ export const deleteProductController = async (req, res) => {
 //filters
 export const productFiltersController = async (req, res) => {
     try {
-        const {checked, radio} = req.body;
-        let args = {};
-        if(checked.length > 0) args.category = checked;
-        if(radio.length) args.price = {$gte: radio[0], $lte:radio[1]};
-        const products = await productModel.find(args);
-        res.status(200).send({
-            success:true,
-            products,
-        });
+      const { checked, radio, companies } = req.body; // Destructure companies from request body
+      let args = {};
+  
+      // Filter by category
+      if (checked.length > 0) args.category = { $in: checked };
+  
+      // Filter by price range
+      if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+  
+      // Filter by company (if companies are selected)
+      if (companies && companies.length > 0) {
+        args.company = { $in: companies };  // Ensure correct syntax here
+      }
+  
+      // Fetch filtered products based on applied filters
+      const products = await productModel.find(args);
+      
+      res.status(200).send({
+        success: true,
+        products,
+      });
     } catch (error) {
-        console.log(error);
-        res.status(400).send({
-            success:false,
-            message:"Error in filtering products",
-            error,
-        });
+      console.log(error);
+      res.status(400).send({
+        success: false,
+        message: "Error in filtering products",
+        error,
+      });
     }
-};
+  };
+  
 
 //product count
 
