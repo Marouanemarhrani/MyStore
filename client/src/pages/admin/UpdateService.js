@@ -155,7 +155,7 @@ const UpdateService = () => {
                          </div>
                          <div className='upsrvcs19 mb-3'>
                             <input 
-                                type="number"
+                                type="text"
                                 value ={duration}
                                 placeholder="write a duration"
                                 className="form-control"

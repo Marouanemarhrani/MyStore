@@ -167,18 +167,6 @@
     color: #ffffff;
   }
   
-  .btn-edit-address.btn {
-    background-color: #ffffff;
-    border-color: #c82333;
-    color: #c82333;
-  }
-  
-  .btn-edit-address.btn:hover {
-    background-color: #c82333;
-    color:#ffffff ;
-    border-color: #c82333;
-  }
-  
   /* Modal styles */
   .Modal {
     position: fixed;

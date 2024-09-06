@@ -214,9 +214,12 @@ const HomePage = () => {
   // Reset all filters
   const handleResetFilters = () => {
     setCheckedCategories([]);
-    setCheckedCompanies([]);  // Reset company filter
+    setCheckedCompanies([]);
+    setShowCategory(false);
+    setShowBrands(false);
+    setShowPrice(false);  
     setRadio([]);
-    getAllProducts(); // Fetch all products after resetting filters
+    getAllProducts(); 
   };
   
 
@@ -361,7 +364,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
         <div className="home37 bestsellers-section">
           <h5 className="home38 bestseller-title">Our Bestsellers</h5>
           <p className="home39 bestseller-subtitle">It goes faster then chocolates</p>
