@@ -1,17 +1,17 @@
-import categoryModel from "../models/categoryModel.js";
-import slugify from "slugify";
-import fs from 'fs';
+const categoryModel = require('../models/categoryModel');
+const slugify = require('slugify');
+const fs = require('fs');
 
 const validateCategoryFields = (fields, files) => {
-  const { name} = fields;
+  const { name } = fields;
   const { photo } = files;
   if (!name) return { error: "Name is required" };
   if (!photo || photo.size > 1000000) return { error: "Photo is required and should be less than 1MB" };
   return null;
 };
 
-//create category
-export const createCategoryController = async (req, res) => {
+// Create category
+const createCategoryController = async (req, res) => {
   try {
       const validationError = validateCategoryFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
@@ -19,38 +19,37 @@ export const createCategoryController = async (req, res) => {
       const { name } = req.fields;
       const { photo } = req.files;
       const existingCategory = await categoryModel.findOne({ name });
-        if (existingCategory) {
-          return res.status(200).send({
-            success: false,
-            message: "Category Already Exisits",
-          });
-        }
+      if (existingCategory) {
+        return res.status(200).send({
+          success: false,
+          message: "Category Already Exists",
+        });
+      }
       const category = new categoryModel({ ...req.fields, slug: slugify(name) });
 
       if (photo) {
-          category.photo.data = fs.readFileSync(photo.path);
-          category.photo.contentType = photo.type;
+        category.photo.data = fs.readFileSync(photo.path);
+        category.photo.contentType = photo.type;
       }
 
       await category.save();
       res.status(201).send({
-          success: true,
-          message: 'category created successfully',
-          category,
+        success: true,
+        message: 'Category created successfully',
+        category,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
-          success: false,
-          message: 'Error creating category',
-          error,
+        success: false,
+        message: 'Error creating category',
+        error,
       });
   }
 };
-    
 
-//update category
-export const updateCategoryController = async (req, res) => {
+// Update category
+const updateCategoryController = async (req, res) => {
   try {
       const validationError = validateCategoryFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
@@ -64,34 +63,34 @@ export const updateCategoryController = async (req, res) => {
       );
 
       if (photo) {
-          category.photo.data = fs.readFileSync(photo.path);
-          category.photo.contentType = photo.type;
+        category.photo.data = fs.readFileSync(photo.path);
+        category.photo.contentType = photo.type;
       }
 
       await category.save();
       res.status(200).send({
-          success: true,
-          message: 'category updated successfully',
-          category,
+        success: true,
+        message: 'Category updated successfully',
+        category,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
-          success: false,
-          message: 'Error updating category',
-          error,
+        success: false,
+        message: 'Error updating category',
+        error,
       });
   }
 };
 
-// get all cat
-export const categoryController = async (req, res) => {
+// Get all categories
+const categoryController = async (req, res) => {
   try {
-    const category = await categoryModel.find({}).select("-photo");
+    const categories = await categoryModel.find({}).select("-photo");
     res.status(200).send({
       success: true,
       message: "All Categories List",
-      category,
+      categories,
     });
   } catch (error) {
     console.log(error);
@@ -103,13 +102,13 @@ export const categoryController = async (req, res) => {
   }
 };
 
-// single category
-export const singleCategoryController = async (req, res) => {
+// Get single category
+const singleCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug }).select("-photo");
     res.status(200).send({
       success: true,
-      message: "Get SIngle Category SUccessfully",
+      message: "Get Single Category Successfully",
       category,
     });
   } catch (error) {
@@ -117,44 +116,53 @@ export const singleCategoryController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error While getting Single Category",
+      message: "Error while getting single category",
     });
   }
 };
 
-//delete category
-export const deleteCategoryController = async (req, res) => {
+// Delete category
+const deleteCategoryController = async (req, res) => {
   try {
     const { id } = req.params;
     await categoryModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Categry Deleted Successfully",
+      message: "Category Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting category",
+      message: "Error while deleting category",
       error,
     });
   }
 };
 
-//photo url
-export const getCategoryPhotourlController = async(req, res) => {
+// Get category photo URL
+const getCategoryPhotourlController = async (req, res) => {
   try {
       const photoURL = await categoryModel.findById(req.params.id).select("photo");
-      if(photoURL.photo.data) {
+      if (photoURL.photo.data) {
           res.set("Content-type", photoURL.photo.contentType);
           return res.status(200).send(photoURL.photo.data);
       }
   } catch (error) {
       console.log(error);
       res.status(500).send({
-          success:false,
-          message:"There was an error in getting the photo url ",
+          success: false,
+          message: "There was an error in getting the photo URL",
           error,
-      })
+      });
   }
+};
+
+module.exports = {
+  createCategoryController,
+  updateCategoryController,
+  categoryController,
+  singleCategoryController,
+  deleteCategoryController,
+  getCategoryPhotourlController,
 };

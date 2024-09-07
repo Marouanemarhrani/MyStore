@@ -1,6 +1,6 @@
-import serviceModel from '../models/serviceModel.js';
-import slugify from 'slugify';
-import fs from "fs";
+const serviceModel = require('../models/serviceModel');
+const slugify = require('slugify');
+const fs = require('fs');
 
 const validateServiceFields = (fields, files) => {
     const { name, description, price, duration } = fields;
@@ -8,12 +8,13 @@ const validateServiceFields = (fields, files) => {
     if (!name) return { error: "Name is required" };
     if (!description) return { error: "Description is required" };
     if (!price) return { error: "Price is required" };
-    if (!duration) return { error: "duration is required" };
+    if (!duration) return { error: "Duration is required" };
     if (!photo) return { error: "Photo is required and should be less than 1MB" };
     return null;
 };
+
 // Create service
-export const createServiceController = async (req, res) => {
+const createServiceController = async (req, res) => {
     try {
         const validationError = validateServiceFields(req.fields, req.files);
         if (validationError) return res.status(400).send(validationError);
@@ -30,7 +31,7 @@ export const createServiceController = async (req, res) => {
         await service.save();
         res.status(201).send({
             success: true,
-            message: 'service created successfully',
+            message: 'Service created successfully',
             service,
         });
     } catch (error) {
@@ -44,7 +45,7 @@ export const createServiceController = async (req, res) => {
 };
 
 // Update service
-export const updateServiceController = async (req, res) => {
+const updateServiceController = async (req, res) => {
     try {
         const validationError = validateServiceFields(req.fields, req.files);
         if (validationError) return res.status(400).send(validationError);
@@ -65,7 +66,7 @@ export const updateServiceController = async (req, res) => {
         await service.save();
         res.status(200).send({
             success: true,
-            message: 'service updated successfully',
+            message: 'Service updated successfully',
             service,
         });
     } catch (error) {
@@ -79,7 +80,7 @@ export const updateServiceController = async (req, res) => {
 };
 
 // Get all services
-export const getServicesController = async (req, res) => {
+const getServicesController = async (req, res) => {
     try {
         const services = await serviceModel.find({})
             .select("-photo")
@@ -87,9 +88,9 @@ export const getServicesController = async (req, res) => {
             .sort({ createdAt: -1 });
 
         res.status(200).send({
-            totalservices: services.length,
+            totalServices: services.length,
             success: true,
-            message: "services retrieved successfully",
+            message: "Services retrieved successfully",
             services,
         });
     } catch (error) {
@@ -102,9 +103,8 @@ export const getServicesController = async (req, res) => {
     }
 };
 
-
-// single service
-export const singleServiceController = async (req, res) => {
+// Get single service
+const singleServiceController = async (req, res) => {
     try {
         const service = await serviceModel.findOne({ slug: req.params.slug })
             .select("-photo");
@@ -112,13 +112,13 @@ export const singleServiceController = async (req, res) => {
         if (!service) {
             return res.status(404).send({
                 success: false,
-                message: "service not found",
+                message: "Service not found",
             });
         }
 
         res.status(200).send({
             success: true,
-            message: "service details retrieved successfully",
+            message: "Service details retrieved successfully",
             service,
         });
     } catch (error) {
@@ -132,36 +132,45 @@ export const singleServiceController = async (req, res) => {
 };
 
 // Delete service
-export const deleteServiceController = async (req, res) => {
+const deleteServiceController = async (req, res) => {
     try {
         const serviceId = req.params.id;
         const result = await serviceModel.findByIdAndDelete(serviceId);
 
         if (!result) {
-            return res.status(404).json({ success: false, message: 'service not found' });
+            return res.status(404).json({ success: false, message: 'Service not found' });
         }
 
-        res.json({ success: true, message: 'service deleted successfully' });
+        res.json({ success: true, message: 'Service deleted successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Server error' });
     }
 };
 
-//photo url
-export const getServicePhotourlController = async(req, res) => {
+// Get service photo URL
+const getServicePhotourlController = async (req, res) => {
     try {
         const photoURL = await serviceModel.findById(req.params.id).select("photo");
-        if(photoURL.photo.data) {
+        if (photoURL.photo.data) {
             res.set("Content-type", photoURL.photo.contentType);
             return res.status(200).send(photoURL.photo.data);
         }
     } catch (error) {
         console.log(error);
         res.status(500).send({
-            success:false,
-            message:"There was an error in getting the photo url ",
+            success: false,
+            message: "There was an error in getting the photo URL",
             error,
-        })
+        });
     }
+};
+
+module.exports = {
+    createServiceController,
+    updateServiceController,
+    getServicesController,
+    singleServiceController,
+    deleteServiceController,
+    getServicePhotourlController,
 };

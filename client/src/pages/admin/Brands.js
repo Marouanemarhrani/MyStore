@@ -16,7 +16,7 @@ const Brands = () => {
                 `${process.env.REACT_APP_API}/api/brands/get-brand`
             );
             if(data?.success){
-                setBrands(data?.brand);
+                setBrands(data?.brands);
             };
         } catch (error) {
             console.log(error);

@@ -1,13 +1,13 @@
-import JWT from "jsonwebtoken";
-import userModel from "../models/userModel.js";
+const JWT = require('jsonwebtoken');
+const userModel = require('../models/userModel');
 
-//Protected Routes token base
-export const requireSignIn = async(req, res, next) => {
+// Protected Routes token base
+const requireSignIn = async (req, res, next) => {
     try {
         const decode = JWT.verify(
             req.headers.authorization, 
             process.env.JWT_SECRET
-            );
+        );
         req.user = decode;   
         next();
     } catch (error) {
@@ -15,12 +15,11 @@ export const requireSignIn = async(req, res, next) => {
     }
 };
 
-//admin access
-
-export const isAdmin = async (req, res, next) => {
+// Admin access
+const isAdmin = async (req, res, next) => {
     try {
         const user = await userModel.findById(req.user._id);
-        if(user.role !== 1){
+        if (user.role !== 1) {
             return res.status(401).send({
                 success: false,
                 message: "You can't access to this page!",
@@ -31,17 +30,18 @@ export const isAdmin = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         res.status(401).send({
-            succes: false,
+            success: false,
             error,
             message: "Error in admin middleware",
         });
     }
 };
 
-export const isTechnician = async (req, res, next) => {
+// Technician access
+const isTechnician = async (req, res, next) => {
     try {
         const user = await userModel.findById(req.user._id);
-        if(user.role !== 2){
+        if (user.role !== 2) {
             return res.status(401).send({
                 success: false,
                 message: "You can't access to this page!",
@@ -52,9 +52,15 @@ export const isTechnician = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         res.status(401).send({
-            succes: false,
+            success: false,
             error,
-            message: "Error in tec middleware",
+            message: "Error in technician middleware",
         });
     }
+};
+
+module.exports = {
+    requireSignIn,
+    isAdmin,
+    isTechnician
 };

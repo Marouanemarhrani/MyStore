@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const companySchema = new mongoose.Schema({
   name: {
@@ -14,11 +14,11 @@ const companySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: true
-},
+  },
   photo: {
     data: Buffer,
     contentType: String
-},
+  },
 });
 
-export default mongoose.model("Company", companySchema);
+module.exports = mongoose.model("Company", companySchema);

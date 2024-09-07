@@ -25,7 +25,7 @@ const CreateBrand = () => {
                 `${process.env.REACT_APP_API}/api/categories/get-category`
             );
             if(data?.success){
-                setCategories(data?.category);
+                setCategories(data?.categories);
             };
         } catch (error) {
             console.log(error);
@@ -40,7 +40,7 @@ const CreateBrand = () => {
                 `${process.env.REACT_APP_API}/api/companies/get-company`
             );
             if(data?.success){
-                setcompanies(data?.company);
+                setcompanies(data?.companies);
             };
         } catch (error) {
             console.log(error);

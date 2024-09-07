@@ -1,9 +1,7 @@
-import appointmentModel from '../models/appointmentModel.js';
-import slugify from 'slugify';
-import userModel from '../models/userModel.js';
+const appointmentModel = require('../models/appointmentModel');
 
 // Create appointment
-export const createAppointmentController = async (req, res) => {
+const createAppointmentController = async (req, res) => {
     try {
         const { firstname, lastname, email, date, time, phone, description } = req.body;
 
@@ -34,7 +32,7 @@ export const createAppointmentController = async (req, res) => {
 };
 
 // Update appointment
-export const updateAppointmentController = async (req, res) => {
+const updateAppointmentController = async (req, res) => {
     try {
       const { firstname, lastname, email, date, time, phone, description, status } = req.body;
       const { id } = req.params;
@@ -45,7 +43,7 @@ export const updateAppointmentController = async (req, res) => {
       );
       res.status(200).send({
         success: true,
-        messsage: "Appointments Updated Successfully",
+        message: "Appointment Updated Successfully",
         appointment,
       });
     } catch (error) {
@@ -56,13 +54,12 @@ export const updateAppointmentController = async (req, res) => {
         message: "Error while updating appointment",
       });
     }
-  };
-
+};
 
 // Get all appointments
-export const getAppointmentsController = async (req, res) => {
+const getAppointmentsController = async (req, res) => {
     try {
-        const appointments = await appointmentModel.find({})
+        const appointments = await appointmentModel.find({});
         res.status(200).send({
             success: true,
             message: 'Appointments retrieved successfully',
@@ -78,13 +75,13 @@ export const getAppointmentsController = async (req, res) => {
     }
 };
 
-// single appointment
-export const singleAppointmentController = async (req, res) => {
+// Single appointment
+const singleAppointmentController = async (req, res) => {
     try {
       const appointment = await appointmentModel.findOne({ lastname: req.params.lastname, firstname: req.params.firstname });
       res.status(200).send({
         success: true,
-        message: "Get SIngle Appoitnment SUccessfully",
+        message: "Get Single Appointment Successfully",
         appointment,
       });
     } catch (error) {
@@ -95,13 +92,13 @@ export const singleAppointmentController = async (req, res) => {
         message: "Error While getting Single Appointment",
       });
     }
-  };
+};
 
 // Get appointment by ID
-export const getAppointmentController = async (req, res) => {
+const getAppointmentController = async (req, res) => {
     try {
         const { id } = req.params;
-        const appointment = await appointmentModel.findById(id)
+        const appointment = await appointmentModel.findById(id);
 
         if (!appointment) {
             return res.status(404).send({
@@ -126,7 +123,7 @@ export const getAppointmentController = async (req, res) => {
 };
 
 // Delete appointment
-export const deleteAppointmentController = async (req, res) => {
+const deleteAppointmentController = async (req, res) => {
     try {
         const { id } = req.params;
         const appointment = await appointmentModel.findByIdAndDelete(id);
@@ -150,4 +147,13 @@ export const deleteAppointmentController = async (req, res) => {
             error,
         });
     }
+};
+
+module.exports = {
+    createAppointmentController,
+    updateAppointmentController,
+    getAppointmentsController,
+    singleAppointmentController,
+    getAppointmentController,
+    deleteAppointmentController,
 };

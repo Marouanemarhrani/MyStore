@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const brandSchema = new mongoose.Schema({
   name: {
@@ -14,16 +14,16 @@ const brandSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Company",
     required: true
-},
-category: {
+  },
+  category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: true
-},
+  },
   photo: {
     data: Buffer,
     contentType: String
-},
+  },
 });
 
-export default mongoose.model("Brand", brandSchema);
+module.exports = mongoose.model("Brand", brandSchema);

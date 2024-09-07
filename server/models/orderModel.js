@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema(
     {
@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema(
             enum: ["Not Process", "Processing", "Shipped", "delivered", "cancel"],
         },
     },
-    { timestamps: true}
+    { timestamps: true }
 );
 
-export default mongoose.model("Order", orderSchema);
+module.exports = mongoose.model("Order", orderSchema);

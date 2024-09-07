@@ -1,6 +1,14 @@
-import express from "express";
-import { registerController, loginController, updateProfileController, getAllOrdersController, orderStatusController, getOrdersController, updateAddressController } from "../controllers/userController.js";
-import { isAdmin, isTechnician, requireSignIn } from "../middlewares/authMiddleware.js";
+const express = require('express');
+const { 
+    registerController, 
+    loginController, 
+    updateProfileController, 
+    getAllOrdersController, 
+    orderStatusController, 
+    getOrdersController, 
+    updateAddressController 
+} = require('../controllers/userController');
+const { isAdmin, isTechnician, requireSignIn } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -14,33 +22,31 @@ router.post('/login', loginController);
 // Update user profile
 router.put('/profile', requireSignIn, updateProfileController);
 
-//protected user route auth
-router.get("/user-auth", requireSignIn, (req,res) => {
+// Protected user route auth
+router.get("/user-auth", requireSignIn, (req, res) => {
     res.status(200).send({ ok: true });
 });
 
-//protected admin route auth
-router.get("/admin-auth", requireSignIn, isAdmin, (req,res) => {
+// Protected admin route auth
+router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
     res.status(200).send({ ok: true });
 });
 
-//protected technician route auth
-router.get("/technician-auth", requireSignIn, isTechnician, (req,res) => {
+// Protected technician route auth
+router.get("/technician-auth", requireSignIn, isTechnician, (req, res) => {
     res.status(200).send({ ok: true });
 });
 
-//orders
+// Orders
 router.get('/orders', requireSignIn, getOrdersController);
 
-//all orders
+// All orders
 router.get('/all-orders', requireSignIn, isAdmin, getAllOrdersController);
 
-//order status update
+// Order status update
 router.put("/order-status/:orderId", requireSignIn, isAdmin, orderStatusController);
 
 // Update user address
 router.put('/update-address', requireSignIn, updateAddressController);
 
-
-
-export default router;
+module.exports = router;

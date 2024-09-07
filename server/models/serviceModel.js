@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const serviceSchema = new mongoose.Schema({
     name: {
@@ -9,7 +9,7 @@ const serviceSchema = new mongoose.Schema({
     slug: {
         type: String,
         lowercase: true,
-      },
+    },
     description: {
         type: String,
         required: true,
@@ -34,4 +34,4 @@ const serviceSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-export default mongoose.model('Service', serviceSchema);
+module.exports = mongoose.model('Service', serviceSchema);

@@ -1,14 +1,14 @@
-import express from "express";
-import formidable from 'express-formidable';
-import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
-import {
+const express = require('express');
+const formidable = require('express-formidable');
+const { isAdmin, requireSignIn } = require('../middlewares/authMiddleware');
+const {
   brandController,
   createBrandController,
   deleteBrandController,
   getBrandPhotourlController,
   singleBrandController,
   updateBrandController,
-} from "./../controllers/brandController.js";
+} = require('../controllers/brandController');
 
 const router = express.Router();
 
@@ -48,4 +48,4 @@ router.delete(
 //Get URL of photo by id
 router.get('/brand/photoURL/:id', getBrandPhotourlController);
 
-export default router;
+module.exports = router;

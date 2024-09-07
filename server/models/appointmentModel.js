@@ -1,19 +1,19 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema({
-    firstname:{
+    firstname: {
         type: String,
         required: true,
     },
-    lastname:{
+    lastname: {
         type: String,
         required: true,
     },
-    email:{
+    email: {
         type: String,
         required: true,
     },
-    phone:{
+    phone: {
         type: Number,
         required: true,
     },
@@ -42,4 +42,4 @@ const appointmentSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-export default mongoose.model('Appointment', appointmentSchema);
+module.exports = mongoose.model('Appointment', appointmentSchema);

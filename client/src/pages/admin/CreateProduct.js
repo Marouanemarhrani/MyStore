@@ -30,7 +30,7 @@ const CreateProduct = () => {
                 `${process.env.REACT_APP_API}/api/categories/get-category`
             );
             if(data?.success){
-                setCategories(data?.category);
+                setCategories(data?.categories);
             };
         } catch (error) {
             console.log(error);
@@ -45,7 +45,7 @@ const CreateProduct = () => {
                 `${process.env.REACT_APP_API}/api/brands/get-brand`
             );
             if(data?.success){
-                setBrands(data?.brand);
+                setBrands(data?.brands);
             };
         } catch (error) {
             console.log(error);
@@ -60,7 +60,7 @@ const CreateProduct = () => {
                 `${process.env.REACT_APP_API}/api/companies/get-company`
             );
             if(data?.success){
-                setCompanies(data?.company);
+                setCompanies(data?.companies);
             };
         } catch (error) {
             console.log(error);

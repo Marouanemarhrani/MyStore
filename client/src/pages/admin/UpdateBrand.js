@@ -48,7 +48,7 @@ const UpdateBrand = () => {
                 `${process.env.REACT_APP_API}/api/categories/get-category`
             );
             if(data?.success){
-                setCategories(data?.category);
+                setCategories(data?.categories);
             };
         } catch (error) {
             console.log(error);
@@ -63,7 +63,7 @@ const UpdateBrand = () => {
                 `${process.env.REACT_APP_API}/api/companies/get-company`
             );
             if(data?.success){
-                setCompanies(data?.company);
+                setCompanies(data?.companies);
             };
         } catch (error) {
             console.log(error);

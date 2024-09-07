@@ -16,7 +16,7 @@ const CategoriesAdm = () => {
                 `${process.env.REACT_APP_API}/api/categories/get-category`
             );
             if(data?.success){
-                setCategories(data?.category);
+                setCategories(data?.categories);
             };
         } catch (error) {
             console.log(error);

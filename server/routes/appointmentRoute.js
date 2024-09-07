@@ -1,13 +1,13 @@
-import express from 'express';
-import { requireSignIn, isAdmin, isTechnician } from '../middlewares/authMiddleware.js';
-import {
+const express = require('express');
+const { requireSignIn, isAdmin, isTechnician } = require('../middlewares/authMiddleware');
+const {
     createAppointmentController,
     updateAppointmentController,
     getAppointmentsController,
     getAppointmentController,
     deleteAppointmentController,
     singleAppointmentController,
-} from '../controllers/appointmentController.js';
+} = require('../controllers/appointmentController');
 
 const router = express.Router();
 
@@ -26,7 +26,7 @@ router.get('/appointment/:id', requireSignIn, isAdmin, getAppointmentController)
 // Delete appointment
 router.delete('/appointment/:id', requireSignIn, isTechnician, deleteAppointmentController);
 
-//single appointments
+// Single appointments
 router.get("/single-appointment/:lastname/:firstname", requireSignIn, isTechnician, singleAppointmentController);
 
-export default router;
+module.exports = router;

@@ -1,9 +1,9 @@
-import companyModel from "../models/companyModel.js";
-import slugify from "slugify";
-import fs from 'fs';
+const companyModel = require('../models/companyModel');
+const slugify = require('slugify');
+const fs = require('fs');
 
 const validateCompanyFields = (fields, files) => {
-  const { name, category} = fields;
+  const { name, category } = fields;
   const { photo } = files;
   if (!name) return { error: "Name is required" };
   if (!category) return { error: "Category is required" };
@@ -11,8 +11,8 @@ const validateCompanyFields = (fields, files) => {
   return null;
 };
 
-//create company
-export const createCompanyController = async (req, res) => {
+// Create company
+const createCompanyController = async (req, res) => {
   try {
       const validationError = validateCompanyFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
@@ -20,38 +20,37 @@ export const createCompanyController = async (req, res) => {
       const { name } = req.fields;
       const { photo } = req.files;
       const existingCompany = await companyModel.findOne({ name });
-        if (existingCompany) {
-          return res.status(200).send({
-            success: false,
-            message: "Company Already Exisits",
-          });
-        }
+      if (existingCompany) {
+        return res.status(200).send({
+          success: false,
+          message: "Company Already Exists",
+        });
+      }
       const company = new companyModel({ ...req.fields, slug: slugify(name) });
 
       if (photo) {
-          company.photo.data = fs.readFileSync(photo.path);
-          company.photo.contentType = photo.type;
+        company.photo.data = fs.readFileSync(photo.path);
+        company.photo.contentType = photo.type;
       }
 
       await company.save();
       res.status(201).send({
-          success: true,
-          message: 'company created successfully',
-          company,
+        success: true,
+        message: 'Company created successfully',
+        company,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
-          success: false,
-          message: 'Error creating company',
-          error,
+        success: false,
+        message: 'Error creating company',
+        error,
       });
   }
 };
-    
 
-//update company
-export const updateCompanyController = async (req, res) => {
+// Update company
+const updateCompanyController = async (req, res) => {
   try {
       const validationError = validateCompanyFields(req.fields, req.files);
       if (validationError) return res.status(400).send(validationError);
@@ -65,34 +64,34 @@ export const updateCompanyController = async (req, res) => {
       );
 
       if (photo) {
-          company.photo.data = fs.readFileSync(photo.path);
-          company.photo.contentType = photo.type;
+        company.photo.data = fs.readFileSync(photo.path);
+        company.photo.contentType = photo.type;
       }
 
       await company.save();
       res.status(200).send({
-          success: true,
-          message: 'company updated successfully',
-          company,
+        success: true,
+        message: 'Company updated successfully',
+        company,
       });
   } catch (error) {
       console.error(error);
       res.status(500).send({
-          success: false,
-          message: 'Error updating company',
-          error,
+        success: false,
+        message: 'Error updating company',
+        error,
       });
   }
 };
 
-// get all cat
-export const companyController = async (req, res) => {
+// Get all companies
+const companyController = async (req, res) => {
   try {
-    const company = await companyModel.find({}).select("-photo").populate("category");
+    const companies = await companyModel.find({}).select("-photo").populate("category");
     res.status(200).send({
       success: true,
       message: "All Companies List",
-      company,
+      companies,
     });
   } catch (error) {
     console.log(error);
@@ -104,13 +103,13 @@ export const companyController = async (req, res) => {
   }
 };
 
-// single company
-export const singleCompanyController = async (req, res) => {
+// Get single company
+const singleCompanyController = async (req, res) => {
   try {
     const company = await companyModel.findOne({ slug: req.params.slug }).select("-photo").populate("category");
     res.status(200).send({
       success: true,
-      message: "Get SIngle Company SUccessfully",
+      message: "Get Single Company Successfully",
       company,
     });
   } catch (error) {
@@ -118,54 +117,53 @@ export const singleCompanyController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error While getting Single Company",
+      message: "Error while getting single company",
     });
   }
 };
 
-//delete company
-export const deleteCompanyController = async (req, res) => {
+// Delete company
+const deleteCompanyController = async (req, res) => {
   try {
     const { id } = req.params;
     await companyModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Categry Deleted Successfully",
+      message: "Company Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting company",
+      message: "Error while deleting company",
       error,
     });
   }
 };
 
-//photo url
-export const getCompanyPhotourlController = async(req, res) => {
+// Get company photo URL
+const getCompanyPhotourlController = async (req, res) => {
   try {
       const photoURL = await companyModel.findById(req.params.id).select("photo");
-      if(photoURL.photo.data) {
+      if (photoURL.photo.data) {
           res.set("Content-type", photoURL.photo.contentType);
           return res.status(200).send(photoURL.photo.data);
       }
   } catch (error) {
       console.log(error);
       res.status(500).send({
-          success:false,
-          message:"There was an error in getting the photo url ",
+          success: false,
+          message: "There was an error in getting the photo URL",
           error,
-      })
+      });
   }
 };
 
-//get specific companies
-
-export const getSpecificCompanies = async (req, res) => {
+// Get specific companies
+const getSpecificCompanies = async (req, res) => {
   try {
     // Hard-coded array of company names
-    const names = ["Apple iPhone", "Apple Macbook", "Apple Watch", "Apple iPad", ];
+    const names = ["Apple iPhone", "Apple Macbook", "Apple Watch", "Apple iPad"];
 
     // Use the $in operator to find documents where the value of "name" is in the provided array
     const companies = await companyModel.find({
@@ -177,11 +175,21 @@ export const getSpecificCompanies = async (req, res) => {
     } else {
       res.status(200).send({
         success: true,
-        message: "companies are here Successfully",
+        message: "Companies retrieved successfully",
         companies,
       });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+module.exports = {
+  createCompanyController,
+  updateCompanyController,
+  companyController,
+  singleCompanyController,
+  deleteCompanyController,
+  getCompanyPhotourlController,
+  getSpecificCompanies,
 };

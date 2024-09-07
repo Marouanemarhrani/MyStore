@@ -15,7 +15,7 @@ const Companies = () => {
             const {data} = await axios.get(
                 `${process.env.REACT_APP_API}/api/companies/get-company`
             );
-            setCompanies(data.company);
+            setCompanies(data.companies);
         } catch (error) {
             console.log(error);
             toast.error('error in get companies');

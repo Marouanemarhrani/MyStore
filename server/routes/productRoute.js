@@ -1,7 +1,7 @@
-import express from 'express';
-import formidable from 'express-formidable';
-import { requireSignIn, isAdmin } from '../middlewares/authMiddleware.js';
-import {
+const express = require('express');
+const formidable = require('express-formidable');
+const { requireSignIn, isAdmin } = require('../middlewares/authMiddleware');
+const {
     createProductController,
     getProductsController,
     getProductController,
@@ -19,7 +19,7 @@ import {
     brainTreePaymentController,
     getBestsellerProducts,
     productCompanyController,
-} from '../controllers/productController.js';
+} = require('../controllers/productController');
 
 const router = express.Router();
 
@@ -47,34 +47,32 @@ router.get('/product/related/:pid/:cid', relatedProductController);
 // Get products by category
 router.get('/product/category/:slug', productCategoryController);
 
-//Get URL of photo by id
+// Get URL of photo by id
 router.get('/photoURL/:id', getPhotourlController);
 
-//delete product
-router.delete("/delete-product/:id", deleteProductController);
+// Delete product
+router.delete('/delete-product/:id', deleteProductController);
 
-//filter product
+// Filter product
 router.post('/product-filters', productFiltersController);
 
-//product count
+// Product count
 router.get('/product-count', productCountController);
 
-//product per page
+// Product per page
 router.get('/product-list/:page', productListController);
 
-//bestseller
+// Bestseller
 router.get('/bestseller', getBestsellerProducts);
 
-//payments routes
-//token
+// Payments routes
+// Token
 router.get('/braintree/token', braintreeTokenController);
 
-//payments
+// Payments
 router.post('/braintree/payment', requireSignIn, brainTreePaymentController);
 
 // Get products by company
 router.get('/product/company/:slug', productCompanyController);
 
-
-
-export default router;
+module.exports = router;

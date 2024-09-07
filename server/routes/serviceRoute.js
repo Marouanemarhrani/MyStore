@@ -1,14 +1,14 @@
-import express from 'express';
-import formidable from 'express-formidable';
-import { requireSignIn, isAdmin, isTechnician } from '../middlewares/authMiddleware.js';
-import {
+const express = require('express');
+const formidable = require('express-formidable');
+const { requireSignIn, isAdmin, isTechnician } = require('../middlewares/authMiddleware');
+const {
     createServiceController,
     updateServiceController,
     getServicesController,
     deleteServiceController,
     singleServiceController,
     getServicePhotourlController,
-} from '../controllers/serviceController.js';
+} = require('../controllers/serviceController');
 
 const router = express.Router();
 
@@ -24,10 +24,10 @@ router.get('/services', getServicesController);
 // Delete service
 router.delete('/delete-service/:id', requireSignIn, isAdmin, deleteServiceController);
 
-//single category
-router.get("/single-service/:slug", singleServiceController);
+// Single service
+router.get('/single-service/:slug', singleServiceController);
 
-//Get URL of photo by id
+// Get URL of photo by id
 router.get('/service/photoURL/:id', getServicePhotourlController);
 
-export default router;
+module.exports = router;
