@@ -11,14 +11,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest  # You can keep this as it is since you're using Node.js, but on Windows you can switch to windows-latest
-
     services:
       mongo:
         image: mongo:4.4
         ports:
           - 27017:27017
-        options: --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval=10s --health-timeout=5s --health-retries=5
-
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
