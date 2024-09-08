@@ -45,12 +45,14 @@ import UpdateCompany from "./pages/admin/UpdateCompany";
 import CreateCompany from "./pages/admin/CreateCompany";
 import CompanyProduct from "./pages/CompanyProduct";
 import ScrollToTop from "./components/ScrollToTop";
+import Ia from "./pages/Ia"
 
 function App() {
   return (
     <>
       <ScrollToTop />
         <Routes>
+        <Route path="/ia" element={<Ia/>} />
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:slug" element={<ProductDetails />} />
           <Route path="/categories" element={<Categories />} />

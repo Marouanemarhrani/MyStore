@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const mongoUrl = process.env.NODE_ENV === 'test'
-    ? process.env.MONGO_TEST_URL  // Use test-specific database
-    : process.env.MONGO_URL;      // Use regular database in development
+  if (process.env.NODE_ENV === 'test') {
+    return;  // MongoDB connection is handled by mongodb-memory-server in the jest setup.
+  }
+
+  const mongoUrl = process.env.MONGO_URL;
 
   if (!mongoUrl) {
     throw new Error('MongoDB connection string is not defined in environment variables.');
   }
 
   try {
-    const connection = await mongoose.connect(mongoUrl);
+    const connection = await mongoose.connect(mongoUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log(`Database connected successfully: ${connection.connection.host}`);
   } catch (error) {
     console.error('Error connecting to the database:', error.message);
