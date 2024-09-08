@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "test:server": "jest --config ./server/jest.config.js",
+    "test:server": "jest --config ./jest.config.js",
     "lint": "eslint .",
     "start": "node server.js",
     "server": "nodemon server.js",
