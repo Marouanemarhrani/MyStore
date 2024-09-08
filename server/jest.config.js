@@ -1,5 +1,6 @@
 module.exports = {
-    testEnvironment: 'node',
-    setupFilesAfterEnv: ['./test/jest.setup.js'], // Path to your Jest setup file
+    testEnvironment: 'node',  // Use 'node' environment for server-side tests
+    setupFilesAfterEnv: ['./jest.setup.js'],  // Path to jest.setup.js directly in the server directory
+    verbose: true,  // Provides detailed test output
   };
   
