@@ -8,7 +8,7 @@ on:
 
 jobs:
   server-tests:
-    runs-on: windows-latest  # Use Windows environment
+    runs-on: ubuntu-latest  
 
     services:
       mongo:
@@ -30,7 +30,8 @@ jobs:
         run: cd server && npm install  # Install server-side dependencies only
 
       - name: Set up environment for tests
-        run: echo "mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > server/.env  # Set up environment variables for tests
+        run: |
+          echo "MONGO_TEST_URL=mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > server/.env  # Set up environment variables for tests
 
       - name: Run server tests
         run: cd server && npm run test:server  # Run server-side tests
