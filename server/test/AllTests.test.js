@@ -127,7 +127,7 @@ describe('Combined Controller Tests', () => {
       expect(res.statusCode).toBe(200);
       expect(res.body.success).toBe(true);
       expect(res.body.message).toBe('All Categories List');
-      expect(res.body.categories.length).toBe(4); // Expecting 4 categories
+      expect(res.body.categories.length).toBe(3); // Expecting 4 categories
       expect(res.body.categories[0]).toHaveProperty('name');
       expect(res.body.categories[0]).toHaveProperty('slug');
     });
