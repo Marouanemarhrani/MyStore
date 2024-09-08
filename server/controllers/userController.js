@@ -139,6 +139,33 @@ const updateProfileController = async (req, res) => {
     }
 };
 
+// Delete user account
+const deleteUserController = async (req, res) => {
+    try {
+        // Find the user by ID and delete
+        const user = await userModel.findByIdAndDelete(req.user._id);
+
+        if (!user) {
+            return res.status(404).send({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        res.status(200).send({
+            success: true,
+            message: "Account deleted successfully",
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            success: false,
+            message: "An error occurred while deleting the account",
+            error,
+        });
+    }
+};
+
 // Get user's orders
 const getOrdersController = async (req, res) => {
     try {
@@ -232,4 +259,6 @@ module.exports = {
     getAllOrdersController,
     orderStatusController,
     updateAddressController,
+    deleteUserController,
+    
 };

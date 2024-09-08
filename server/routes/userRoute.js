@@ -6,7 +6,8 @@ const {
     getAllOrdersController, 
     orderStatusController, 
     getOrdersController, 
-    updateAddressController 
+    updateAddressController, 
+    deleteUserController
 } = require('../controllers/userController');
 const { isAdmin, isTechnician, requireSignIn } = require('../middlewares/authMiddleware');
 
@@ -48,5 +49,8 @@ router.put("/order-status/:orderId", requireSignIn, isAdmin, orderStatusControll
 
 // Update user address
 router.put('/update-address', requireSignIn, updateAddressController);
+
+//delete account
+router.delete('/delete-account', requireSignIn, deleteUserController);
 
 module.exports = router;

@@ -103,7 +103,7 @@ const Header = () => {
             </ul>
 
             <ul className="header19 navbar-nav ms-auto mb-2 mb-lg-0">
-              {!auth.user ? (
+              {!auth?.user ? (  // Check if auth.user exists
                 <>
                   <li className="header20 nav-item">
                     <NavLink to="/register" className="header21 nav-link">
@@ -132,8 +132,8 @@ const Header = () => {
                       <li>
                         <NavLink 
                           to={`/dashboard/${
-                            auth?.user.role === 1 ? "admin" 
-                              : auth?.user.role === 2 ? "technician" 
+                            auth?.user?.role === 1 ? "admin" 
+                              : auth?.user?.role === 2 ? "technician" 
                               : "user"
                           }`}
                           className="header27 dropdown-item"
