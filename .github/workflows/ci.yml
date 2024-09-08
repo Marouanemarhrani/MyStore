@@ -1,14 +1,16 @@
-name: Server Tests Pipeline
+name: Run Server Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  server-tests:
-    runs-on: ubuntu-latest  
+  test:
+    runs-on: ubuntu-latest  # You can keep this as it is since you're using Node.js, but on Windows you can switch to windows-latest
 
     services:
       mongo:
@@ -18,20 +20,23 @@ jobs:
         options: --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
-      - name: Checkout code
+      - name: Checkout the code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '22.4.1'  
 
       - name: Install dependencies
-        run: cd server && npm install  # Install server-side dependencies only
-
-      - name: Set up environment for tests
         run: |
-          echo "MONGO_TEST_URL=mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > server/.env  # Set up environment variables for tests
+          cd server
+          npm install  # Install server dependencies
 
-      - name: Run server tests
-        run: cd server && npm run test:server  # Run server-side tests
+      - name: Set up MongoDB URI for tests
+        run: echo "MONGO_TEST_URL= mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > server/.env  
+
+      - name: Run tests
+        run: |
+          cd server
+          npm run test:server  # Run server tests
