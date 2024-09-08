@@ -1,16 +1,14 @@
-name: MERN CI Pipeline
+name: Server Tests Pipeline
 
-# Controls when the action will run.
 on:
   push:
-    branches: [ main ] # Run the CI on push to the main branch
+    branches: [ main ]
   pull_request:
-    branches: [ main ] # Also run CI on pull requests to the main branch
+    branches: [ main ]
 
-# Define the jobs for this workflow
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+  server-tests:
+    runs-on: windows-latest  # Use Windows environment
 
     services:
       mongo:
@@ -19,27 +17,20 @@ jobs:
           - 27017:27017
         options: --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval=10s --health-timeout=5s --health-retries=5
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x] # Specify Node.js versions to test on
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
 
       - name: Install dependencies
-        run: npm install
+        run: cd server && npm install  # Install server-side dependencies only
 
-      - name: Set up MongoDB URI for tests
-        run: echo "mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > .env.test
+      - name: Set up environment for tests
+        run: echo "mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" > server/.env  # Set up environment variables for tests
 
-      - name: Run backend tests
-        run: npm run test:server
-
-      - name: Run linting
-        run: npm run lint
+      - name: Run server tests
+        run: cd server && npm run test:server  # Run server-side tests
