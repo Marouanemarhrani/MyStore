@@ -19,23 +19,27 @@ jobs:
           - 27017:27017
 
     steps:
+      # Step 1: Checkout the code from the repository
       - name: Checkout the code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
 
+      # Step 3: Install server dependencies
       - name: Install dependencies
         run: |
           cd server
           npm install
 
+      # Step 4: Set environment variables
       - name: Set environment variables for Braintree and MongoDB
         run: |
           echo "PORT=8080" > server/.env
-          echo "NODE_ENV=development" >> server/.env
+          echo "NODE_ENV=test" >> server/.env  # Set NODE_ENV to test during CI runs
           echo "MONGO_URL=mongodb+srv://storedb:123@cluster0.yuzsf2m.mongodb.net/" >> server/.env
           echo "MONGO_TEST_URL=mongodb+srv://marhranim:123@cluster0.d66pi.mongodb.net/" >> server/.env
           echo "JWT_SECRET=cosanostra123" >> server/.env
@@ -43,6 +47,7 @@ jobs:
           echo "BRAINTREE_PUBLIC_KEY=sy5zqpyjbbgvpqpm" >> server/.env
           echo "BRAINTREE_PRIVATE_KEY=6044dd4c4e13698f87f9cb36c6d4742a" >> server/.env
 
+      # Step 5: Run the tests
       - name: Run server tests
         run: |
           cd server
