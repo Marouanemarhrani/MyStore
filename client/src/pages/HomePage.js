@@ -18,7 +18,6 @@ import banner1 from "./../data/banner1.png";
 import banner2 from "./../data/banner2.png";
 import banner3 from "./../data/banner3.png";
 import filterimage from "./../data/filter.png";
-import video from "./../data/video.mp4";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -247,7 +246,7 @@ const HomePage = () => {
         <div className='home banner'>
           <span className='home1 banner-text'>
             Estimate your phone price in a second
-            <Link to='/ia' className='banner-link'>
+            <Link to='http://localhost:3000/ia' className='banner-link'>
               Try Now!
             </Link>
           </span>

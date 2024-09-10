@@ -92,7 +92,7 @@ const Header = () => {
                 </ul>
               </li>
               <li className="header31 nav-item">
-                <NavLink to="/ia" className="header32 nav-link">
+                <NavLink to="http://localhost:3000/ia" className="header32 nav-link">
                   Sell
                 </NavLink>
               </li>

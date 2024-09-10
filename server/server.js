@@ -26,7 +26,7 @@ connectDB();
 const app = express();
 
 // Augmenter la taille limite de la requête
-app.use(bodyParser.json({ limit: '10mb' })); // Ajustez la taille selon vos besoins
+app.use(bodyParser.json({ limit: '10mb' })); 
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Middleware setup
@@ -35,8 +35,8 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 /* Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-*/
+app.use(express.static(path.join(__dirname, 'client/build')));*/
+
 
 // Route handling
 app.use('/api/users', userRoute);
@@ -51,7 +51,7 @@ app.use('/api/sells', sellRoute);
 /* Handle all other routes and return the React app
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});*/
+})*/
 
 // Define port
 const PORT = process.env.PORT || 8080;

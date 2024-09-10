@@ -12,6 +12,66 @@
     text-align: center;
 }
 
+/* Instructions Header with Arrow Button */
+.instructions-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.arrow-button {
+    background-color: transparent; /* Remove background */
+    border: none; /* Remove border */
+    font-size: 1.2rem; /* Make the button smaller */
+    margin-left: 0.5rem;
+    cursor: pointer;
+    color: #007bff; /* Set the default color */
+    padding: 0; /* Remove padding for a more compact button */
+}
+
+.arrow-button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.arrow-button:hover {
+    color: #0056b3; /* Slightly darker blue on hover */
+}
+
+/* Instructions Section */
+.instructions-section {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.instructions-text {
+    font-size: 1.1rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+/* Instruction Images */
+.instruction-images {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.instruction-image {
+    width: 150px;
+    height: auto; /* Ensure the height auto-adjusts to fit content */
+    object-fit: contain; /* Ensure the image is fully visible */
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+.instruction-image:hover {
+    border-color: #007bff;
+}
+
 /* Image Upload Section */
 .image-upload-section {
     display: flex;
@@ -40,15 +100,16 @@
 }
 
 .test-button {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-color: #218838;
     padding: 0.5rem 2rem;
     font-size: 1.1rem;
-    border: none;
 }
 
 .test-button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
+    color: white;
 }
 
 /* Prediction Result */
@@ -70,20 +131,23 @@
 }
 
 .show-modal-button {
-    background-color: #28a745;
+    background-color: #ffffff;
     padding: 0.7rem 1.5rem;
     font-size: 1.1rem;
-    border: none;
+    border-color: #218838;
+    color: #000000;
 }
 
 .show-modal-button:hover {
     background-color: #218838;
+    color: white;
+    border-color: #218838;
 }
 
 /* Modal Styles */
 .modal-header {
-    background-color: #007bff;
-    color: white;
+    background-color: #797979;
+    color: #000000;
 }
 
 .modal-title {
@@ -97,7 +161,7 @@
 .uploaded-photo-container img {
     width: 100%;
     max-width: 300px; 
-    height: 300px; 
+    height: auto; /* Ensure the height auto-adjusts */
     object-fit: contain; 
     border-radius: 8px;
     margin-top: 1rem;
@@ -116,8 +180,8 @@
 }
 
 .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #000000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Modal Footer Button Styles */

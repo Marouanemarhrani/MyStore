@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import './Ia.css';
 import toast from 'react-hot-toast';
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa'; 
+import good from './../data/good.jpg';
+import bad from './../data/bad.jpg';
 
 const Ia = () => {
     const [image, setPhoto] = useState(null);
@@ -12,6 +15,7 @@ const Ia = () => {
     const [showModal, setShowModal] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [userOffer, setUserOffer] = useState("");
+    const [showInstructions, setShowInstructions] = useState(false); 
 
     const handleCreate = async (e) => {
         e.preventDefault();
@@ -70,11 +74,37 @@ const Ia = () => {
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
 
+    // Toggle instructions visibility
+    const toggleInstructions = () => {
+        setShowInstructions(prev => !prev);
+    };
+
     return (
         <LayoutNF title={"Sell A Device"}>
             <div className='device-estimation-container container-fluid'>
                 <h1 className='device-estimation-title'>Try now IA to sell your device</h1>  
-                <h1 className='device-estimation-title'>How does it work?</h1>
+                <div className='instructions-header'>
+                    <h1 className='device-estimation-title'>How does it work?</h1>
+                    <Button className="arrow-button" onClick={toggleInstructions}>
+                        {showInstructions ? <FaAngleUp /> : <FaAngleDown />} 
+                    </Button>
+                </div>
+
+                {showInstructions && (
+                    <div className='instructions-section'>
+                        <p className='instructions-text'>
+                            1. Upload a clear photo of your device.<br/>
+                            2. Our AI model will analyze the image and predict the device type.<br/>
+                            3. You will get an estimated price based on the predicted device.<br/>
+                            4. The phone price is not exact, it may change depends on you phone details and quality<br/>
+                            5. Make sure that the image is clear. Avoid taking images like the first one
+                        </p>
+                        <div className='instruction-images'>
+                            <img src={bad} alt='How to take a photo - Example 1' className='instruction-image'/>
+                            <img src={good} alt='How to take a photo - Example 2' className='instruction-image'/>
+                        </div>
+                    </div>
+                )}
                 
                 <div className='image-upload-section row'>
                     <label className='image-upload-label btn btn-outline col-md-12'>

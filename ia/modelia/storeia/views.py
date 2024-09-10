@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 # Charger le modèle
-model_path = r'C:\Users\marhr\Desktop\Store\ia\ia_fin\phone_classifier.h5'
+model_path = r'C:\Users\marhr\Desktop\MyStore\ia\ia_fin\phone_classifier.h5'
 model = load_model(model_path)
 
 

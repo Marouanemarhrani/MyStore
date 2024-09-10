@@ -42,7 +42,7 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Customer Support</h4>
           <ul>
-            <li><a href="/ia">Become a Vendor</a></li>
+            <li><a href="http://localhost:3000/ia">Become a Vendor</a></li>
             <li><a href="/dashboard/user/orders">Order Status</a></li>
             <li><a href="#">Payment Options</a></li>
             <li><a href="#">Shipping Info</a></li>
