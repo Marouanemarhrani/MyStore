@@ -75,10 +75,10 @@ const AdminMenu = () => {
                     Orders
                 </NavLink>
                 <NavLink 
-                    to="/dashboard/admin/users" 
+                    to="/dashboard/admin/offers" 
                     className="adminmenu6 list-group-item list-group-item-action"
                 >
-                    Users
+                    Offers
                 </NavLink>
         </div>
       </div>

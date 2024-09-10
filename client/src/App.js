@@ -46,6 +46,7 @@ import CreateCompany from "./pages/admin/CreateCompany";
 import CompanyProduct from "./pages/CompanyProduct";
 import ScrollToTop from "./components/ScrollToTop";
 import Ia from "./pages/Ia"
+import AdminOffers from "./pages/admin/AdminOffers";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           <Route path="/dashboard" element={<AdminRoute />}>
             <Route path="admin" element={<AdminDashboard />} />
             <Route path="admin/create-category" element={<CreateCategory />} />
+            <Route path="admin/offers" element={<AdminOffers />} />
             <Route path="admin/category/:slug" element={<UpdateCategory />} />
             <Route path="admin/categories" element={<CategoriesAdm/>} />
             <Route path="admin/create-company" element={<CreateCompany />} />

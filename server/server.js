@@ -13,6 +13,7 @@ const appointmentRoute = require('./routes/appointmentRoute');
 const serviceRoute = require('./routes/serviceRoute');
 const brandRoute = require('./routes/brandRoute');
 const companyRoute = require('./routes/companyRoute');
+const sellRoute = require('./routes/sellRoutes');
 
 // Configure environment variables
 dotenv.config();
@@ -28,8 +29,9 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Serve static files from the React app
+/* Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+*/
 
 // Route handling
 app.use('/api/users', userRoute);
@@ -39,11 +41,12 @@ app.use('/api/appointments', appointmentRoute);
 app.use('/api/services', serviceRoute);
 app.use('/api/brands', brandRoute);
 app.use('/api/companies', companyRoute);
+app.use('/api/sells', sellRoute);
 
-// Handle all other routes and return the React app
+/* Handle all other routes and return the React app
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+});*/
 
 // Define port
 const PORT = process.env.PORT || 8080;

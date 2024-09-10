@@ -1,0 +1,188 @@
+/* General Styles */
+.device-estimation-container {
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Title */
+.device-estimation-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Image Upload Section */
+.image-upload-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.image-upload-label {
+    cursor: pointer;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 2px dashed #6c757d;
+}
+
+.image-upload-label:hover {
+    background-color: #e2e6ea;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.test-button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.test-button:hover {
+    background-color: #0056b3;
+}
+
+/* Guide Images Section */
+.guide-images-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.guide-image-container {
+    text-align: center;
+}
+
+.guide-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Prediction Result */
+.prediction-result {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.predicted-phone-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.estimated-price {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #28a745;
+}
+
+.show-modal-button {
+    background-color: #28a745;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.show-modal-button:hover {
+    background-color: #218838;
+}
+
+/* Modal Styles */
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.uploaded-photo-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Modal Footer Button Styles */
+.modal-footer button {
+    padding: 0.5rem 1.5rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .guide-images-section {
+        flex-direction: column;
+    }
+
+    .guide-image-container {
+        margin-bottom: 1rem;
+    }
+
+    .image-upload-label {
+        width: 100%;
+    }
+    
+    .device-estimation-title {
+        font-size: 1.75rem;
+    }
+    
+    .show-modal-button, .test-button {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .device-estimation-container {
+        padding: 1rem;
+    }
+
+    .device-estimation-title {
+        font-size: 1.5rem;
+    }
+
+    .guide-images-section {
+        display: block;
+    }
+
+    .guide-image-container {
+        margin-bottom: 1rem;
+    }
+
+    .show-modal-button, .test-button {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}

@@ -247,7 +247,7 @@ const HomePage = () => {
         <div className='home banner'>
           <span className='home1 banner-text'>
             Estimate your phone price in a second
-            <Link to='/login' className='banner-link'>
+            <Link to='/ia' className='banner-link'>
               Try Now!
             </Link>
           </span>
