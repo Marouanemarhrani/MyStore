@@ -26,7 +26,7 @@ const Products = () => {
         getAllProducts();
     }, []);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Products"}>
     <div className='pdcts container-fluid'>
       <div className='pdcts1 row'>
         <div className='pdcts2 col-md-3'>

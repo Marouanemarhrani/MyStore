@@ -42,13 +42,13 @@
   }
   
   .ctgries7.card {
-    width: 300px; /* Fixed width */
-    height: 400px; /* Fixed height */
+    width: 300px; 
+    height: 400px; 
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px; /* Space between cards */
+    margin-bottom: 20px; 
   }
   
   .ctgries7.card:hover {
@@ -59,15 +59,15 @@
   /* Category image */
   .ctgries8.card-img-top {
     width: 100%;
-    height: 220px; /* Fixed height for images */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
+    height: 220px; 
+    object-fit: cover;
     border-bottom: 1px solid #ddd;
   }
   
   /* Card body */
   .ctgries9.card-body {
     padding: 15px;
-    height: 180px; /* Fixed height for the body */
+    height: 180px; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -75,7 +75,7 @@
   
   .ctgries10.card-title {
     font-size: 18px;
-    margin-bottom: 5px; /* Reduced margin for closer spacing */
+    margin-bottom: 5px; 
     color: #333;
   }
   
@@ -91,16 +91,16 @@
   
     .ctgries7.card {
         width: 100%;
-        max-width: 300px; /* Ensures consistency on smaller screens */
-        height: 350px; /* Adjust height for smaller screens */
+        max-width: 300px; 
+        height: 350px; 
     }
   
     .ctgries8.card-img-top {
-        height: 180px; /* Adjust image height */
+        height: 180px; 
     }
   
     .ctgries9.card-body {
-        height: 170px; /* Adjust body height */
+        height: 170px;
     }
   
     .ctgries10.card-title {
@@ -120,15 +120,15 @@
     .ctgries7.card {
         width: 100%;
         max-width: 300px;
-        height: 320px; /* Further adjust height for smaller screens */
+        height: 320px; 
     }
   
     .ctgries8.card-img-top {
-        height: 160px; /* Further adjust image height */
+        height: 160px; 
     }
   
     .ctgries9.card-body {
-        height: 160px; /* Further adjust body height */
+        height: 160px; 
     }
   
     .ctgries10.card-title {

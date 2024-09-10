@@ -1,7 +1,7 @@
 /* Container for the search bar */
 .srch {
     width: 350%;
-    max-width: 700px; /* Increased width for larger screens */
+    max-width: 700px; 
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -13,18 +13,18 @@
     width: 100%;
     height: 35px;
     padding: 10px 15px;
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #ccc; 
     border-radius: 5px;
     outline: none;
     background-color: #fff;
     font-size: 14px;
-    color: #555; /* Light gray text */
+    color: #555; 
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Input field hover and focus effects */
 .srch1:focus {
-    border-color: #000; /* Darker border on focus */
+    border-color: #000; 
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -34,7 +34,7 @@
     right: 15px;
     background: none;
     border: none;
-    color: #555; /* Matching the input text color */
+    color: #555; 
     cursor: pointer;
     font-size: 16px;
     padding: 0;
@@ -46,13 +46,13 @@
 /* Small screen adjustments */
 @media (max-width: 1280px) {
     .srch {
-        max-width: 90%; /* Makes the input smaller on tablets */
+        max-width: 90%; 
     }
 }
 
 @media (max-width: 576px) {
     .srch {
-        max-width: 100%; /* Full width on small screens */
+        max-width: 100%; 
     }
 
     .srch1 {

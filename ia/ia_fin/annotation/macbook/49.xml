@@ -1,0 +1,26 @@
+<annotation>
+	<folder>macbook</folder>
+	<filename>49.jpg</filename>
+	<path>C:\Users\marhr\Desktop\sellia\dataset\macbook\49.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2500</width>
+		<height>2500</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>macbook</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>5</xmin>
+			<ymin>525</ymin>
+			<xmax>2500</xmax>
+			<ymax>1944</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -26,7 +26,7 @@ const Services = () => {
         getAllServices();
     }, []);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Services"}>
     <div className='srvces container-fluid'>
       <div className='srvces1 row'>
         <div className='srvces2 col-md-3'>

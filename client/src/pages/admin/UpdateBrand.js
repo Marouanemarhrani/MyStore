@@ -117,7 +117,7 @@ const UpdateBrand = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create brand"}>
+    <LayoutNF title={"Update Brand"}>
         <div className='upbrnd container-fluid '>
             <div className='upbrnd1 row'>
                 <div className='upbrnd2 col-md-3'>

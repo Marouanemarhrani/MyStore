@@ -28,7 +28,7 @@ const CategoryProduct = () => {
         }
     };
   return (
-    <LayoutNF>
+    <LayoutNF title={"Our Catalogue"}>
       <div className='catpdct col-md-8 offset-1'>
         <div className='catcpdct14'>
             <h5 className='catpdct1 text-center'>{category?.name}</h5>

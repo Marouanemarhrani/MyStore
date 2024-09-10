@@ -9,6 +9,9 @@ import {
   FaPhone,
   FaEnvelope,
 } from 'react-icons/fa';
+import googlePlay from "./../../data/googlePlay.png";
+import appStore from "./../../data/appStore.jpeg";
+
 
 const Footer = () => {
   return (
@@ -39,8 +42,8 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Customer Support</h4>
           <ul>
-            <li><a href="#">Become a Vendor</a></li>
-            <li><a href="#">Order Status</a></li>
+            <li><a href="/ia">Become a Vendor</a></li>
+            <li><a href="/dashboard/user/orders">Order Status</a></li>
             <li><a href="#">Payment Options</a></li>
             <li><a href="#">Shipping Info</a></li>
             <li><a href="#">Returns & Refunds</a></li>
@@ -52,9 +55,9 @@ const Footer = () => {
         <div className="footer-column">
           <h4>Legal Information</h4>
           <ul>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cookies Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Use</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="/privacy-policy">Cookies Policy</a></li>
             <li><a href="#">Warranty Terms</a></li>
             <li><a href="#">Legal Notices</a></li>
           </ul>
@@ -69,11 +72,6 @@ const Footer = () => {
             <a href="#"><FaInstagram /></a>
             <a href="#"><FaLinkedinIn /></a>
           </div>
-
-          <div className="footer-certifications">
-            <img src="certification.png" alt="Certified Business" />
-            <img src="award.png" alt="Award Winning" />
-          </div>
         </div>
       </div>
 
@@ -81,10 +79,10 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="footer-contact-info">
           <p>
-            <FaMapMarkerAlt /> 123 SmartFix Street, New York, NY 10001
+            <FaMapMarkerAlt /> 123 SmartFix Street, Toulouse, France
           </p>
           <p>
-            <FaPhone /> +1 234 567 890
+            <FaPhone /> +33 258 564 521
           </p>
           <p>
             <FaEnvelope /> support@smartfix.com
@@ -95,8 +93,8 @@ const Footer = () => {
 
         {/* Mobile Apps */}
         <div className="footer-app-links">
-          <img src="google-play.png" alt="Google Play" />
-          <img src="app-store.png" alt="App Store" />
+          <img src={googlePlay} alt="Google Play" />
+          <img src={appStore} alt="App Store" />
         </div>
       </div>
     </footer>

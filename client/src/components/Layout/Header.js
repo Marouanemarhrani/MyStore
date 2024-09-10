@@ -92,8 +92,8 @@ const Header = () => {
                 </ul>
               </li>
               <li className="header31 nav-item">
-                <NavLink to="/help" className="header32 nav-link">
-                  Help
+                <NavLink to="/ia" className="header32 nav-link">
+                  Sell
                 </NavLink>
               </li>
             </ul>

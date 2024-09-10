@@ -1,0 +1,26 @@
+<annotation>
+	<folder>samsung</folder>
+	<filename>10.jpg</filename>
+	<path>C:\Users\marhr\Desktop\sellia\dataset\samsung\10.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>152</width>
+		<height>180</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>samsung</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1</xmin>
+			<ymin>12</ymin>
+			<xmax>93</xmax>
+			<ymax>180</ymax>
+		</bndbox>
+	</object>
+</annotation>

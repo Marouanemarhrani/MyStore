@@ -27,7 +27,7 @@ const Brands = () => {
         getAllBrands();
     },[]);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Brands"}>
     <div className='ctgries container-fluid'>
       <div className='ctgries1 row'>
         <div className='ctgries2 col-md-3'>

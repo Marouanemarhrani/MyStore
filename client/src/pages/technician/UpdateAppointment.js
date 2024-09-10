@@ -101,7 +101,7 @@ const UpdateAppointment = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Update Appointment"}>
+    <LayoutNF title={"Update Appointment"}>
         <div className='upapp container-fluid '>
             <div className='upapp1 row'>
                 <div className='upapp2 col-md-3'>

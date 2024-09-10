@@ -27,7 +27,7 @@ const CategoriesAdm = () => {
         getAllCategory();
     },[]);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Categories"}>
     <div className='ctgries container-fluid'>
       <div className='ctgries1 row'>
         <div className='ctgries2 col-md-3'>

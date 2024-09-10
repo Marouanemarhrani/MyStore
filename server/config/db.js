@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   if (process.env.NODE_ENV === 'test') {
-    return;  // MongoDB connection is handled by mongodb-memory-server in the jest setup.
+    return; 
   }
 
   const mongoUrl = process.env.MONGO_URL;

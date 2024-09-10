@@ -242,7 +242,7 @@ const HomePage = () => {
   }, [checkedCategories, checkedCompanies, radio]);  // Add checkedCompanies to the dependency array
   
   return (
-    <Layout title={'Home'}>
+    <Layout title={'SmartFix - Home'}>
       {showBanner && (
         <div className='home banner'>
           <span className='home1 banner-text'>
@@ -466,11 +466,6 @@ const HomePage = () => {
               </div>
               <div className="home72-banner col-md-3">
                   <img src={banner3} alt="Banner3" className="home73-banner-image" />
-              </div>
-          </div>
-          <div className="home70-banner-section col-md-12">
-              <div className="home32-banner video-banner col-md-6">
-                  <video className="home33-banner-video" controls src={video} alt="Video"></video>
               </div>
           </div>
         </div>

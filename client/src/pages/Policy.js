@@ -70,7 +70,7 @@ const Policy = () => {
           <p>
             If you have any questions about this Privacy Policy, please contact us at:
           </p>
-          <p>Email: <a href="mailto:support@yourcompany.com">support@yourcompany.com</a></p>
+          <p>Email: <a href="mailto:support@smartfix.com">support@smartfix.com</a></p>
         </section>
       </div>
     </Layout>

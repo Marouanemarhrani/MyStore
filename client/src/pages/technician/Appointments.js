@@ -26,7 +26,7 @@ const Appointments = () => {
         getAllAppointments();
     }, []);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Appointments"}>
         <div className='app container-fluid '>
         <div className='app1 row'>
             <div className='app2 col-md-3'>

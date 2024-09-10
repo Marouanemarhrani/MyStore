@@ -163,7 +163,7 @@ const getCompanyPhotourlController = async (req, res) => {
 const getSpecificCompanies = async (req, res) => {
   try {
     // Hard-coded array of company names
-    const names = ["Apple iPhone", "Apple Macbook", "Apple Watch", "Apple iPad"];
+    const names = ["Apple iPhone", "Apple Macbook", "Apple Watch", "Apple iPad", "Apple Airpods"];
 
     // Use the $in operator to find documents where the value of "name" is in the provided array
     const companies = await companyModel.find({

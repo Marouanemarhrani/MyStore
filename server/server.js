@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 // Import routes
 const userRoute = require('./routes/userRoute');
@@ -23,6 +24,10 @@ connectDB();
 
 // Create Express app
 const app = express();
+
+// Augmenter la taille limite de la requête
+app.use(bodyParser.json({ limit: '10mb' })); // Ajustez la taille selon vos besoins
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Middleware setup
 app.use(cors());

@@ -41,7 +41,7 @@ const CreateService = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Service"}>
+    <LayoutNF title={"Create Service"}>
         <div className='csrvcs container-fluid'>
             <div className='csrvcs1 row'>
                 <div className='csrvcs2 col-md-3'>

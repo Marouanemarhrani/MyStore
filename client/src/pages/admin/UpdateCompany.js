@@ -97,7 +97,7 @@ const UpdateCompany = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Company"}>
+    <LayoutNF title={"Update Company"}>
         <div className='upcmp container-fluid '>
             <div className='upcmp1 row'>
                 <div className='upcmp2 col-md-3'>

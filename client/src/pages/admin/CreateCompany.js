@@ -58,7 +58,7 @@ const CreateCompany = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Company"}>
+    <LayoutNF title={"Create Company"}>
         <div className='ccmp container-fluid'>
             <div className='ccmp1 row'>
                 <div className='ccmp2 col-md-3'>

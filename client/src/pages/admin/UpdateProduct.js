@@ -149,7 +149,7 @@ const UpdateProduct = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Product"}>
+    <LayoutNF title={"Update Product"}>
         <div className='updct container-fluid '>
             <div className='updct1 row'>
                 <div className='updct2 col-md-3'>

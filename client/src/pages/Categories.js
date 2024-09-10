@@ -8,7 +8,7 @@ const Categories = () => {
     const categories = useCategory();
     const navigate = useNavigate();
   return (
-    <LayoutNF title={"All categories"}>
+    <LayoutNF title={"All Categories"}>
       <div className='ctg1 body'>
         <h1>All Categories</h1>
       <div className='ctg2 container'>

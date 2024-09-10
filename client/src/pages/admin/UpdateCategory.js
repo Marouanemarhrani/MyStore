@@ -71,7 +71,7 @@ const UpdateCategory = () => {
             };
         };
   return (
-    <LayoutNF title={"Dashboard - Update Category"}>
+    <LayoutNF title={"Update Category"}>
         <div className='upcate container-fluid '>
             <div className='upcate1 row'>
                 <div className='upcate2 col-md-3'>

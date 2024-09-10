@@ -33,7 +33,7 @@ const CreateCategory = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Category"}>
+    <LayoutNF title={"Create Category"}>
     <div className='ccat container-fluid '>
         <div className='ccat1 row'>
             <div className='ccat2 col-md-3'>

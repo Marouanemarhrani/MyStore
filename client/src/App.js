@@ -8,12 +8,10 @@ import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/Routes/Private";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
 import AdminRoute from "./components/Routes/AdminRoute";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CreateCategory from "./pages/admin/CreateCategory";
 import CreateProduct from "./pages/admin/CreateProduct";
-import Users from "./pages/admin/Users";
 import Orders from "./pages/user/Orders";
 import Profile from "./pages/user/Profile";
 import Products from "./pages/admin/Products";
@@ -31,7 +29,6 @@ import TechnicianRoute from "./components/Routes/TechnicianRoute";
 import CreateAppointment from "./pages/technician/CreateAppointment";
 import Appointments from "./pages/technician/Appointments";
 import UpdateAppointment from "./pages/technician/UpdateAppointment";
-import Help from "./pages/Help";
 import CreateService from "./pages/admin/CreateService";
 import ServicesAdmin from "./pages/admin/Servicesadmin";
 import UpdateService from "./pages/admin/UpdateService";
@@ -86,7 +83,6 @@ function App() {
             <Route path="admin/create-service" element={<CreateService />} />
             <Route path="admin/service/:slug" element={<UpdateService />} />
             <Route path="admin/services" element={<ServicesAdmin />} />
-            <Route path="admin/users" element={<Users />} />
             <Route path="admin/orders" element={<AdminOrders />} />
           </Route>
 
@@ -98,10 +94,8 @@ function App() {
           </Route>
 
           <Route path="/register" element={<Register />} />
-          <Route path ="forgot-password" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
-          <Route path="/help" element={<Help />} />
           <Route path="/privacy-policy" element={<Policy />} />
           <Route path="/terms-of-service" element={<Termsofservice />} />
           <Route path="/*" element={<Pagenotfound />} />

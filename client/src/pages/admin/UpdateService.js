@@ -83,7 +83,7 @@ const UpdateService = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Service"}>
+    <LayoutNF title={"Update Service"}>
         <div className='upsrvcs container-fluid '>
             <div className='upsrvcs1 row'>
                 <div className='upsrvcs2 col-md-3'>

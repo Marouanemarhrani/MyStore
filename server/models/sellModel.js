@@ -9,14 +9,14 @@ const sellSchema = new mongoose.Schema({
     estimatedPrice: {
         type: Number,
         required: true,
-        min: 0,  // Assure que le prix est toujours positif
+        min: 0,  
     },
     phoneNumber: {
         type: String,
         required: true,
         validate: {
             validator: function(v) {
-                return /\d{10}/.test(v);  // Vérifie que le numéro de téléphone contient exactement 10 chiffres
+                return /\d{10}/.test(v); 
             },
             message: props => `${props.value} is not a valid phone number!`
         }
@@ -24,19 +24,17 @@ const sellSchema = new mongoose.Schema({
     userOffer: {
         type: Number,
         required: true,
-        min: 0,  // Assure que l'offre de l'utilisateur est toujours positive
+        min: 0,  
     },
     photoUrl: {
-        type: String,  // Stocke l'URL de la photo plutôt que le Buffer
+        data: Buffer,
+        contentType: String  
     },
     status: {
         type: String,
-        enum: ['pending', 'accepted', 'rejected'],  // Restreint les valeurs possibles pour le statut
+        enum: ['pending', 'accepted', 'rejected'],  
         default: 'pending',
     }
 }, { timestamps: true });
-
-// Index pour les recherches par nom d'appareil
-sellSchema.index({ deviceName: 1 });
 
 module.exports = mongoose.model('Sell', sellSchema);

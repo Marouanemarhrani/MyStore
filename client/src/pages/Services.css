@@ -33,8 +33,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px;  /* Set a fixed height for the card */
-    justify-content: space-between; /* Space out the image and button */
+    height: 400px;  
+    justify-content: space-between; 
 }
 
 .divallsrvs3:hover {
@@ -55,9 +55,9 @@
 
 .srvcphoto {
     width: 100%;
-    height: 200px; /* Set a fixed height */
+    height: 200px; 
     border-radius: 8px;
-    object-fit: cover; /* Ensures the image covers the area without stretching */
+    object-fit: cover; 
 }
 
 .services-btn {
@@ -82,18 +82,18 @@
 
 @media (min-width: 768px) {
     .divallsrvs3 {
-        flex: 0 0 48%; /* Two cards per row */
+        flex: 0 0 48%; 
         margin-bottom: 20px;
     }
 }
 
 @media (max-width: 767px) {
     .divallsrvs3 {
-        flex: 0 0 100%; /* One card per row */
+        flex: 0 0 100%; 
         margin-bottom: 20px;
     }
 
     .services-btn {
-        width: 100%; /* Full width button on mobile */
+        width: 100%; 
     }
 }

@@ -26,7 +26,7 @@ const AdminOffers = () => {
         getAllSells();
     }, []);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Offers"}>
         <div className='app container-fluid '>
         <div className='app1 row'>
             <div className='app2 col-md-3'>

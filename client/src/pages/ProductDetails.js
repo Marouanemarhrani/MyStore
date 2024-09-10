@@ -41,7 +41,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <Layout>
+    <Layout title={"Product Details"}>
       <div className="dtls16-product-container">
         <div className="dtls5 text-center">
           <h3 className="dtls6">

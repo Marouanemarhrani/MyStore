@@ -1,0 +1,26 @@
+<annotation>
+	<folder>iphone</folder>
+	<filename>18.jpg</filename>
+	<path>C:\Users\marhr\Desktop\sellia\dataset\iphone\18.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>127</width>
+		<height>180</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>iphone</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>24</xmin>
+			<ymin>2</ymin>
+			<xmax>105</xmax>
+			<ymax>162</ymax>
+		</bndbox>
+	</object>
+</annotation>

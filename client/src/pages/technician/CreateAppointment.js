@@ -43,7 +43,7 @@ const CreateAppointment = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Appointment"}>
+    <LayoutNF title={"Create Appointment"}>
         <div className='capp container-fluid '>
             <div className='capp1 row'>
                 <div className='capp2 col-md-3'>

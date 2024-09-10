@@ -26,7 +26,7 @@ const Companies = () => {
         getAllCompanies();
     }, []);
   return (
-    <LayoutNF>
+    <LayoutNF title={"Companies"}>
     <div className='cmp container-fluid'>
       <div className='cmp1 row'>
         <div className='cmp2 col-md-3'>

@@ -3,6 +3,7 @@ import LayoutNF from '../components/Layout/LayoutNF';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import './Ia.css';
+import toast from 'react-hot-toast';
 
 const Ia = () => {
     const [image, setPhoto] = useState(null);
@@ -12,7 +13,6 @@ const Ia = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [userOffer, setUserOffer] = useState("");
 
-    // Handle offer creation
     const handleCreate = async (e) => {
         e.preventDefault();
         
@@ -23,40 +23,35 @@ const Ia = () => {
         
         try {
             const offerData = new FormData();
-            // Append the values generated from the handleTest function
-            offerData.append("deviceName", prediction);  // Predicted phone name
-            offerData.append("estimatedPrice", estimatedPrice);  // Estimated price
-            offerData.append("phoneNumber", phoneNumber);  // User's phone number
-            offerData.append("userOffer", userOffer);  // User's offer price
-            offerData.append("photo", image);  // The uploaded photo
+            offerData.append("deviceName", prediction);  
+            offerData.append("estimatedPrice", estimatedPrice);  
+            offerData.append("phoneNumber", phoneNumber);  
+            offerData.append("userOffer", userOffer);  
+            offerData.append("photo", image);  
     
-            // Send the form data using axios
             const response = await axios.post(`${process.env.REACT_APP_API}/api/sells/create`, offerData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
 
-            alert('Offer submitted successfully!');
-            setShowModal(false);  // Close the modal on success
+            toast.success('Offer submitted successfully!');
+            setShowModal(false);  
         } catch (error) {
-            console.error('There was an error!', error);
+            toast.error('There was an error!', error);
         }
     };
     
-    // Handle image upload and prediction request
     const handleTest = async (e) => {
         e.preventDefault();
         try {
             const brandData = new FormData();
             brandData.append("image", image);
 
-            // Send the form data using axios
             const response = await axios.post('http://localhost:8000/api/', brandData);
             const predictedPhone = response.data.predicted_phone;
             setPrediction(predictedPhone);
             
-            // Set the estimated price based on the predicted phone
             let price = null;
             if (predictedPhone.toLowerCase() === "macbook") {
                 price = 500;
@@ -76,9 +71,10 @@ const Ia = () => {
     const handleCloseModal = () => setShowModal(false);
 
     return (
-        <LayoutNF title={"Dashboard - Make Offer"}>
+        <LayoutNF title={"Sell A Device"}>
             <div className='device-estimation-container container-fluid'>
-                <h1 className='device-estimation-title'>Make Estimations for Your Devices</h1>
+                <h1 className='device-estimation-title'>Try now IA to sell your device</h1>  
+                <h1 className='device-estimation-title'>How does it work?</h1>
                 
                 <div className='image-upload-section row'>
                     <label className='image-upload-label btn btn-outline col-md-12'>
@@ -95,15 +91,6 @@ const Ia = () => {
                         <button className='test-button btn' onClick={handleTest}>
                             Test
                         </button>
-                    </div>
-                </div>
-
-                <div className="guide-images-section row">
-                    <div className="guide-image-container col-md-6">
-                        <img src='/path-to-guide-image-1.jpg' alt="Guide to take image 1" className='guide-image' />
-                    </div>
-                    <div className="guide-image-container col-md-6">
-                        <img src='/path-to-guide-image-2.jpg' alt="Guide to take image 2" className='guide-image' />
                     </div>
                 </div>
 

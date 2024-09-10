@@ -28,7 +28,7 @@ const CompanyProduct = () => {
         }
     };
   return (
-    <LayoutNF>
+    <LayoutNF title={"Our catalogue"}>
       <div className='cmppdct col-md-8 offset-1'>
         <div className='cmpcpdct14'>
             <h5 className='cmppdct1 text-center'>{company?.name}</h5>

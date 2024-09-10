@@ -37,8 +37,8 @@
   .app5 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the cards horizontally */
-    gap: 20px; /* Space between the cards */
+    justify-content: center; 
+    gap: 20px; 
   }
   
   /* Card and link styling */

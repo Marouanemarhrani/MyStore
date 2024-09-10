@@ -77,7 +77,7 @@ const CreateBrand = () => {
         };
     };
   return (
-    <LayoutNF title={"Dashboard - Create Brand"}>
+    <LayoutNF title={"Create Brand"}>
         <div className='cbrnd container-fluid'>
             <div className='cbrnd1 row'>
                 <div className='cbrnd2 col-md-3'>

@@ -58,7 +58,7 @@ const ServiceDetails = () => {
 };
 
   return (
-    <LayoutNF>
+    <LayoutNF title={"Service Details"}>
       <div className='services-body'>
       <div className='divsrvsdetails row container mt-2'>
           <h1 className='div2-h1 text-center'>Service Details</h1>
