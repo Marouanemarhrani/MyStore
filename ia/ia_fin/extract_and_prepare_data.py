@@ -16,12 +16,12 @@ missing_files = []
 invalid_xml_files = []
 
 # Parcourir tous les dossiers d'annotations
-for animal_folder in os.listdir(annotations_dir):
-    animal_path = os.path.join(annotations_dir, animal_folder)
-    if os.path.isdir(animal_path):
-        for annotation_file in os.listdir(animal_path):
+for phone_folder in os.listdir(annotations_dir):
+    phone_path = os.path.join(annotations_dir, phone_folder)
+    if os.path.isdir(phone_path):
+        for annotation_file in os.listdir(phone_path):
             if annotation_file.endswith('.xml'):
-                annotation_path = os.path.join(animal_path, annotation_file)
+                annotation_path = os.path.join(phone_path, annotation_file)
                 
                 try:
                     # Parser le fichier XML
@@ -34,7 +34,7 @@ for animal_folder in os.listdir(annotations_dir):
                 
                 # Obtenir le nom de fichier de l'image
                 filename = root.find('filename').text
-                image_path = os.path.join(images_dir, animal_folder, filename)
+                image_path = os.path.join(images_dir, phone_folder, filename)
                 
                 if os.path.exists(image_path):
                     # Charger l'image
@@ -43,8 +43,8 @@ for animal_folder in os.listdir(annotations_dir):
                     
                     # Parcourir les objets annotés dans l'image
                     for obj in root.findall('object'):
-                        # Obtenir le nom de l'animal
-                        animal_name = obj.find('name').text
+                        # Obtenir le nom de phone
+                        phone_name = obj.find('name').text
                         
                         # Obtenir les coordonnées de la boîte englobante
                         bndbox = obj.find('bndbox')
@@ -64,9 +64,9 @@ for animal_folder in os.listdir(annotations_dir):
                             roi = image.crop((xmin, ymin, xmax, ymax))
                             
                             # Chemin de sauvegarde pour l'extrait
-                            animal_output_dir = os.path.join(output_dir, animal_name)
-                            os.makedirs(animal_output_dir, exist_ok=True)
-                            output_path = os.path.join(animal_output_dir, filename)
+                            phone_output_dir = os.path.join(output_dir, phone_name)
+                            os.makedirs(phone_output_dir, exist_ok=True)
+                            output_path = os.path.join(phone_output_dir, filename)
                             
                             # Sauvegarder l'extrait
                             roi.save(output_path)
